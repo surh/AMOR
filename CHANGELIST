@@ -1,0 +1,76 @@
+# 0.0-12
+1. read.am always returns a Dataset object. Documented
+2. Added Dataset method for write.qiime and homogenized variable names. Documented
+
+# 0.0-11
+1. fixed glitched where MASS package was not being loaded and one couldn't use the matrix_glmNB function.
+2. remove_samples now applies droplevels by default, and can be turned of by the user.
+3. Added functions plotgg_var and plotgg_taxon which make boxplots of a variable in the mapping file or a taxon in the abundance matrix.
+4. Now the pool_samples function return Dataset objects
+5. Added plotgg_rankabun function and Dataset methods.
+6. Also added experimental function plotgg_rankabun2
+7. Improved phylogram function to return only plot and now it can also take an argument for showing only the top n taxa, and collapsing the rest. Also added Datast method for it.
+8. Fixed glitch in PCA function. Totvar was not being calculated
+9. Fixed glitch in remove_samples functiin, now it can handle Dataset onjects with NULL map.
+10. Added ggdendro dependency which is required for the heatgg function
+11. Addedd heatgg function with support for sample faceting and 2D clustering.
+12. Added site_diversity functions and a plotgg method for it.
+
+# 0.0-10
+1. fixed bug in pool_samples. The test set was always being used.
+2. read.am returns a dataset object if taxonomy is passed.
+3. Fixed glitch in collapse_by_taxonomy help
+
+# 0.0-9
+1. Changed the PCA function, now it does not call pca from labdsv, but prcomp directly.
+2. Changed PCO function, now it does not call pco, but cmdscale directly.
+3. Fixed plotgg.PCA so that it returns all the data (including biplot) in the main object
+4. Created PCO method for plotgg
+5. Created clean, remove_samples and remove_taxons functions and docummented them.
+6. Added Rhizo.tax as data distributed with the package
+7. Added collapse_matrix functiona and documented it
+8. labdsv now is suggested but not required. vegan is suggested as well.
+9. Added collapse_by_taxonomy and documentation.
+10. Added pool_samples and documented
+11. Updated create_dataset to make both Map and Tab optional
+
+# 0.0-8
+1. Added matrix_glmNB function
+2. Change pca and pco functions to PCA and PCO so they don't interfere with labdsv.
+They are just wrappers for the labdsv functions. Documented both.
+3. Function PCA was modified so that the pca object returned by its Dataset method contains
+Map and Tax slots.
+4. plotgg generic function and plotgg.pca method created
+5. Changed rrarefy function to rarefaction, and also altered so the columns are samples
+now. Created S3 method for Dataset objects and documented.
+
+# 0.0-7
+1. Important mainteinance to matrix_glm and bootstrap_glm.
+2. Docummentation improved (read.am, write.qiime)
+3. Added data Rhizo and Rhizo.map
+4. Added PCA and PCoA methods for Dataset objects. Relies ehavily in the labdsv package
+5. Updated matrix_glm to take ... argument and pass it to glm. bootstrap_glm was modified
+accordingly.
+6. Updated matrix_glm to take return design matrix X.
+7. Updated docummentation
+
+# 0.0-6
+1. Added create_dataset() function which defines the "Dataset" class
+2. Added the matrix_glm methods, and documentation. Includes a summary
+method and a print method for the summary.
+3. Added the bootstrap_glm methods, and documentation. Includes a summary
+method and a print method for the summary.
+4. Expanded documentation
+
+# 0.0-5
+1. Fixed bug for specifying the number of rows in the legend.
+
+# 0.0-4
+1. Reorganized functions into files according to general purpose.
+2. Added an option to specify the maximum number of rows in the legend
+of the function phylogram.
+3. Added function beta_diversity, which calculates Bray-Curtis dissimilarity
+so we don't need the vegan function anymore.
+4. Removed vegan from the list of dependencies.
+
+

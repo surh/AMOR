@@ -1,0 +1,13 @@
+Package: AMOR
+Type: Package
+Title: Abundance Matrix Operations in R
+Version: 0.0-12
+Depends: ggplot2(>= 0.9.3.1), ggdendro(>= 0.1-15),
+	reshape2(>= 1.2.2), grid(>= 3.0.2),
+	MASS
+Suggests: labdsv (>= 1.5-0), vegan (>= 2.0-10)
+Date: 2015-02-07
+Author: Sur
+Maintainer: Sur <sur00mx@gmail.com>
+Description: Abundance Matrix Operations in R
+License: GPL-3
