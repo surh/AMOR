@@ -5,7 +5,7 @@
 
 \description{Generig plot function for ggplot2}
 
-\usage{
+\seealso{
 \code{\link{plotgg.PCA}}
 \code{\link{plotgg.PCO}}
 \code{\link{plotgg.site.diversity}}

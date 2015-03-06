@@ -8,9 +8,9 @@
 \description{Make a box and whiskers plot of a single variable, while grouping by a variable.}
 
 \usage{
-  \method{plotgg_taxon}{default}(Map, var.name, x, col = NULL,
+  \method{plotgg_var}{default}(Map, var.name, x, col = NULL,
                         theme = theme_blackbox)
-  \method{plotgg_taxon}{default}(Dat, var.name, x, col = NULL,
+  \method{plotgg_var}{default}(Dat, var.name, x, col = NULL,
                         theme = theme_blackbox)
 }
 

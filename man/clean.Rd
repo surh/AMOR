@@ -1,7 +1,7 @@
 \name{clean}
 \alias{clean}
-\alias{remove_samples}
-\alias{remove_taxons}
+%\alias{remove_samples}
+%\alias{remove_taxons}
 
 \title{Remove samples and taxons from a Dataset}
 
@@ -27,6 +27,8 @@ remove_taxons(Dat,taxons)
 \value{Returns a \code{Dataset} object.}
 
 \author{Sur from the Dangl Lab.}
+
+\seealso{\link{remove_taxons}, \link{remove_samples}}
 
 \examples{
 data(Rhizo)

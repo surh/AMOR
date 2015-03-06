@@ -1,0 +1,37 @@
+\name{remove_samples}
+\alias{remove_samples}
+
+\title{Remove samples from a Dataset object.}
+
+\description{Remove samples from a Dataset object.}
+
+\usage{
+remove_samples(Dat,samples,droplevels = TRUE)
+}
+
+\arguments{
+  \item{Dat}{A Dataset object}
+  \item{samples}{String vector indicating which samples to remove. Sample IDs must be equal to the column headers of the abundance table on \code{Dat}.}
+  \item{droplevels}{Logical indicating whether levels that desappear from the mapping file should be removed.}
+}
+
+\details{}
+
+\value{A Dataset object.}
+
+\author{Sur from Dangl Lab}
+
+\seealso{\link{remove_taxons}}
+
+\examples{
+data(Rhizo)
+data(Rhizo.map)
+Dat <- create_dataset(Rhizo,Rhizo.map)
+Dat <- remove_samples(Dat,colnames(Dat$Tab)[1:50])
+Dat <- remove_taxons(Dat,row.names(Dat$Tab)[1:115])
+sum(colSums(Dat$Tab) == 0)
+sum(rowSums(Dat$Tab) == 0)
+Dat$Tab
+Dat.clean <- clean(Dat)
+Dat.clean$Tab
+}
