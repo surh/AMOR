@@ -84,7 +84,8 @@ plotgg.PCO <- function(x,components=c("V1","V2"),shape=NULL,col=NULL,
   return(p1) 
 }
 
-plotgg.site.diversity <- function(sitediv, p = c(0.025, 0.975), alpha = 0.2, theme = theme_blackbox, confints = TRUE){
+plotgg.site.diversity <- function(sitediv, p = c(0.025, 0.975),
+                                  alpha = 0.2, theme = theme_blackbox, confints = TRUE){
   #sitediv <- sitediv.gen
   #p <- c(0.025,0.975)
   #alpha <- 0.2
