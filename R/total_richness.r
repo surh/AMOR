@@ -1,0 +1,1 @@
+total_richness <- function(Tab) sum(rowSums(Tab) > 0)
