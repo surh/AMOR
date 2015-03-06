@@ -1,0 +1,44 @@
+\name{plotgg.PCA}
+\alias{plotgg.PCA}
+
+\title{Plotting a PCA}
+
+\description{Function for plotting results of \code{\link{PCA}}.}
+
+\usage{
+\method{plotgg}{PCA}(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
+                       biplot=FALSE,biplot_color="grey21",point_size=2)
+}
+
+\arguments{
+  \item{x}{A \code{PCA} object.}
+  \item{components}{Vector of length 2 indicating which components to plot.}
+  \item{shape}{String indicating which variable to use as aestetics mapping for shape. Must correspond to a column header in the Map attribute of the PCA object.}
+  \item{col}{String indicating which variable to use as aestetics mapping for color. Must correspond to a column header in the Map attribute of the PCA object.}
+  \item{biplot}{Logical indicating whether the loadings should be plotted as well.}
+  \item{biplot_color}{Color to use for the loadings in a biplot}
+  \item{point_size}{size for the points in the plot}
+}
+
+\details{}
+
+\value{A ggplot2 object of the PCA plot}
+
+\author{Sur from Dangl Lab}
+
+\seealso{\link{PCA}}
+
+\examples{
+data(Rhizo)
+data(Rhizo.map)
+Dat <- create_dataset(Rhizo,Rhizo.map)
+Dat.pca <- PCA(Dat)
+
+plotgg(PCA(Dat$Tab),point_size=6)
+plotgg(Dat.pca,point_size=4)
+plotgg(Dat.pca,shape="fraction",point_size=3)
+plotgg(Dat.pca,col="accession")
+plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
+p1 <- plotgg(Dat.pca,col="accession",components=c("PC2","PC3"),shape="fraction",biplot=TRUE,biplot_color="pink",point_size=6)
+p1
+}
