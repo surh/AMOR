@@ -3,7 +3,9 @@
 
 \title{Make rank abundance plot with Poisson confidence intervals.}
 
-\description{Make a rank abundance plot with Poisson confidence intervals from a Dataset object.}
+\description{Make a rank abundance plot with Poisson confidence intervals from a Dataset object.
+
+IMPORTANT: There is no guarantee that Poisson confidence intervals are representative of the data. This should be viewed only as descriptive statistic and not for inference.}
 
 \usage{
   \method{plotgg_rankabun2}{default}(Tab, Map = NULL, groupby = NULL, sortby = NULL,
