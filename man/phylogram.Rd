@@ -13,9 +13,9 @@
   scales="free_x",nrow.legend=20,ntaxa = NULL,
   other_name = "other")
   \method{phylogram}{Dataset}(Dat,facet = NULL,colname="Sample",
-                              variable.name="Taxon",value.name="Abundance",
-                              scales="free_x",nrow.legend=20,ntaxa = NULL,
-                              other_name = "other")
+  variable.name="Taxon",value.name="Abundance",
+  scales="free_x",nrow.legend=20,ntaxa = NULL,
+  other_name = "other")
 }
 
 \arguments{
