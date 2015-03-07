@@ -32,7 +32,6 @@ IMPORTANT: There is no guarantee that Poisson confidence intervals are represent
   \item{theme}{ggplot2 theme to be used for plotting.}
   \item{variable.name}{x-axis label in the plot.}
   \item{value.name}{y-axis label in the plot.}
-  \item{FUN}{Function to use to aggregate samples according to \code{groupby}}
   \item{sample.id.name}{A name to store sample IDs in \code{Map}. Used for internal handling only.}
 }
 \details{}

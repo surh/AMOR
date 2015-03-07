@@ -2,39 +2,21 @@
 \alias{AMOR-package}
 \alias{AMOR}
 \docType{package}
-\title{
-Abundance Matrix Operations in R
-~~ package title ~~
-}
-\description{
-More about what it does (maybe more than one line)
-}
+
+\title{Abundance Matrix Operations in R}
+
+\description{Collection of functions useful for manipulating and visualizing abundance matrix liek the ones commonly found in ecology.}
+
 \details{
 \tabular{ll}{
 Package: \tab AMOR\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2013-07-24\cr
-License: \tab What license is it under?\cr
+Version: \tab 0.0-12\cr
+Date: \tab 2015-02-07\cr
+License: \tab GPL-3\cr
 }
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
 }
-\author{
-Who wrote it
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
-}
-\references{
-~~ Literature or other references for background information ~~
-}
+\author{Sur from Dangl Lab}
 
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-
-}

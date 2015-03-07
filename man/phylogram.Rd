@@ -9,9 +9,9 @@
 
 \usage{
   \method{phylogram}{default}(Tab,Map=NULL,facet = NULL,colname="Sample",
-                              variable.name="Taxon",value.name="Abundance",
-                              scales="free_x",nrow.legend=20,ntaxa = NULL,
-                              other_name = "other")
+  variable.name="Taxon",value.name="Abundance",
+  scales="free_x",nrow.legend=20,ntaxa = NULL,
+  other_name = "other")
   \method{phylogram}{Dataset}(Dat,facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
                               scales="free_x",nrow.legend=20,ntaxa = NULL,
@@ -31,8 +31,6 @@
   \item{ntaxa}{Number of taxa to plot, the rest will be collapsed into one category. Samples will be sorted by abundance and the top \code{ntaxa} will be plotted.}
   \item{other_name}{Name to give to the collapsed taxa when \code{ntaxa} is used.}
 }
-
-\details{}
 
 \value{ A ggplot2 object of the plot.}
 

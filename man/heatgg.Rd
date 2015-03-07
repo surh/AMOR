@@ -58,14 +58,19 @@ data(Rhizo.map)
 data(Rhizo.tax)
 Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
 heatgg(Tab = Dat$Tab, Map = Dat$Map, order.samples.by = "fraction")
-heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction ~ ., order.samples.by = "accession")
-heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ .,)
-heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ ., gradientn.colours = c("white", "black"))
-p1 <- heatgg(Tab = Dat$Tab, Map = Dat$Map, gradientn.colours = c("white","black"),cluster = TRUE)
+heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction ~ .,
+        order.samples.by = "accession")
+heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ .)
+heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ .,
+        gradientn.colours = c("white", "black"))
+p1 <- heatgg(Tab = Dat$Tab, Map = Dat$Map,
+    gradientn.colours = c("white","black"),cluster = TRUE)
 
 heatgg(Dat = Dat, order.samples.by = "fraction")
 heatgg(Dat = Dat, facet = fraction ~ ., order.samples.by = "accession")
 heatgg(Dat = Dat, facet = fraction + accession ~ .,)
-heatgg(Dat = Dat, facet = fraction + accession ~ ., gradientn.colours = c("white", "black"))
-p1 <- heatgg(Dat = Dat, gradientn.colours = c("white","black"),cluster = TRUE)
+heatgg(Dat = Dat, facet = fraction + accession ~ .,
+        gradientn.colours = c("white", "black"))
+p1 <- heatgg(Dat = Dat, gradientn.colours = c("white","black"),
+      cluster = TRUE)
 }

@@ -8,8 +8,10 @@
 \description{Takes a matrix of observations, and fits the specified GLM on each species, returning the matrix of coefficients.}
 
 \usage{
-  \method{matrix_glm}{default}(x,Map,formula,family=poisson(link="log"),response.name="Count",verbose=FALSE,...)
-  \method{matrix_glm}{Dataset}(x,formula,family=poisson(link="log"),response.name="Count",verbose=FALSE,...)
+  \method{matrix_glm}{default}(x,Map,formula,family=poisson(link="log"),
+                                response.name="Count",verbose=FALSE,...)
+  \method{matrix_glm}{Dataset}(x,formula,family=poisson(link="log"),
+                                response.name="Count",verbose=FALSE,...)
  }
 
 \arguments{
@@ -22,7 +24,7 @@
   \item{...}{Other parameters for the glm() function like control.}
 }
 
-\description{This function will take each species (row) in the abundance matrix and fit the specified (cia the formula option) GLM independently on each one.}
+\details{This function will take each species (row) in the abundance matrix and fit the specified (cia the formula option) GLM independently on each one.}
 
 \value{
 Returns a \code{matrix.glm} object which is a list containing the following elements:

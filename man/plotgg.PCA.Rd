@@ -20,8 +20,6 @@
   \item{point_size}{size for the points in the plot}
 }
 
-\details{}
-
 \value{A ggplot2 object of the PCA plot}
 
 \author{Sur from Dangl Lab}

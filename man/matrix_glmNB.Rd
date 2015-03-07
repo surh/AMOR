@@ -21,7 +21,7 @@
   \item{...}{Other parameters for the \link{glm.nb} function like control.}
 }
 
-\description{This function will take each species (row) in the abundance matrix and fit the specified (via the formula option) Negative binomial GLM independently on each one, using the \link{glm.nb} function from then \code{MASS} package.}
+\details{This function will take each species (row) in the abundance matrix and fit the specified (via the formula option) Negative binomial GLM independently on each one, using the \link{glm.nb} function from then \code{MASS} package.}
 
 \value{
 Returns a \code{matrix.glm} object which is a list containing the following elements:

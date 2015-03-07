@@ -14,8 +14,6 @@
   \item{FUN}{Function (or function name) to apply to elements per groups.}
 }
 
-\details{}
-
 \value{Returns a \code{matrix} object.}
 
 \author{Sur from the Dangl Lab.}

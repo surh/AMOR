@@ -29,9 +29,7 @@
 
 \author{Sur from Dangl Lab.}
 
-\seealso{
-  \code{\link{create_dataset}}, \code{\link{pca}},\code{\link{PCO}},\code{\link{pco},\code{\link{plotgg.pca}}}
-}
+\seealso{\link{create_dataset}, \link{pca},\link{PCO},\link{pco},\link{plotgg.pca}}
 
 \examples{
 data(Rhizo)

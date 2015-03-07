@@ -25,7 +25,7 @@
   \item{...}{Other parameters for the glm() function like control.}
 }
 
-\description{This works by calling \code{matrix_glm()} on the original data, and each pf the N bootstrap pseudoreplicates generated.}
+\details{This works by calling \code{matrix_glm()} on the original data, and each pf the N bootstrap pseudoreplicates generated.}
 
 \value{
 Returns a \code{bootglm} object which is a list containing the following elements:
