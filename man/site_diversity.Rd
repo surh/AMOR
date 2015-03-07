@@ -1,0 +1,52 @@
+\name{site_diversity}
+\alias{site_diversity}
+
+\title{Diversity across sites.}
+
+\description{Calculates a diversity measure as a function of adding samples, and uses permutation to obtain a confidence interval.}
+
+
+\usage{
+  site_diversity(Dat,factor,group,
+      divfun = total_richness,nperm=20)
+}
+
+\arguments{
+  \item{Dat}{A Dataset object}
+  \item{factor}{String representing the name of the variable to be used for grouping samples. Must correspond to a header name in the \code{Mat} portion of the Dataset object.}
+  \item{group}{Value of the variable defined in \code{factor} to extract. See examples.}
+  \item{divfun}{Function that returns a diversity estimate given a matrix of samples. See \link{total_richness} and examples to see how to define your function.}
+  \item{nperm}{Number of permutations to perform.}
+}
+
+\value{A data.frame of class site.diversity which contains the following variables:
+  \item{mean}{Mean diversity value of all permutations}
+  \item{sd}{Standard deviation of the diversity estimates estimated from the permutations.}
+  \item{nsites}{Number of sites (ie. samples).}
+  \item{group}{Variable used for selecting the samples.}
+}
+
+\author{Sur from Dangl Lab}
+
+\seealso{\link{compare_site_diversity}, \link{total_richness}}
+
+\examples{
+data(Rhizo)
+data(Rhizo.map)
+data(Rhizo.tax)
+Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
+
+soil.sitediv <- site_diversity(Dat = Dat, factor = "accession", group = "Soil")
+col.sitediv <- site_diversity(Dat = Dat, factor = "accession", group = "Col")
+plotgg(soil.sitediv)
+plotgg(col.sitediv)
+
+# The following function requires the vegan package installed
+# and can be used with the site_diversity function.
+#divfun <- function(x){
+#  if(!is.null(ncol(x)))
+#    x <- rowSums(x)
+#  s <- vegan::diversity(x)
+#  return(s)
+}
+}
