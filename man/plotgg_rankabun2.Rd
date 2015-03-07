@@ -11,14 +11,14 @@
 IMPORTANT: There is no guarantee that Poisson confidence intervals are representative of the data. This should be viewed only as descriptive statistic and not for inference.}
 
 \usage{
-  \method{plotgg_rankabun2}{default}(Tab, Map = NULL, groupby = NULL, sortby = NULL,
+  \method{plotgg_rankabun2}{default}(Tab, Map, groupby, sortby,
                                     alpha = 0.2, theme = theme_blackbox, 
                                     variable.name = "Taxon", value.name = "Abundance", 
-                                    FUN = mean, sample.id.name = "SAMPLEID")                                    
-  \method{plotgg_rankabun2}{Dataset}(Dat, groupby = NULL, sortby = NULL,
+                                    sample.id.name = "SAMPLEID")                                    
+  \method{plotgg_rankabun2}{Dataset}(Dat, groupby, sortby,
                                     alpha = 0.2, theme = theme_blackbox, 
                                     variable.name = "Taxon", value.name = "Abundance", 
-                                    FUN = mean, sample.id.name = "SAMPLEID")
+                                    sample.id.name = "SAMPLEID")
 
 }
 

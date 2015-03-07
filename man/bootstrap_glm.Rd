@@ -9,9 +9,9 @@
 
 \usage{
   \method{bootstrap_glm}{default}(x,Map,formula,family=poisson(link="log"),
-  	response.name="Count",N=100,verbose=FALSE)
+  	response.name="Count",N=100,verbose=FALSE,...)
   \method{bootstrap_glm}{Dataset}(x,formula,family=poisson(link="log"),
-  	response.name="Count",N=100,verbose=FALSE)
+  	response.name="Count",N=100,verbose=FALSE,...)
  }
 
 \arguments{

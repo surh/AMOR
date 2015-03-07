@@ -9,16 +9,15 @@
 \description{Function that performs principal component analysis on an abundance matrix}
 
 \usage{
-  \method{PCA}{default}(mat, cor = FALSE, dim = min(nrow(mat), ncol(mat)))
-  \method{PCA}{Dataset}(Dat,...)
+  \method{PCA}{default}(x, cor = FALSE, dim = min(nrow(x), ncol(x)))
+  \method{PCA}{Dataset}(Dat, cor = FALSE, dim = min(nrow(Dat$Tab), ncol(Dat$Tab)))
 }
 
 \arguments{
-  \item{mat}{Matrix where samples are columns and rows are species.}
+  \item{x}{Numeric matrix where samples are columns and rows are species.}
   \item{cor}{logical value indicating whether the correlation matrix should be used instead of the covariance matrix.}
   \item{dim}{Number of dimensions to return.}
   \item{Dat}{A Dataset object, see \code{\link{create_dataset}}.}
-  \item{...}{Other arguments to pass to the default method.}
 }
 
 \details{This function is the same as function \code{\link{pca}} from the \code{\link{labdsv}} package, but includes a methdod for Dataset objects.}

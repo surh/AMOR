@@ -16,9 +16,9 @@ PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
   return(res)
 }
 
-PCA.Dataset <- function(Dat,...){
+PCA.Dataset <- function(Dat,cor = FALSE, dim = min(nrow(Dat$Tab),ncol(Dat$Tab))){
   mat <- Dat$Tab
-  res <- PCA.default(mat,...)
+  res <- PCA.default(mat, cor = cor, dim = dim)
   res$Map <- Dat$Map
   res$Tax <- Dat$Tax
   class(res) <- c("PCA")
