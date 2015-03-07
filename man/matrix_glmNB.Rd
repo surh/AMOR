@@ -9,7 +9,7 @@
 
 \usage{
   \method{matrix_glmNB}{default}(x,Map,formula,response.name="Count",verbose=FALSE,...)
-  \method{matrix_glm}{Dataset}(x,formula,response.name="Count",verbose=FALSE,...)
+  \method{matrix_glmNB}{Dataset}(x,formula,response.name="Count",verbose=FALSE,...)
  }
 
 \arguments{

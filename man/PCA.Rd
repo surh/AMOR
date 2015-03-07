@@ -1,5 +1,8 @@
 \name{PCA}
 \alias{PCA}
+\alias{PCA.default}
+\alias{PCA.Dataset}
+
 
 \title{Principal Component Analysis}
 
@@ -15,7 +18,7 @@
   \item{cor}{logical value indicating whether the correlation matrix should be used instead of the covariance matrix.}
   \item{dim}{Number of dimensions to return.}
   \item{Dat}{A Dataset object, see \code{\link{create_dataset}}.}
-  \item{dim}{Other arguments to pass to the default method.}
+  \item{...}{Other arguments to pass to the default method.}
 }
 
 \details{This function is the same as function \code{\link{pca}} from the \code{\link{labdsv}} package, but includes a methdod for Dataset objects.}

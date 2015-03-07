@@ -1,5 +1,8 @@
 \name{plotgg_rankabun2}
 \alias{plotgg_rankabun2}
+\alias{plotgg_rankabun2.default}
+\alias{plotgg_rankabun2.Dataset}
+
 
 \title{Make rank abundance plot with Poisson confidence intervals.}
 

@@ -6,7 +6,7 @@
 \description{Remove taxa from a Dataset object.}
 
 \usage{
-remove_samples(Dat,taxons)
+remove_taxons(Dat,taxons)
 }
 
 \arguments{

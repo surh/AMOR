@@ -1,5 +1,7 @@
 \name{rarefaction}
 \alias{rarefaction}
+\alias{rarefaction.default}
+\alias{rarefaction.Dataset}
 
 \title{Rarefaction}
 

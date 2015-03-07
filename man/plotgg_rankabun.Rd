@@ -1,5 +1,7 @@
 \name{plotgg_rankabun}
 \alias{plotgg_rankabun}
+\alias{plotgg_rankabun.default}
+\alias{plotgg_rankabun.Dataset}
 
 \title{Make rank abundance plot}
 

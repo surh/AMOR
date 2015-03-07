@@ -1,5 +1,8 @@
 \name{PCO}
 \alias{PCO}
+\alias{PCO.default}
+\alias{PCO.Dataset}
+
 
 \title{Principal Coordinates Analysis}
 

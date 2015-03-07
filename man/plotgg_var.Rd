@@ -10,7 +10,7 @@
 \usage{
   \method{plotgg_var}{default}(Map, var.name, x, col = NULL,
                         theme = theme_blackbox)
-  \method{plotgg_var}{default}(Dat, var.name, x, col = NULL,
+  \method{plotgg_var}{Dataset}(Dat, var.name, x, col = NULL,
                         theme = theme_blackbox)
 }
 

@@ -1,7 +1,7 @@
 \name{write.qiime}
 \alias{write.qiime}
-\alias{write.default}
-\alias{write.Dataset}
+\alias{write.qiime.default}
+\alias{write.qiime.Dataset}
 
 \title{Write QIIME abundance matrix}
 
