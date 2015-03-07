@@ -65,7 +65,7 @@ bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
 }
 
 bootstrap_glm.Dataset <- function(x,formula,family=poisson(link="log"),response.name="Count",
-                                  N=100, verbose = FALSE...){
+                                  N=100, verbose = FALSE,...){
   m1 <- bootstrap_glm.default(x=x$Tab,Map=x$Map,formula=formula,family=family,response.name=response.name,N=N,...)
   m1$call <- match.call()
   return(m1)

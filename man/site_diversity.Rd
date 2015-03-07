@@ -48,5 +48,5 @@ plotgg(col.sitediv)
 #    x <- rowSums(x)
 #  s <- vegan::diversity(x)
 #  return(s)
-}
+#}
 }
