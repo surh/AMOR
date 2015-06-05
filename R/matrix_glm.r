@@ -17,6 +17,14 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
 #     control <- list(maxit=100)
 #     family <- poisson(link="log")
 #     response.name <- "Count"
+  
+  # Test rhizo
+  #x <- Dat$Tab
+  #Map <- Dat$Map
+  #formula <- formula(~ soil + fraction + accession + plate)
+  #family <- poisson(link = "log")
+  #response.name <- "Count"
+  #verbose <- FALSE
     
   # Check names
   if(any(colnames(x) != row.names(Map))){
@@ -36,9 +44,13 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
   SE <- Beta
   AIC <- rep(NA,times=length(row.names(x)))
   names(AIC) <- row.names(x)
+  VCOV <- rep(list(matrix(NA)), times = length(row.names(x)))
+  names(VCOV) <- row.names(x)
   op <- options(warn=1)
   for(taxa in row.names(x)){
     #taxa <- "79"
+    #taxa <- "OTU_14834"
+    
     count <- x[taxa,]
     Map[,response.name] <- as.numeric(count)
     if(verbose) cat(taxa,"\n") 
@@ -49,7 +61,8 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
     if(!is.na(m1$coefficients[1])){
       # Get fixed effect coefficients
       Beta[taxa,] <- m1$coefficients
-      SE[taxa,] <- sqrt(diag(vcov(m1)))[names(m1$coefficients)]
+      VCOV[[taxa]] <- vcov(m1)
+      SE[taxa,] <- sqrt(diag(VCOV[[taxa]]))[names(m1$coefficients)]
       AIC[taxa] <- AIC(m1)
     }
 
@@ -57,7 +70,8 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
   }
   options(op)
   
-  Res <- list(coefficients=Beta,SE=SE,AIC=AIC,call=match.call(),family=family,X=X)
+  Res <- list(coefficients = Beta,SE = SE,VCOV = VCOV,
+              AIC = AIC,call = match.call(),family = family,X = X)
   #Res <- list(coefficients=Beta,SE=SE,AIC=AIC,family=family)
   class(Res) <- "matrix.glm"
   return(Res)
@@ -72,8 +86,8 @@ matrix_glm.Dataset <- function(x,formula=NULL,family=poisson(link="log"),respons
 
 summary.matrix.glm <- function(object,sortby="Variable",...){
   # Test data
-#   object <- m1.bs$orig
-#   sortby <- "Variable"
+  #object <- m1
+  #sortby <- "Variable"
   
   if(sortby != "Taxon" && sortby != "Variable"){
     stop("ERROR: You can only sort by Taxon or Variable",call.=TRUE)
