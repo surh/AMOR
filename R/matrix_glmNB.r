@@ -38,6 +38,8 @@ matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
   names(AIC) <- row.names(x)
   names(theta) <- row.names(x)
   names(SE.theta) <- row.names(x)
+  VCOV <- rep(list(matrix(NA)), times = length(row.names(x)))
+  names(VCOV) <- row.names(x)
   op <- options(warn=1)
   for(taxa in row.names(x)){
     #taxa <- "79"
@@ -51,7 +53,8 @@ matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
     if(!is.na(m1$coefficients[1])){
       # Get fixed effect coefficients
       Beta[taxa,] <- m1$coefficients
-      SE[taxa,] <- sqrt(diag(vcov(m1)))[names(m1$coefficients)]
+      VCOV[[taxa]] <- vcov(m1)
+      SE[taxa,] <- sqrt(diag(VCOV[[taxa]]))[names(m1$coefficients)]
       AIC[taxa] <- AIC(m1)
       theta[taxa] <- m1$theta
       SE.theta[taxa] <- m1$SE.theta
@@ -61,7 +64,7 @@ matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
   }
   options(op)
   
-  Res <- list(coefficients=Beta,SE=SE,AIC=AIC,call=match.call(),
+  Res <- list(coefficients=Beta,SE=SE,VCOV = VCOV, AIC=AIC,call=match.call(),
               family=negative.binomial(theta=theta[ row.names(x) ]),X=X,
               theta=theta,SE.theta=SE.theta)
   #Res <- list(coefficients=Beta,SE=SE,AIC=AIC,family=family)
