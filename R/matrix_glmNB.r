@@ -2,19 +2,13 @@ matrix_glmNB <- function(x,...) UseMethod("matrix_glmNB")
 
 matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
                                response.name="Count",verbose=FALSE,...){
-  # Test data
-#     formula <- formula(~ frac + gen + depthK)
-#     x <- Dat$Tab
-#     Map <- Dat$Map
-#     response.name <- "Count"
-  
-  #     formula <- formula(~ frac + gen + depthK)
-  #     x <- Tab.bs
-  #     Map <- Dat.bs
-  #     Map$frac <- factor(Map$frac,levels=c("R","E"))
-  #     control <- list(maxit=100)
-  #     family <- poisson(link="log")
-  #     response.name <- "Count"
+  # Test rhizo
+  #x <- Dat$Tab
+  #Map <- Dat$Map
+  #formula <- formula(~ soil + fraction + accession)
+  #family <- poisson(link = "log")
+  #response.name <- "Count"
+  #verbose <- FALSE
   
   # Check names
   if(any(colnames(x) != row.names(Map))){
@@ -43,6 +37,9 @@ matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
   op <- options(warn=1)
   for(taxa in row.names(x)){
     #taxa <- "79"
+    #taxa <- "OTU_14834"
+    #taxa <- "OTU_18567"
+    
     count <- x[taxa,]
     Map[,response.name] <- as.numeric(count)
     if(verbose) cat(taxa,"\n") 
@@ -64,9 +61,9 @@ matrix_glmNB.default <- function(x=NULL,Map=NULL,formula=NULL,
   }
   options(op)
   
-  Res <- list(coefficients=Beta,SE=SE,VCOV = VCOV, AIC=AIC,call=match.call(),
-              family=negative.binomial(theta=theta[ row.names(x) ]),X=X,
-              theta=theta,SE.theta=SE.theta)
+  Res <- list(coefficients = Beta,SE = SE,VCOV = VCOV, AIC = AIC,call = match.call(),
+              family = negative.binomial(theta=theta[ row.names(x) ]),X = X,
+              theta = theta,SE.theta = SE.theta)
   #Res <- list(coefficients=Beta,SE=SE,AIC=AIC,family=family)
   class(Res) <- c("matrix.glmNB","matrix.glm")
   return(Res)
