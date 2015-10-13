@@ -1,3 +1,6 @@
+# 0.0-13
+1. Added subset.Dataset method.
+
 # 0.0-12
 1. read.am always returns a Dataset object. Documented
 2. Added Dataset method for write.qiime and homogenized variable names. Documented
