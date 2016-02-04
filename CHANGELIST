@@ -1,5 +1,6 @@
 # 0.0-13
 1. Added subset.Dataset method.
+2. Changed clean function, now it cheks that all the entries in a row/column are equal to zero to remove. Slighlty slower but more general.
 
 # 0.0-12
 1. read.am always returns a Dataset object. Documented

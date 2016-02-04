@@ -3,7 +3,7 @@ clean <- function(Dat,verbose=TRUE){
   if(class(Dat) != "Dataset")
     stop("ERROR: An object of class Dataset must be provided.",call.=TRUE)
   
-  tab <- Dat$Tab
+  tab <- Dat$Tab != 0
   
   samples_to_keep <-colSums(tab) > 0
   taxons_to_keep <- rowSums(tab) > 0
