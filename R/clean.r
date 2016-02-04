@@ -8,7 +8,7 @@ clean <- function(Dat,verbose=TRUE){
   samples_to_keep <-colSums(tab) > 0
   taxons_to_keep <- rowSums(tab) > 0
   
-  tab <- tab[ taxons_to_keep, samples_to_keep]
+  tab <- Dat$Tab[ taxons_to_keep, samples_to_keep]
   map <- Dat$Map[ samples_to_keep, ]
   tax <- Dat$Tax[ taxons_to_keep, ]
   
