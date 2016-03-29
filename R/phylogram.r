@@ -2,8 +2,8 @@ phylogram <- function(...) UseMethod("phylogram")
 
 phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
-                              scales="free_x",nrow.legend=20,ntaxa = NULL,
-                              other_name = "other"){
+                              scales="free_x",space = "free_x", nrow.legend=20,
+                              ntaxa = NULL, other_name = "other"){
 #   
 #   Tab <- Dat.phyl$Tab
 #   Map <- Dat.phyl$Map
@@ -52,7 +52,7 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
     theme(axis.text = element_text(angle=90))
   
   if(!is.null(Map) & !is.null(facet)){
-    p1 <- p1 + facet_grid(facet,scales=scales)
+    p1 <- p1 + facet_grid(facet,scales = scales,space = space)
   }
   
   # Modify legend

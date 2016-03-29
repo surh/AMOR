@@ -9,4 +9,4 @@ clustering is performed.
 8. Create plugin for edgeR
 9. Create pluging form lme4, modelling OTUs and ordination axes.
 10. Create a print.Dataset function
-11. Create plugin for glmnet (PRIORITY FOR SCOTT).
+
