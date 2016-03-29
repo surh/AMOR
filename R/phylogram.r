@@ -63,11 +63,12 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
 
 phylogram.Dataset <- function(Dat, facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
-                              scales="free_x",nrow.legend=20,ntaxa = NULL,
-                              other_name = "other"){
+                              scales="free_x",space = "free_x", nrow.legend=20,
+                              ntaxa = NULL,other_name = "other"){
   res <- phylogram.default(Tab = Dat$Tab, Map = Dat$Map, facet = facet, colname = colname,
                     variable.name = variable.name, value.name = value.name, scales = scales,
-                    nrow.legend = nrow.legend, ntaxa = ntaxa, other_name = other_name)
+                    space = space, nrow.legend = nrow.legend, ntaxa = ntaxa,
+                    other_name = other_name)
   
   return(res)
 }
