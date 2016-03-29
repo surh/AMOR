@@ -1,3 +1,7 @@
+# 0.0-14
+1. Added space option to phylogram
+2. Set width in geom_bar of phylogram to 1.
+
 # 0.0-13
 1. Added subset.Dataset method.
 2. Changed clean function, now it cheks that all the entries in a row/column are equal to zero to remove. Slighlty slower but more general.
