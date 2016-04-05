@@ -1,5 +1,41 @@
+#' Principal Coordinates Analysis.
+#' 
+#' Function that performs Principal Coordinates Analysis on abundance matrix.
+#' 
+#' @param x Distance matrix, must be a \code{dist} object.
+#' @param dim Number of dimensions to return.
+#' @param Dat \code{Dataset} object. See \code{\link{create_dataset}}
+#' for more information.
+#' @param distfun Function that calculates distance matrix for abundance
+#' table in \code{Dataset} object.
+#' 
+#' @details This is the same as function \code{\link{pco}} from the labdsv,
+#' but it includes a \code{Dataset} method.
+#' 
+#' @return A PCO object as defined by the \code{\link{pco}} function.
+#' 
+#' @author Sur from Dangl Lab.
+#' 
+#' @seealso \code{\link{create_dataset}}, \code{\link{pca}}, \code{\link{PCA}},
+#' \code{\link{pco}}, \code{\link{dsvdis}}
+#' 
+#' @examples
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' Dat <- create_dataset(Rhizo,Rhizo.map)
+#' 
+#' # distfun <- function(x) vegan::vegdist(x,method="bray") #requires vegan package
+#' distfun <- dist
+#' 
+#' Dat.pco <- PCO(Dat,dim=2,distfun=distfun)
+#' summary(Dat.pco)
+#' plotgg(Dat.pco)
+#' plotgg(Dat.pco,shape="fraction",point_size=3)
+#' plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
 PCO <- function(...) UseMethod("PCO")
 
+#' @rdname PCO
+#' @method PCO default
 PCO.default <- function(x,dim=3){
   # Taken from labdsv
   res <- cmdscale(x, k = dim, eig = TRUE)
@@ -9,6 +45,8 @@ PCO.default <- function(x,dim=3){
   return(res)
 }
 
+#' @rdname PCO
+#' @method PCO Dataset
 PCO.Dataset <- function(Dat,dim=3,distfun=dist){
   mat <- Dat$Tab
   mat <- t(mat)
@@ -45,5 +83,3 @@ print.summary.PCO <- function(x,digits = 2, n = 5){
   tab[ ,2:3 ] <- round(tab[,2:3],digits = digits)
   print(tab)
 }
-
-
