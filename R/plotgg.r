@@ -1,4 +1,17 @@
+#' Make ggplot2 plot
+#' 
+#' Generic plot function for ggplot2
+#' 
+#' @author Sur fron Dangl Lab
+#' 
+#' @seealso \code{\link{plotgg.PCA}}, \code{\link{plotgg.PCO}},
+#' \code{\link{plotgg.site.diversity}}
+#' 
 plotgg <- function(...) UseMethod("plotgg")
+
+
+
+
 
 plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
                        biplot=FALSE,biplot_color="grey21",point_size=2){
