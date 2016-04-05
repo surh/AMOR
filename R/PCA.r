@@ -25,3 +25,30 @@ PCA.Dataset <- function(Dat,cor = FALSE, dim = min(nrow(Dat$Tab),ncol(Dat$Tab)))
   return(res)
 }
 
+
+summary.PCA <- function(object){
+  ncomponents <- length(object$sdev)
+  components <- paste("PC",1:ncomponents,sep = "")
+  percvar <- 100*(object$sdev^2) / object$totvar
+  cumvar <- cumsum(percvar)
+  
+  vartab <- data.frame(Component = components,
+                       Var.explained = percvar,
+                       Cumulative = cumvar)
+  
+  sum.pca <- list(vartab = vartab,
+                  ncomponents = ncomponents)
+  class(sum.pca) <- "summary.PCA"
+  
+  return(sum.pca)
+}
+
+print.summary.PCA <- function(x,digits = 2, n = 5){
+  cat("Principal Component Analysis:\n")
+  cat("\t",x$ncomponents, " Components\n\n")
+  
+  tab <- x$vartab[ 1:n, ]
+  tab[ ,2:3 ] <- round(tab[,2:3],digits = digits)
+  print(tab)
+}
+
