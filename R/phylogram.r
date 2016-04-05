@@ -48,7 +48,7 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
   
   # Plot
   p1 <- ggplot(Dat,aes_string(x=colname,y=value.name,fill=variable.name)) +
-    geom_bar(stat="identity",position="fill") +
+    geom_bar(stat = "identity",position = "fill", width = 1) +
     theme(axis.text = element_text(angle=90))
   
   if(!is.null(Map) & !is.null(facet)){
