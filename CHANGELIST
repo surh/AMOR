@@ -3,6 +3,7 @@
 2. Set width in geom_bar of phylogram to 1.
 3. Added summary and print methods for PCA and PCO
 4. Continued switching documentation to roxygen
+5. Added README
 
 # 0.0-13
 1. Added subset.Dataset method.
