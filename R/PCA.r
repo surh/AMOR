@@ -1,5 +1,39 @@
+#' Principal Component Analysis
+#' 
+#' Function that performs principal component analysis on an abundance matrix.
+#' 
+#' @param x Numeric matrix where samples are columns and rows are species.
+#' @param Dat A Dataset object, see \code{\link{create_dataset}}.
+#' @param cor logical value indicating whether the correlation matrix should
+#' be used instead of the covariance matrix.
+#' @param dim Number of dimensions to return.
+#' 
+#' @details This function is the same as function \code{\link{pca}} from the
+#' \code{\link{labdsv}} package, but includes a methdod for Dataset objects.
+#' 
+#' @return A \code{PCA} object. Includes the same attributes as a
+#' \code{\link{pca}} object from the \code{\link{labdsv}} package.
+#' When the Dataset method is used, it includes two additional slots:
+#' \itemize{
+#' \item{"Map"}{The Mapping file for the samples.}
+#' \item{"Tax"}{The Taxonomic information of the taxa.}}
+#' 
+#' @author Sur from Dangl Lab.
+#' 
+#' @seealso  \link{create_dataset}, \link{pca}, \link{PCO}, \link{pco},
+#' \link{plotgg.pca}
+#' 
+#' @examples 
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' Dat <- create_dataset(Rhizo,Rhizo.map)
+#' Dat.pca <- PCA(Dat)
+#' plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
+#' summary(Dat.pca)
 PCA <- function(...) UseMethod("PCA")
 
+#' @rdname PCA
+#' @method PCA default
 PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
   # Taken from labdsv
 #   res <- labdsv::pca(...)
@@ -16,6 +50,8 @@ PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
   return(res)
 }
 
+#' @rdname PCA
+#' @method PCA Dataset
 PCA.Dataset <- function(Dat,cor = FALSE, dim = min(nrow(Dat$Tab),ncol(Dat$Tab))){
   mat <- Dat$Tab
   res <- PCA.default(mat, cor = cor, dim = dim)
