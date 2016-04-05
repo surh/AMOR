@@ -143,6 +143,40 @@ plotgg.PCO <- function(x,components=c("V1","V2"),shape=NULL,col=NULL,
   return(p1) 
 }
 
+#' Plot diversity across sites.
+#' 
+#' Plot results of of permuting site diversity accross sites.
+#' 
+#' @param sitediv A \code{site.diversity} object
+#' @param p Vector of length 2 indicating the confidence interval boundaries.
+#' @param alpha alpha paramater for transparency in ggplot2.
+#' @param theme theme to use for the plot.
+#' @param confints Logical indicating whether confidence intervals must be plotted.
+#' 
+#' @return A ggplot2 plot object.
+#' 
+#' @author Sur from Dangl Lab.
+#' 
+#' @seealso \code{\link{site_diversity}}, \code{\link{compare_site_diversity}}
+#' 
+#' @examples 
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
+#' sitediv.accession <- compare_site_diversity(Dat = Dat,factor = "accession", divfun = total_richness, 20)
+#' plotgg(sitediv.accession)
+#' 
+#' divfun <- function(x){
+#'   if(!is.null(ncol(x)))
+#'     x <- rowSums(x)
+#'   s <- vegan::diversity(x)
+#'   return(s)
+#' }
+#' sitediv.accession <- compare_site_diversity(Dat = Dat,factor = "accession", divfun = divfun, 20)
+#' plotgg(sitediv.accession, alpha = 0.3) + 
+#'   scale_color_brewer(palette = "Set3") +
+#'   scale_fill_brewer(palette = "Set3")
 plotgg.site.diversity <- function(sitediv, p = c(0.025, 0.975),
                                   alpha = 0.2, theme = theme_blackbox, confints = TRUE){
   #sitediv <- sitediv.gen
