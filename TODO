@@ -1,9 +1,8 @@
-4. fix glitch in clean function. It fails when map has only one column
-5. Create a print.heatgg method that prints the output of heatgg when
+1. fix glitch in clean function. It fails when map has only one column
+2. Create a print.heatgg method that prints the output of heatgg when
 clustering is performed.
-6. Documment heatgg
-7. Create plugins for pscl and zeroinfl function
-8. Create plugin for edgeR
-9. Create pluging form lme4, modelling OTUs and ordination axes.
-10. Create a print.Dataset function
-
+3. Documment heatgg
+4. Create plugins for pscl and zeroinfl function
+5. Create plugin for edgeR
+6. Create pluging form lme4, modelling OTUs and ordination axes.
+7. Create a print.Dataset function
