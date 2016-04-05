@@ -1,5 +1,3 @@
-2. summary functions for PCA and PCO
-3. make get samples function
 4. fix glitch in clean function. It fails when map has only one column
 5. Create a print.heatgg method that prints the output of heatgg when
 clustering is performed.
