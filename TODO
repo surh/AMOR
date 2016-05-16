@@ -6,3 +6,5 @@ clustering is performed.
 5. Create plugin for edgeR
 6. Create pluging form lme4, modelling OTUs and ordination axes.
 7. Create a print.Dataset function
+8. Plot proportion of variance in axis name of plotgg.PCA & plotgg.PCO
+
