@@ -1,3 +1,6 @@
+# 0.0-15
+1. Adding samples & taxa functions
+
 # 0.0-14
 1. Added space option to phylogram
 2. Set width in geom_bar of phylogram to 1.

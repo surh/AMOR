@@ -238,12 +238,43 @@ normalizeSample <- function(sample){
     100*sample/sum(sample)
 }
 
+
+#' Get sample names
+#' 
+#' Get names of samples in Dataset
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of sample names
+samples <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  samples <- colnames(Dat$Tab)
+  return(samples)
+}
+
 summarizeOTUdistribution <- function(OTUtab){
     # Eventually should show how OTUs distribute
     # in samples.
     print("Not implemented")
 }
 
+
+#' Get taxa names
+#' 
+#' Get names of taxa in Dataset
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of taxa names
+taxa <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  taxa <- row.names(Dat$Tab)
+  return(taxa)
+}
 
 ##### EXTERNAL FUNCTIONS
 
