@@ -9,3 +9,18 @@ the functions can be useful for many other types of data where a table of sample
 metadata on both the samples and features.
 
 A few statistical analysis utilities are present, like GLMs and ordination methods, but still are a work in progress.
+
+# Installation
+
+The easiest way to install is with the devtools package. Make sure you have it installed and use
+
+```r
+devtools::install_github("surh/AMOR")
+```
+
+If you want to get the development version, you can use
+
+```r
+devtools::install_github("surh/AMOR",ref = "dev")
+```
+
