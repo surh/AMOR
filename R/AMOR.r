@@ -124,37 +124,6 @@ extendTable <- function(Dat,map){
   return(Profile)
 }
 
-findGoodOTUs <- function(OTUtab,min_reads_otu,min_samples_otu,method="absolute"){
-    # Eventually this function should be a wrapper for multiple methods
-    # for OTU selection
-    # OTUtab: OTU count table. Samples as columns and OTUs as rows.
-    # method: "absolute" (min absolute number of reads in min number
-    # of sample) or "AbsProp" (absolute number if reads and proportion
-    # of samples).
-    if(method == "absolute"){
-        #Count samples where OTU is above threshold
-        samples_per_otu <- rowSums(OTUtab >= min_reads_otu)
-        index <- samples_per_otu >= min_samples_otu
-        return(index)
-    }else if(method == "AbsProp"){
-    	if(min_samples_otu < 0 || min_samples_otu > 1){
-    	    stop("findGoodOTUs: Invalid proportion of samples. Must be in the range [0,1]",call.=TRUE)
-    	}
-        reads_per_otu <- rowSums(OTUtab)
-        #Count samples in which OTU appears
-        samples_per_otu <- rowSums(OTUtab > 0)
-        #Convert proportion of samples to absolute number
-        min_samples_otu <- min_samples_otu*dim(OTUtab)[2]
-        print(min_samples_otu)
-        index1 <- samples_per_otu >= min_samples_otu
-        index2 <- reads_per_otu >= min_reads_otu
-        index <- index1 & index2
-        return(index)
-    }else{
-        stop("findGoodOTUs: Invalid method",call.=TRUE)
-    }    
-}
-
 findGoodSamples <- function(OTUtab,min_reads_sample){
     # Finds OTUs with reads above threshold
     index <- colSums(OTUtab) > min_reads_sample
@@ -239,9 +208,9 @@ normalizeSample <- function(sample){
 }
 
 summarizeOTUdistribution <- function(OTUtab){
-    # Eventually should show how OTUs distribute
-    # in samples.
-    print("Not implemented")
+  # Eventually should show how OTUs distribute
+  # in samples.
+  print("Not implemented")
 }
 
 

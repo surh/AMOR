@@ -4,7 +4,7 @@
 \alias{plotgg.PCO}
 \title{Plotting a PCoA}
 \usage{
-\method{plotgg}{PCO}(x, components = c("V1", "V2"), shape = NULL,
+\method{plotgg}{PCO}(x, components = c("PCo1", "PCo2"), shape = NULL,
   col = NULL, point_size = 2)
 }
 \arguments{

@@ -1,7 +1,7 @@
 Package: AMOR
 Type: Package
 Title: Abundance Matrix Operations in R
-Version: 0.0-14
+Version: 0.0-15
 Depends:
     ggplot2(>= 0.9.3.1),
     ggdendro(>= 0.1-15),
