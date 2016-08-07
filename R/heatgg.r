@@ -1,14 +1,90 @@
+#' Heatmap with ggplot2
+#' 
+#' Basic heatmap function with ggplot2. I allows either to sort the samples according
+#' to a user defined variable, or to do a hierarchichal clustering, using uses ggdendro
+#' and grid to plot it
+#'
+#' @param Tab A numeric matrix with samples as columns and taxons as rows.
+#' @param Map A \code{data.frame} where the row names correspond to the
+#' column names in Tab, matching metadata to each sample.
+#' @param Dat A \code{Dataset} object.
+#' @param order.samples.by If passed, it must be a character variable with
+#' the name of a variable in Map (or in the Map attribute of the Dataset object).
+#' Samples will be ordered according to this variable.
+#' @param facet A faccetting formula expression. If passed, samples wll be arrranged
+#' in panels accroding to \code{\link{facet_grid}}. The variable names should mathc
+#' those in the Map object.
+#' @param sample.id.var This is the name the sample axis will have in the heatmap.
+#' @param col.name The name the x-axis will have in the heatmap.
+#' @param value.name The name that will be on the legend indicating the meaning
+#' of the color scale.
+#' @param trans Transformation to apply to the data during plotting.
+#' Ay continuous tranformation supported by ggplot2 can be used.
+#' Normally "log10" or "sqrt"
+#' @param guide Type of legend to use. This will be passed to the guide
+#' option of \code{\link{scale_fill_gradientn}}. Can be a string like
+#' "colourbar" or a function like \code{\link{guide_colourbar}}
+#' @param gradientn.colours Colour range to use in the heatmap.
+#' @param facet.scales Argument to pass to the scales option of
+#' \code{\link{facet_grid}}. Only used if option facet is not NULL.
+#' @param cluster Logical. Indicates wheather to perform 2 dimensional hierarchichal
+#' clustering or not.
+#' @param distfun Distance function to use in the hierarchichal clustering.
+#' Only relevant if cluster equeals TRUE.
+#' 
+#' @details Currently, it supports only 2d clustering, and it does not support the
+#' clustering or just samples or taxa.
+#' 
+#' The faceting and ordering options are only available for samples and when cluster is FALSE.
+#' 
+#' @return If cluster is FALSE it will return a ggplot2 object that can be furhter
+#' manipulated and plotted.
+#' 
+#' If cluster is TRUE it will return a list of class heatggclus that contains the heatmap
+#' tiles and each of the dendogram plots separately. There is print method for this class
+#' that will automatically generate the plot visualization
+#' 
+#' @author Sur from Dangl Lab
+#' 
+#' @references A lot of code and ideas was borrowed from these places:
+#' 
+#' \url{https://github.com/chr1swallace/random-functions/blob/master/R/ggplot-heatmap.R}
+#' \url{http://stackoverflow.com/questions/6673162/reproducing-lattice-dendrogram-graph-with-ggplot2}
+#' \url{http://stackoverflow.com/questions/12041042/how-to-plot-just-the-legends-in-ggplot2}
+#' 
+#' @examples
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
+#' heatgg(Tab = Dat$Tab, Map = Dat$Map, order.samples.by = "fraction")
+#' heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction ~ .,
+#'        order.samples.by = "accession")
+#' heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ .)
+#' heatgg(Tab = Dat$Tab, Map = Dat$Map, facet = fraction + accession ~ .,
+#'        gradientn.colours = c("white", "black"))
+#' p1 <- heatgg(Tab = Dat$Tab, Map = Dat$Map,
+#'              gradientn.colours = c("white","black"),cluster = TRUE)
+#' 
+#' heatgg(Dat = Dat, order.samples.by = "fraction")
+#' heatgg(Dat = Dat, facet = fraction ~ ., order.samples.by = "accession")
+#' heatgg(Dat = Dat, facet = fraction + accession ~ .,)
+#' heatgg(Dat = Dat, facet = fraction + accession ~ .,
+#'        gradientn.colours = c("white", "black"))
+#' p1 <- heatgg(Dat = Dat, gradientn.colours = c("white","black"),
+#'              cluster = TRUE)
+#' 
+#' @export
 heatgg <- function(...) UseMethod("heatgg")
 
+#' @rdname heatgg
+#' @method heatgg default
 heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
     col.name = "Taxon", value.name = "Abundance", trans = "log",
     guide = "colourbar", gradientn.colours = c("white","#67001F"),
                            facet.scales = "free",cluster = FALSE,
                            distfun = dist){
-  # thanks to
-  # https://github.com/chr1swallace/random-functions/blob/master/R/ggplot-heatmap.R
-  # http://stackoverflow.com/questions/6673162/reproducing-lattice-dendrogram-graph-with-ggplot2
-  
+
   # Check for errors
   if(!all(colnames(Tab) == row.names(Map))){
     stop("ERROR: Samples names in Tab do not math sample names in Map.", call. = TRUE)
@@ -116,6 +192,8 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
   return(p1)
 }
 
+#' @rdname heatgg
+#' @method heatgg Dataset
 heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
                            col.name = "Taxon", value.name = "Abundance", trans = "log",
                            guide = "colourbar", gradientn.colours = c("white","#67001F"),
@@ -164,7 +242,6 @@ print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
 }
 
 g_legend <- function(a.gplot){
-  # http://stackoverflow.com/questions/12041042/how-to-plot-just-the-legends-in-ggplot2
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
   legend <- tmp$grobs[[leg]]
