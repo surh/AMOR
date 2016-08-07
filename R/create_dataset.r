@@ -35,3 +35,90 @@ create_dataset <- function(Tab=NULL,Map=NULL,Tax=NULL){
   class(Dataset) <- "Dataset"
   return(Dataset)
 }
+
+#### UTILS ####
+print.Dataset <- function(x){
+  if(!any("Dataset" %in% class(x))){
+    stop("ERROR: Must pass a Dataset object.",call. = TRUE)
+  }
+  cat("A Dataset object:\n")
+  
+  nsamples <- length(samples(x))
+  ntaxa <- length(taxa(x))
+  nvars <- length(variables(x))
+  
+  cat("  There are ", ntaxa, " in ",nsamples," samples\n",sep = "")
+  if(nvars > 0){
+    cat("  There are ", nvars, " metadata variables\n",sep = "")
+  }
+  
+  cat("\n  Samples: ",paste(samples(x)[1:min(5,nsamples)],collapse = ","),"...\n",sep = "")
+  cat("  Taxa: ",paste(taxa(x)[1:min(5,ntaxa)],collapse = ","),"...\n", sep = "")
+  if(nvars > 0){
+    cat("  Variables: ",paste(variables(x)[1:min(5,nvars)],collapse = ","),"...\n", sep = "")
+  }
+  
+  # Most relevant otu
+  mos.abun <- which.max(rowSums(x$Tab))
+  mos.prev <- which.max(rowSums(x$Tab > 0))
+  
+  cat("\n  The most abundant taxon is (are): ", paste(taxa(x)[ mos.abun ], collapse = ","),"\n",sep = "")
+  cat("  The highet abundance is: ", sum(x$Tab[mos.abun[1],]),"\n",sep = "")
+  
+  cat("\n  The most prevalent taxon is (are): ", paste(taxa(x)[ mos.prev ], collapse = ","),"\n",sep = "")
+  cat("  The highet prevalence is: ", sum(x$Tab[mos.prev[1],] > 0),sep = "")
+}
+
+#' Get sample names
+#' 
+#' Get names of samples in Dataset
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of sample names
+#' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
+#' \code{\link{variables}}
+samples <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  samples <- colnames(Dat$Tab)
+  return(samples)
+}
+
+#' Get metadata variables
+#' 
+#' Get names of variables in metadata
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of variable names
+#' 
+#' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
+#' \code{\link{samples}}
+variables <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  vars <- colnames(Dat$Map)
+  return(vars)
+}
+
+
+#' Get taxa names
+#' 
+#' Get names of taxa in Dataset
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of taxa names
+#' @seealso \code{\link{create_dataset}}, \code{\link{variables}},
+#' \code{\link{samples}}
+taxa <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  taxa <- row.names(Dat$Tab)
+  return(taxa)
+}
+
