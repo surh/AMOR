@@ -3,14 +3,20 @@
 \name{measurable_taxa}
 \alias{findGoodOTUs}
 \alias{measurable_taxa}
+\alias{measurable_taxa.Dataset}
+\alias{measurable_taxa.default}
 \title{Identify measurable taxa}
 \usage{
 measurable_taxa(...)
+
+\method{measurable_taxa}{default}(Tab, min_reads_otu, min_samples_otu,
+  method = "absolute", table = TRUE)
+
+\method{measurable_taxa}{Dataset}(Dat, min_reads_otu, min_samples_otu,
+  method = "absolute", table = TRUE, clean = TRUE)
 }
 \arguments{
 \item{Tab}{Count table matrix. Samples as columns and OTUs as rows.}
-
-\item{Dat}{A \code{Dataset} object.}
 
 \item{method}{Either "absolute" (min absolute number of reads in min
 number of sample) or "AbsProp" (absolute number if reads and proportion
@@ -18,6 +24,8 @@ of samples).}
 
 \item{table}{logical indicating whether an abundance table should be
 returned}
+
+\item{Dat}{A \code{Dataset} object.}
 
 \item{clean}{logical, indicating whether the function \code{\link{clean}}
 should be applied to the result.}

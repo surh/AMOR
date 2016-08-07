@@ -54,7 +54,7 @@ measurable_taxa.default <- function(Tab,min_reads_otu,min_samples_otu,method="ab
   }  
   
   if(table){
-    Tab <- Tab[index,]
+    Tab <- Tab[ index, , drop = FALSE ]
     return(Tab)
   }else{
     return(index)
@@ -65,12 +65,23 @@ measurable_taxa.default <- function(Tab,min_reads_otu,min_samples_otu,method="ab
 #' @method measurable_taxa Dataset
 measurable_taxa.Dataset <- function(Dat,min_reads_otu,min_samples_otu,method="absolute",
                         table = TRUE,clean = TRUE){
+  
+  
+  # Dat = Dat
+  # min_reads_otu = 25
+  # min_samples_otu = 8
+  # table <- TRUE
+  # clean <- TRUE
+  # method <- "absolute"
+  
   res <- measurable_taxa(Tab = Dat$Tab, min_reads_otu = min_reads_otu,
                          min_samples_otu = min_samples_otu, method = method,
                          table = FALSE)
   
   if(table){
-    res <- create_dataset(Tab = Dat$Tab[ res, ], Map = Dat$Map, Tax = Dat$Tax[ res, ])
+    res <- create_dataset(Tab = Dat$Tab[ res, , drop = FALSE ],
+                          Map = Dat$Map,
+                          Tax = Dat$Tax[ res, , drop = FALSE] )
     if(clean){
       res <- clean(res)
     }
@@ -80,7 +91,7 @@ measurable_taxa.Dataset <- function(Dat,min_reads_otu,min_samples_otu,method="ab
 }
 
 findGoodOTUs <- function(...){
-  warn("This function will be deprecated soon. Use measurable_taxa instead\n")
-  good_taxa(...)
+  warning("This function will be deprecated soon. Use measurable_taxa instead\n",call. = TRUE)
+  measurable_taxa(...)
 }
 
