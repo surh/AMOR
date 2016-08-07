@@ -133,38 +133,40 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
 #   print(taxon.dd.plot, vp=viewport(width=0.5, height=0.2, x=0.57, y=0.82))
   
   if(cluster){
-    row.width <- 0.2
-    col.width <- 0.2
+    # row.width <- 0.2
+    # col.width <- 0.2
+    # 
+    # grid.newpage()
+    # top.layout <- grid.layout(nrow = 2, ncol = 2,
+    #                           widths = unit(c(1-row.width,row.width), "null"),
+    #                           heights = unit(c(col.width,1-row.width), "null"))
+    # pushViewport(viewport(layout=top.layout))
+    # if(col.width>0)
+    #   print(taxon.dd.plot, vp=viewport(layout.pos.col=1, layout.pos.row=1))
+    # if(row.width>0)
+    #   print(sample.dd.plot, vp=viewport(layout.pos.col=2, layout.pos.row=2), width = row.width)
+    # ## print centre without legend
+    # print(p1 + labs(x = NULL,y = NULL) +
+    #         theme(axis.ticks = element_blank(),
+    #               axis.line = element_blank(),
+    #               axis.text = element_blank(),
+    #               axis.title.x=element_blank(),axis.title.y=element_blank(),
+    #               legend.position="none",
+    #               panel.border=element_blank(),panel.grid.major=element_blank(),
+    #               panel.grid.minor=element_blank(),plot.background=element_blank(),
+    #               #plot.margin = unit(c(0,0,0,0),"mm")),
+    #               plot.margin = unit(rep(0,4),"lines")),
+    #       vp=viewport(layout.pos.col=1, layout.pos.row=2))
+    #   
+    # ## add legend
+    # legend <- g_legend(p1)
+    # pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
+    # grid.draw(legend)
+    # upViewport(0)
     
-    grid.newpage()
-    top.layout <- grid.layout(nrow = 2, ncol = 2,
-                              widths = unit(c(1-row.width,row.width), "null"),
-                              heights = unit(c(col.width,1-row.width), "null"))
-    pushViewport(viewport(layout=top.layout))
-    if(col.width>0)
-      print(taxon.dd.plot, vp=viewport(layout.pos.col=1, layout.pos.row=1))
-    if(row.width>0)
-      print(sample.dd.plot, vp=viewport(layout.pos.col=2, layout.pos.row=2), width = row.width)
-    ## print centre without legend
-    print(p1 + labs(x = NULL,y = NULL) +
-            theme(axis.ticks = element_blank(),
-                  axis.line = element_blank(),
-                  axis.text = element_blank(),
-                  axis.title.x=element_blank(),axis.title.y=element_blank(),
-                  legend.position="none",
-                  panel.border=element_blank(),panel.grid.major=element_blank(),
-                  panel.grid.minor=element_blank(),plot.background=element_blank(),
-                  #plot.margin = unit(c(0,0,0,0),"mm")),
-                  plot.margin = unit(rep(0,4),"lines")),
-          vp=viewport(layout.pos.col=1, layout.pos.row=2))
-      
-    ## add legend
-    legend <- g_legend(p1)
-    pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
-    grid.draw(legend)
-    upViewport(0)
-    
-    return(list(p1 = p1, taxon.dd.plot = taxon.dd.plot, sample.dd.plot = sample.dd.plot))
+    p1 <- list(p1 = p1, taxon.dd.plot = taxon.dd.plot, sample.dd.plot = sample.dd.plot)
+    class(p1) <- "heatggclus"
+    print(p1)
   }
   
   return(p1)
@@ -183,9 +185,7 @@ heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id
 }
   
 #### UTILITIES ###
-# Eventually a print function for grid will be here as well
-printgg <- function(x,row.width = 0.2, col.width = 0.2){
-  
+print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
   grid.newpage()
   top.layout <- grid.layout(nrow = 2, ncol = 2,
                             widths = unit(c(1-row.width,row.width), "null"),
