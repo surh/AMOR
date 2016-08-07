@@ -184,6 +184,40 @@ heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id
   
 #### UTILITIES ###
 # Eventually a print function for grid will be here as well
+printgg <- function(x,row.width = 0.2, col.width = 0.2){
+  
+  grid.newpage()
+  top.layout <- grid.layout(nrow = 2, ncol = 2,
+                            widths = unit(c(1-row.width,row.width), "null"),
+                            heights = unit(c(col.width,1-row.width), "null"))
+  pushViewport(viewport(layout=top.layout))
+  if(col.width>0)
+    print(x$taxon.dd.plot, vp=viewport(layout.pos.col=1, layout.pos.row=1))
+  if(row.width>0)
+    print(x$sample.dd.plot, vp=viewport(layout.pos.col=2, layout.pos.row=2), width = row.width)
+  ## print centre without legend
+  print(x$p1 + labs(x = NULL,y = NULL) +
+          theme(axis.ticks = element_blank(),
+                axis.line = element_blank(),
+                axis.text = element_blank(),
+                axis.title.x=element_blank(),axis.title.y=element_blank(),
+                legend.position="none",
+                panel.border=element_blank(),panel.grid.major=element_blank(),
+                panel.grid.minor=element_blank(),plot.background=element_blank(),
+                #plot.margin = unit(c(0,0,0,0),"mm")),
+                plot.margin = unit(rep(0,4),"lines")),
+        vp=viewport(layout.pos.col=1, layout.pos.row=2))
+  
+  ## add legend
+  legend <- g_legend(x$p1)
+  pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
+  grid.draw(legend)
+  upViewport(0)
+  
+  res <- list(p1 = x$p1, taxon.dd.plot = x$taxon.dd.plot, sample.dd.plot = x$sample.dd.plot)
+  class(res) <- "heatggclus"
+  return(res)
+}
 
 g_legend <- function(a.gplot){
   # http://stackoverflow.com/questions/12041042/how-to-plot-just-the-legends-in-ggplot2
