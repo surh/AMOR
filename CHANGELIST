@@ -1,6 +1,8 @@
 # 0.0-15
 1. Adding samples & taxa functions
 2. Fixed glitch in clean when only one variable in map
+3. Mainteinance for heatgg function. Now there is an appropriate class and print method for when
+clusering is used. Also documentation was moved to roxygen and updated. Old code was removed.
 
 # 0.0-14
 1. Added space option to phylogram
