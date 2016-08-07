@@ -41,7 +41,21 @@ where samples that do not pass the thresholds have been removed
 Identfies taxa above certain abundance and prevalence
 thresholds, that can be quantitatively analyzed
 }
+\details{
+Implments abundance filters defined in Benson et al.(2010) & Lundberg et al. (2012).
+It is recommended to threshold any Dataset before any quantitative analysis.
+}
 \author{
 Sur from Dangl Lab.
+}
+\references{
+1. Benson AK, Kelly S a, Legge R, Ma F, Low SJ, Kim J, et al. Individuality in gut microbiota
+composition is a complex polygenic trait shaped by multiple environmental and host genetic
+factors. Proc Natl Acad Sci U S A. 2010 Nov 2;107(44):18933–8. Available from:
+\url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2973891&tool=pmcentrez&rendertype=abstract}
+
+2. Lundberg DS, Lebeis SL, Herrera Paredes S, Yourstone S, Gehring J, Malfatti S, et al.
+Defining the core Arabidopsis thaliana root microbiome. Nature. Nature Publishing Group;
+2012 Aug 1;488(7409):86–90. Available from: \url{http://www.nature.com/doifinder/10.1038/nature11237}
 }
 
