@@ -68,14 +68,23 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
     Dat <- cbind(Dat,map)    
   }
   
+  # Get variance explained
+  x.sum <- summary(x)
+  var1 <- round(x.sum$vartab$Var.explained[ x.sum$vartab$Component == components[1] ],2)
+  var2 <- round(x.sum$vartab$Var.explained[ x.sum$vartab$Component == components[2] ],2)
   
   p1 <- ggplot(Dat,aes_string(x=components[1],y=components[2]))
   if(biplot){
     require(grid)
-    p1 <- p1 + geom_segment(data = subset(Dat, biplot == "loadings"),aes_string(x=0,y=0,xend=components[1],yend=components[2]),
+    p1 <- p1 + geom_segment(data = subset(Dat, biplot == "loadings"),
+                            aes_string(x=0,y=0,xend=components[1],yend=components[2]),
                             arrow=arrow(length = unit(0.5, "cm")),col=biplot_color)
   }
-  p1 <- p1 + geom_point(data = subset(Dat, biplot == "scores"),aes_string(shape=shape,col=col),size=point_size)
+  p1 <- p1 + geom_point(data = subset(Dat, biplot == "scores"),
+                        aes_string(shape=shape,col=col),
+                        size=point_size) +
+    xlab(label = paste(components[1]," (",var1,"%)",sep = "")) +
+    ylab(label = paste(components[2]," (",var2,"%)",sep = ""))
   
   p1 <- p1 + theme(axis.text = element_text(color="black"),
                    axis.title = element_text(face="bold"),
@@ -119,7 +128,7 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
 #' plotgg(Dat.pco)
 #' plotgg(Dat.pco,shape="fraction",point_size=3)
 #' plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
-plotgg.PCO <- function(x,components=c("V1","V2"),shape=NULL,col=NULL,
+plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,
                        point_size=2){
   
   Dat <- as.data.frame(x$points)
@@ -129,10 +138,16 @@ plotgg.PCO <- function(x,components=c("V1","V2"),shape=NULL,col=NULL,
     Dat <- cbind(Dat,x$Map)    
   }
   
+  # Get variance explained
+  x.sum <- summary(x)
+  var1 <- round(x.sum$vartab$Var.explained[ x.sum$vartab$Component == components[1] ],2)
+  var2 <- round(x.sum$vartab$Var.explained[ x.sum$vartab$Component == components[2] ],2)
   
+  # Plot
   p1 <- ggplot(Dat,aes_string(x=components[1],y=components[2]))
-  
-  p1 <- p1 + geom_point(aes_string(shape=shape,col=col),size=point_size)
+  p1 <- p1 + geom_point(aes_string(shape=shape,col=col),size=point_size) +
+    xlab(label = paste(components[1]," (",var1,"%)",sep = "")) +
+    ylab(label = paste(components[2]," (",var2,"%)",sep = ""))
   
   p1 <- p1 + theme(axis.text = element_text(color="black"),
                    axis.title = element_text(face="bold"),
