@@ -47,7 +47,7 @@ print.Dataset <- function(x){
   ntaxa <- length(taxa(x))
   nvars <- length(variables(x))
   
-  cat("  There are ", ntaxa, " in ",nsamples," samples\n",sep = "")
+  cat("  There are ", ntaxa, " taxa in ",nsamples," samples\n",sep = "")
   if(nvars > 0){
     cat("  There are ", nvars, " metadata variables\n",sep = "")
   }
