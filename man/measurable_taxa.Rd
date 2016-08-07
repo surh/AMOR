@@ -9,11 +9,11 @@
 \usage{
 measurable_taxa(...)
 
-\method{measurable_taxa}{default}(Tab, min_reads_otu, min_samples_otu,
-  method = "absolute", table = TRUE)
+\method{measurable_taxa}{default}(Tab, min_reads_otu = 25,
+  min_samples_otu = 5, method = "absolute", table = TRUE)
 
-\method{measurable_taxa}{Dataset}(Dat, min_reads_otu, min_samples_otu,
-  method = "absolute", table = TRUE, clean = TRUE)
+\method{measurable_taxa}{Dataset}(Dat, min_reads_otu = 25,
+  min_samples_otu = 5, method = "absolute", table = TRUE, clean = TRUE)
 }
 \arguments{
 \item{Tab}{Count table matrix. Samples as columns and OTUs as rows.}

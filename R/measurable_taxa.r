@@ -28,8 +28,8 @@ measurable_taxa <- function(...) UseMethod("measurable_taxa")
 
 #' @rdname measurable_taxa
 #' @method measurable_taxa default
-measurable_taxa.default <- function(Tab,min_reads_otu,min_samples_otu,method="absolute",
-                              table = TRUE){
+measurable_taxa.default <- function(Tab, min_reads_otu = 25, min_samples_otu = 5,
+                                    method = "absolute", table = TRUE){
   if(method == "absolute"){
     #Count samples where OTU is above threshold
     samples_per_otu <- rowSums(Tab >= min_reads_otu)
@@ -53,6 +53,11 @@ measurable_taxa.default <- function(Tab,min_reads_otu,min_samples_otu,method="ab
     stop("findGoodOTUs: Invalid method",call.=TRUE)
   }  
   
+  if(sum(index) == 0){
+    cat("No taxa passes the specified threshold.\n")
+    return(NULL)
+  }
+  
   if(table){
     Tab <- Tab[ index, , drop = FALSE ]
     return(Tab)
@@ -63,20 +68,16 @@ measurable_taxa.default <- function(Tab,min_reads_otu,min_samples_otu,method="ab
 
 #' @rdname measurable_taxa
 #' @method measurable_taxa Dataset
-measurable_taxa.Dataset <- function(Dat,min_reads_otu,min_samples_otu,method="absolute",
-                        table = TRUE,clean = TRUE){
-  
-  
-  # Dat = Dat
-  # min_reads_otu = 25
-  # min_samples_otu = 8
-  # table <- TRUE
-  # clean <- TRUE
-  # method <- "absolute"
+measurable_taxa.Dataset <- function(Dat, min_reads_otu = 25, min_samples_otu = 5, 
+                                    method="absolute", table = TRUE,clean = TRUE){
   
   res <- measurable_taxa(Tab = Dat$Tab, min_reads_otu = min_reads_otu,
                          min_samples_otu = min_samples_otu, method = method,
                          table = FALSE)
+  
+  if(is.null(res)){
+    return(res)
+  }
   
   if(table){
     res <- create_dataset(Tab = Dat$Tab[ res, , drop = FALSE ],

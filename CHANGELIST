@@ -9,6 +9,7 @@ function now has dimension names in the points variable.
 6. Mainteinance to the basic Dataset functions. Moved some functions from AMOR.r to create_dataset.r,
 and added a Dataset print method.
 7. Added simplify option to read.am
+8. Replaced findGoodOTUs with measurable_taxa function.
 
 # 0.0-14
 1. Added space option to phylogram
