@@ -9,23 +9,6 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
   # https://github.com/chr1swallace/random-functions/blob/master/R/ggplot-heatmap.R
   # http://stackoverflow.com/questions/6673162/reproducing-lattice-dendrogram-graph-with-ggplot2
   
-#   Tab <- Dat$Tab
-#   Map <- Dat$Map
-#   sample.id.var <- "SAMPLEID"
-#   order.samples.by <- "fraction"
-#   col.name <- "Taxon"
-#   value.name <- "Abundance"
-#   trans <- "log"
-#   guide <- "colourbar"
-#   gradientn.colours <- c("white","#67001F")
-#   facet <- fraction ~ .
-#   facet.scales <- "free"
-#   cluster <- FALSE
-  
-  #facet <- NULL
-  #distfun <- dist
-  #cluster <- TRUE
-    
   # Check for errors
   if(!all(colnames(Tab) == row.names(Map))){
     stop("ERROR: Samples names in Tab do not math sample names in Map.", call. = TRUE)
@@ -107,7 +90,7 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
     Dat2[,sample.id.var] <- factor(Dat2[,sample.id.var], levels = sample.ord)
   }
   
-  # Plot
+  # Plot heatmap tiles
   p1 <- ggplot(Dat2,aes_string(x=col.name,y=sample.id.var))
   if(!is.null(facet)){
     p1 <- p1 + facet_grid(facets = facet, scales = facet.scales)
@@ -122,51 +105,12 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
           axis.text.x = element_blank(),
           legend.position = "right",
           legend.key.size = unit(0.02,units = "npc"))
-          #plot.background = element_blank())
-  #p1
-  # Use grid to combine dendogramns and heatmap
-  
-  
-#   grid.newpage()
-#   print(sample.dd.plot,vp=viewport(width=0.4,height=0.8,x=0.9,y=0.4))
-#   print(p1, vp=viewport(width=0.8, height=0.77, x=0.4, y=0.39))
-#   print(taxon.dd.plot, vp=viewport(width=0.5, height=0.2, x=0.57, y=0.82))
-  
+
   if(cluster){
-    # row.width <- 0.2
-    # col.width <- 0.2
-    # 
-    # grid.newpage()
-    # top.layout <- grid.layout(nrow = 2, ncol = 2,
-    #                           widths = unit(c(1-row.width,row.width), "null"),
-    #                           heights = unit(c(col.width,1-row.width), "null"))
-    # pushViewport(viewport(layout=top.layout))
-    # if(col.width>0)
-    #   print(taxon.dd.plot, vp=viewport(layout.pos.col=1, layout.pos.row=1))
-    # if(row.width>0)
-    #   print(sample.dd.plot, vp=viewport(layout.pos.col=2, layout.pos.row=2), width = row.width)
-    # ## print centre without legend
-    # print(p1 + labs(x = NULL,y = NULL) +
-    #         theme(axis.ticks = element_blank(),
-    #               axis.line = element_blank(),
-    #               axis.text = element_blank(),
-    #               axis.title.x=element_blank(),axis.title.y=element_blank(),
-    #               legend.position="none",
-    #               panel.border=element_blank(),panel.grid.major=element_blank(),
-    #               panel.grid.minor=element_blank(),plot.background=element_blank(),
-    #               #plot.margin = unit(c(0,0,0,0),"mm")),
-    #               plot.margin = unit(rep(0,4),"lines")),
-    #       vp=viewport(layout.pos.col=1, layout.pos.row=2))
-    #   
-    # ## add legend
-    # legend <- g_legend(p1)
-    # pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
-    # grid.draw(legend)
-    # upViewport(0)
-    
+    # Combine dendrograms with tile plot
     p1 <- list(p1 = p1, taxon.dd.plot = taxon.dd.plot, sample.dd.plot = sample.dd.plot)
     class(p1) <- "heatggclus"
-    print(p1)
+    #print(p1)
   }
   
   return(p1)
