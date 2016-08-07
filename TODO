@@ -1,5 +1,4 @@
 4. Create plugins for pscl and zeroinfl function
 5. Create plugin for edgeR
 6. Create pluging form lme4, modelling OTUs and ordination axes.
-10. Add simplify option to read.am
 11. Convert findGoodOTUs to a Dataset method.
