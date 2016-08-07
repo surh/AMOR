@@ -5,6 +5,7 @@
 clusering is used. Also documentation was moved to roxygen and updated. Old code was removed.
 4. plotgg mainteinance. Now plots proportion of variance in the indicated axis, and value of PCO
 function now has dimension names in the points variable.
+5. Created variables function, and updated documentation for samples & taxa.
 
 # 0.0-14
 1. Added space option to phylogram
