@@ -15,4 +15,8 @@ A vector of taxa names
 \description{
 Get names of taxa in Dataset
 }
+\seealso{
+\code{\link{create_dataset}}, \code{\link{variables}},
+\code{\link{samples}}
+}
 

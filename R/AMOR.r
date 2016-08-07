@@ -246,6 +246,8 @@ normalizeSample <- function(sample){
 #' @param Dat A dataset object
 #' 
 #' @return A vector of sample names
+#' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
+#' \code{\link{variables}}
 samples <- function(Dat){
   if(class(Dat) != "Dataset"){
     stop("ERROR: You must pass a Dataset object",call. = TRUE)
@@ -268,6 +270,8 @@ summarizeOTUdistribution <- function(OTUtab){
 #' @param Dat A dataset object
 #' 
 #' @return A vector of taxa names
+#' @seealso \code{\link{create_dataset}}, \code{\link{variables}},
+#' \code{\link{samples}}
 taxa <- function(Dat){
   if(class(Dat) != "Dataset"){
     stop("ERROR: You must pass a Dataset object",call. = TRUE)
@@ -275,6 +279,26 @@ taxa <- function(Dat){
   taxa <- row.names(Dat$Tab)
   return(taxa)
 }
+
+
+#' Get metadata variables
+#' 
+#' Get names of variables in metadata
+#' 
+#' @param Dat A dataset object
+#' 
+#' @return A vector of variable names
+#' 
+#' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
+#' \code{\link{samples}}
+variables <- function(Dat){
+  if(class(Dat) != "Dataset"){
+    stop("ERROR: You must pass a Dataset object",call. = TRUE)
+  }
+  vars <- colnames(Dat$Map)
+  return(vars)
+}
+
 
 ##### EXTERNAL FUNCTIONS
 
