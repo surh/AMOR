@@ -41,6 +41,7 @@ PCO.default <- function(x,dim=3){
   res <- cmdscale(x, k = dim, eig = TRUE)
   res$Map <- NULL
   res$Tax <- NULL
+  colnames(res$points) <- paste("PCo",1:dim,sep = "")
   class(res) <- "PCO"
   return(res)
 }
