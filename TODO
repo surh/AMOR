@@ -8,4 +8,4 @@ clustering is performed.
 8. Plot proportion of variance in axis name of plotgg.PCA & plotgg.PCO
 9. Add variables method for Dataset
 10. Add simplify option to read.am
-
+11. Convert findGoodOTUs to a Dataset method.
