@@ -1,5 +1,6 @@
 # 0.0-15
 1. Adding samples & taxa functions
+2. Fixed glitch in clean when only one variable in map
 
 # 0.0-14
 1. Added space option to phylogram
