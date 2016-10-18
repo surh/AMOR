@@ -1,3 +1,6 @@
+# 0.0-16
+1. Fixed error in summary.PCO. It required an object called Dat.pco
+
 # 0.0-15
 1. Adding samples & taxa functions
 2. Fixed glitch in clean when only one variable in map
