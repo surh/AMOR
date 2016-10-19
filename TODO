@@ -1,3 +1,8 @@
-4. Create plugins for pscl and zeroinfl function
-5. Create plugin for edgeR
-6. Create pluging form lme4, modelling OTUs and ordination axes.
+1. Create plugins for pscl and zeroinfl function
+2. Create plugin for edgeR
+3. Create pluging form lme4, modelling OTUs and ordination axes.
+4. Combine matrix_glm & matrix_glm.NB into one main function.
+5. Add variable support for taxonomy. Including subset by taxonomy.
+6. Create a process RDP taxonomy string function.
+7. Create add and remove variable methods.
+8. Create vignette.
