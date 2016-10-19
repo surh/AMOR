@@ -1,5 +1,6 @@
 # 0.0-16
 1. Fixed error in summary.PCO. It required an object called Dat.pco
+2. Added fill option to plotgg. Included in documentation
 
 # 0.0-15
 1. Adding samples & taxa functions
