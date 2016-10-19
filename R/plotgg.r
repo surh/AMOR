@@ -21,6 +21,8 @@ plotgg <- function(...) UseMethod("plotgg")
 #' @param col String indicating which variable to use as aestetics mapping
 #' for color. Must correspond to a column header in the Map attribute of the
 #' PCA object.
+#' @param fill String indicating which variable to use as aestetics mapping for
+#' fill. Must correspond to a column header in the Map attribute of the PCA object.
 #' @param biplot Logical indicating whether the loadings should be plotted as well.
 #' @param biplot_color Color to use for the loadings in a biplot
 #' @param point_size size for the points in the plot
@@ -44,7 +46,7 @@ plotgg <- function(...) UseMethod("plotgg")
 #' plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 #' p1 <- plotgg(Dat.pca,col="accession",components=c("PC2","PC3"),shape="fraction",biplot=TRUE,biplot_color="pink",point_size=6)
 #' p1
-plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
+plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,fill = NULL,
                        biplot=FALSE,biplot_color="grey21",point_size=2){
   Dat <- as.data.frame(x$scores)
   Dat$biplot <- "scores"
@@ -81,7 +83,7 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
                             arrow=arrow(length = unit(0.5, "cm")),col=biplot_color)
   }
   p1 <- p1 + geom_point(data = subset(Dat, biplot == "scores"),
-                        aes_string(shape=shape,col=col),
+                        aes_string(shape=shape,col=col,fill=fill),
                         size=point_size) +
     xlab(label = paste(components[1]," (",var1,"%)",sep = "")) +
     ylab(label = paste(components[2]," (",var2,"%)",sep = ""))
@@ -108,6 +110,8 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
 #' @param col String indicating which variable to use as aestetics mapping for
 #' color. Must correspond to a column header in the Map attribute of the PCO
 #' object.
+#' @param fill String indicating which variable to use as aestetics mapping for
+#' fill. Must correspond to a column header in the Map attribute of the PCO object.
 #' @param point_size point_size}{size for the points in the plot
 #' 
 #' @return A ggplot2 object of the PCoA plot.
@@ -128,7 +132,7 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,
 #' plotgg(Dat.pco)
 #' plotgg(Dat.pco,shape="fraction",point_size=3)
 #' plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
-plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,
+plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,fill=NULL,
                        point_size=2){
   
   Dat <- as.data.frame(x$points)
@@ -145,7 +149,7 @@ plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,
   
   # Plot
   p1 <- ggplot(Dat,aes_string(x=components[1],y=components[2]))
-  p1 <- p1 + geom_point(aes_string(shape=shape,col=col),size=point_size) +
+  p1 <- p1 + geom_point(aes_string(shape=shape,col=col,fill=fill),size=point_size) +
     xlab(label = paste(components[1]," (",var1,"%)",sep = "")) +
     ylab(label = paste(components[2]," (",var2,"%)",sep = ""))
   

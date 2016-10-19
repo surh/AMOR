@@ -5,7 +5,7 @@
 \title{Plotting a PCoA}
 \usage{
 \method{plotgg}{PCO}(x, components = c("PCo1", "PCo2"), shape = NULL,
-  col = NULL, point_size = 2)
+  col = NULL, fill = NULL, point_size = 2)
 }
 \arguments{
 \item{x}{A \code{PCO} object.}
@@ -19,6 +19,9 @@ PCO object.}
 \item{col}{String indicating which variable to use as aestetics mapping for
 color. Must correspond to a column header in the Map attribute of the PCO
 object.}
+
+\item{fill}{String indicating which variable to use as aestetics mapping for
+fill. Must correspond to a column header in the Map attribute of the PCO object.}
 
 \item{point_size}{point_size}{size for the points in the plot}
 }

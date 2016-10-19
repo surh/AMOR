@@ -5,7 +5,8 @@
 \title{Plot a PCA}
 \usage{
 \method{plotgg}{PCA}(x, components = c("PC1", "PC2"), shape = NULL,
-  col = NULL, biplot = FALSE, biplot_color = "grey21", point_size = 2)
+  col = NULL, fill = NULL, biplot = FALSE, biplot_color = "grey21",
+  point_size = 2)
 }
 \arguments{
 \item{x}{A \code{PCA} object.}
@@ -19,6 +20,9 @@ of the PCA object.}
 \item{col}{String indicating which variable to use as aestetics mapping
 for color. Must correspond to a column header in the Map attribute of the
 PCA object.}
+
+\item{fill}{String indicating which variable to use as aestetics mapping for
+fill. Must correspond to a column header in the Map attribute of the PCA object.}
 
 \item{biplot}{Logical indicating whether the loadings should be plotted as well.}
 
