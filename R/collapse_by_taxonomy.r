@@ -36,7 +36,7 @@ collapse_by_taxonomy.default <- function(Tab,Tax,Group = NULL, level=4,FUN=sum,s
     tax <- get_tax_level(Tax,level=level,sepchar=sepchar)
   }else if(!is.null(Group)){
     if(length(Group) == 1){
-      tax <- Tax[,tax]
+      tax <- Tax[ ,Group ]
     }else{
       tax <- factor(Group)
     }
