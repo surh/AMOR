@@ -6,3 +6,5 @@
 6. Create a process RDP taxonomy string function.
 7. Create add and remove variable methods.
 8. Create vignette.
+9. Re-write pool_samples so Dataset method uses default method, and takes
+a grouping factor as well.
