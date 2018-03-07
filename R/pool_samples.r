@@ -51,6 +51,7 @@ pool_samples.default <- function(x, groups, FUN = sum){
   groups <- factor(groups)
   res <- collapse_matrix(x = x, groups = groups,
                          dim = 2, FUN = FUN)
+  # cat(class(res), "\n")
   
   return(res)
 }
