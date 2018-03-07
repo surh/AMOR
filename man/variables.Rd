@@ -19,4 +19,3 @@ Get names of variables in metadata
 \code{\link{create_dataset}}, \code{\link{taxa}},
 \code{\link{samples}}
 }
-

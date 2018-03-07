@@ -19,4 +19,3 @@ Get names of taxa in Dataset
 \code{\link{create_dataset}}, \code{\link{variables}},
 \code{\link{samples}}
 }
-

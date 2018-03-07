@@ -2,8 +2,8 @@
 % Please edit documentation in R/PCA.r
 \name{PCA}
 \alias{PCA}
-\alias{PCA.Dataset}
 \alias{PCA.default}
+\alias{PCA.Dataset}
 \title{Principal Component Analysis}
 \usage{
 PCA(...)
@@ -46,11 +46,10 @@ Dat.pca <- PCA(Dat)
 plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 summary(Dat.pca)
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \link{create_dataset}, \link{pca}, \link{PCO}, \link{pco},
 \link{plotgg.pca}
 }
-
+\author{
+Sur from Dangl Lab.
+}

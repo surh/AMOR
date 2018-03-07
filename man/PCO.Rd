@@ -2,8 +2,8 @@
 % Please edit documentation in R/PCO.r
 \name{PCO}
 \alias{PCO}
-\alias{PCO.Dataset}
 \alias{PCO.default}
+\alias{PCO.Dataset}
 \title{Principal Coordinates Analysis.}
 \usage{
 PCO(...)
@@ -47,11 +47,10 @@ plotgg(Dat.pco)
 plotgg(Dat.pco,shape="fraction",point_size=3)
 plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{create_dataset}}, \code{\link{pca}}, \code{\link{PCA}},
 \code{\link{pco}}, \code{\link{dsvdis}}
 }
-
+\author{
+Sur from Dangl Lab.
+}
