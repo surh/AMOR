@@ -16,7 +16,8 @@ collapse_matrix <- function(x,groups,dim=1,FUN=sum){
   
   FUN <- match.fun(FUN)
   groups <- factor(groups)  
-  Tab.collapsed <- apply(x,((dim %% 2) + 1),tapply,INDEX=groups,FUN)
+  Tab.collapsed <- apply(x,((dim %% 2) + 1),tapply,
+                         INDEX = groups, FUN)
   if(dim == 2){
     Tab.collapsed <- t(Tab.collapsed)
   }
