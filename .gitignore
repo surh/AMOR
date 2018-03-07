@@ -1,5 +1,9 @@
 .Rproj.user
 .Rhistory
 .RData
+<<<<<<< HEAD
 .Rproj
+=======
+.Ruserdata
+>>>>>>> collapse
 AMOR.Rproj

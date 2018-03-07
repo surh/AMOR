@@ -17,4 +17,3 @@ values}
 Takes a dataset object and normalizes the abundance
 matrix by a variable from Map or a vector provided.
 }
-

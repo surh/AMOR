@@ -2,6 +2,7 @@
 1. Fixed error in summary.PCO. It required an object called Dat.pco
 2. Added fill option to plotgg. Included in documentation
 3. Added option to collapse_by_taxonomy with a custom factor
+4. Fixed bug in collapse_by_taxonomy.Dataset so now it can take no group
 
 # 0.0-15
 1. Adding samples & taxa functions

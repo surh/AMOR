@@ -43,10 +43,9 @@ plotgg(sitediv.accession, alpha = 0.3) +
   scale_color_brewer(palette = "Set3") +
   scale_fill_brewer(palette = "Set3")
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{site_diversity}}, \code{\link{compare_site_diversity}}
 }
-
+\author{
+Sur from Dangl Lab.
+}

@@ -50,10 +50,9 @@ plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 p1 <- plotgg(Dat.pca,col="accession",components=c("PC2","PC3"),shape="fraction",biplot=TRUE,biplot_color="pink",point_size=6)
 p1
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{PCA}}
 }
-
+\author{
+Sur from Dangl Lab.
+}

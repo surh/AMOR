@@ -9,11 +9,10 @@ plotgg(...)
 \description{
 Generic plot function for ggplot2
 }
-\author{
-Sur fron Dangl Lab
-}
 \seealso{
 \code{\link{plotgg.PCA}}, \code{\link{plotgg.PCO}},
 \code{\link{plotgg.site.diversity}}
 }
-
+\author{
+Sur fron Dangl Lab
+}

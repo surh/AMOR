@@ -12,15 +12,38 @@
 #' @param FUN Which function to use to aggregate
 #' @param sepchar Separator character for taxonomy levels.
 #' 
+#' @return The default method returns a numeric matrix.
+#' 
+#' The Dataset method returns a Dataset object when Dat includes a Map
+#' element (see \code{\link{create_dataset}}). When the Map element is
+#' missing it returns a \code{matrix} object.
+#' 
+#' @seealso \link{create_dataset}
+#' 
 #' @author Sur Herrera Paredes
 #' 
 #' @rdname collapse_by_taxonomy
-#' @export collapse_by_taxonomy
+#' @export
+#' 
+#' @examples 
+#' library(AMOR)
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' 
+#' Dat <- create_dataset(Tab = Rhizo, Map = Rhizo.map, Tax = Rhizo.tax)
+#' Dat.phyl <- collapse_by_taxonomy(Dat = Dat, level = 4)
+#' 
+#' # The followwing returns a matrix
+#' Dat.collapsed1 <- collapse_by_taxonomy(Dat$Tab, Dat$Tax)
+#' 
+#' # The following returns a dataset object
+#' Dat.collapsed2 <- collapse_by_taxonomy(Dat=Dat)
 collapse_by_taxonomy <- function(...) UseMethod("collapse_by_taxonomy")
 
 #' @rdname collapse_by_taxonomy
 #' @method collapse_by_taxonomy default
-#' @S3method collapse_by_taxonomy default
+#' @export
 collapse_by_taxonomy.default <- function(Tab,Tax,Group = NULL, level=4,FUN=sum,sepchar=";"){
   # Match taxonomy and table rows
   #row.names(Tax) <- as.character(Tax$ID)
@@ -52,8 +75,9 @@ collapse_by_taxonomy.default <- function(Tab,Tax,Group = NULL, level=4,FUN=sum,s
 
 #' @rdname collapse_by_taxonomy
 #' @method collapse_by_taxonomy Dataset
-#' @S3method collapse_by_taxonomy Dataset
-collapse_by_taxonomy.Dataset <- function(Dat,Group, level=4,FUN=sum,sepchar=";"){
+#' @export
+collapse_by_taxonomy.Dataset <- function(Dat, Group = NULL, level = 4,
+                                         FUN = sum, sepchar = ";"){
   res <- collapse_by_taxonomy.default(Tab = Dat$Tab,
                                       Tax = Dat$Tax,
                                       Group = Group,
@@ -62,7 +86,7 @@ collapse_by_taxonomy.Dataset <- function(Dat,Group, level=4,FUN=sum,sepchar=";")
                                       sepchar = sepchar)
   
   if(length(Dat$Map) > 0){
-    res <- create_dataset(Tab=res,Map=Dat$Map)
+    res <- create_dataset(Tab = res, Map = Dat$Map)
   }
   
   return(res)

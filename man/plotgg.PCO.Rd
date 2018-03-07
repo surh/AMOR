@@ -44,10 +44,9 @@ plotgg(Dat.pco)
 plotgg(Dat.pco,shape="fraction",point_size=3)
 plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{PCO}}
 }
-
+\author{
+Sur from Dangl Lab.
+}
