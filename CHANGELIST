@@ -5,9 +5,12 @@
 4. Fixed bug in collapse_by_taxonomy.Dataset so now it can take no group
 5. collapse_matrix now uses plyr instead of apply functions. This allows for
 consistent return of matrix with dimension names when the grouping factor
-contains one level (Issue https://github.com/surh/AMOR/issues/3). This breaks
-backwards compatibility.
-6. Roxygen2 documentation for collapse_matrix
+contains one level (Issue https://github.com/surh/AMOR/issues/10). This breaks
+backwards compatibility. Roxygen2 documentation for collapse_matrix
+7. Updated pool_samples. Changed naming conventions of parameters,
+and removed the option to return a Dataset object from default method. These
+changes break backwards compatibility. Updated and moved documentation to
+roxygen2 and updated examples.
 
 # 0.0-15
 1. Adding samples & taxa functions

@@ -2,7 +2,6 @@
 #' 
 #' Pools abundances from samples according to a grouping factor.
 #' 
-#' 
 #' Wrapper for \code{collapse_matrix}. This function is useful to calculate
 #' per-group summary statistics per taxon.
 #' 
@@ -36,7 +35,20 @@
 #' @export
 #' 
 #' @examples 
+#' library(AMOR)
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
 #' 
+#' # The following returns a numeric matrix
+#' Collapsed1 <- pool_samples(x = Dat$Tab,groups = Dat$Map$fraction)
+#' 
+#' # The following returns a Dataset
+#' Collapsed2 <- pool_samples(x = Dat,groups = "fraction")
+#' 
+#' # A way to calculate the overall counts per taxa
+#' res <- pool_samples(Dat$Tab, groups = rep("all", length.out = ncol(Rhizo)))
 pool_samples <- function(x, ...) UseMethod("pool_samples")
 
 #' @rdname pool_samples
