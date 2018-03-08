@@ -16,10 +16,10 @@ pool_samples(x, ...)
 \item{x}{Either a numerical matrix or a Dataset object. For a numerical
 matrix, samples are given as columns and taxa as rows.}
 
-\item{groups}{For the default method this is a vector or factor 
-specifying to which group each sample belongs. Vectors will be converted to
-a factors with the \code{factor} function. It must be of the same length
-as \code{ncol(x)}. For the Dataset method, this is a single character string or
+\item{groups}{For the default and Dataset methods this can be either a vector
+or factor specifying to which group each sample belongs. Vectors will be
+converted to a factor with the \code{factor} function. It must be of the same length
+as \code{ncol(x)}. For the Dataset method, it can also be a single character string or
 numeric value indicating the column from x$Map to be used as a grouping factor.}
 
 \item{FUN}{Function to apply when collapsing the data. Defaults to \code{sum},
@@ -60,6 +60,9 @@ Collapsed1 <- pool_samples(x = Dat$Tab,groups = Dat$Map$fraction)
 
 # The following returns a Dataset
 Collapsed2 <- pool_samples(x = Dat,groups = "fraction")
+
+# You can also directly pass a grouping factor to the Dataset method
+Collapsed3 <- pool_samples(x = Dat,groups = Dat$Map$fraction)
 
 # A way to calculate the overall counts per taxa
 res <- pool_samples(Dat$Tab, groups = rep("all", length.out = ncol(Rhizo)))

@@ -9,8 +9,9 @@ contains one level (Issue https://github.com/surh/AMOR/issues/10). This breaks
 backwards compatibility. Roxygen2 documentation for collapse_matrix
 7. Updated pool_samples. Changed naming conventions of parameters,
 and removed the option to return a Dataset object from default method. These
-changes break backwards compatibility. Updated and moved documentation to
-roxygen2 and updated examples.
+changes break backwards compatibility. Pool samples can also now take a vector
+or grouping factor. Updated and moved documentation to
+roxygen2 and updated examples (Issue https://github.com/surh/AMOR/issues/11).
 
 # 0.0-15
 1. Adding samples & taxa functions
