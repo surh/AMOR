@@ -52,7 +52,7 @@ collapse_matrix <- function(x,groups,dim=1,FUN=sum){
                                              .fun = function(x){FUN(x$x)})
                                }, g = groups, .drop = FALSE)
   
-  if(dim == 2){
+  if(dim == 1){
     Tab.collapsed <- t(Tab.collapsed)
   }
   

@@ -3,6 +3,11 @@
 2. Added fill option to plotgg. Included in documentation
 3. Added option to collapse_by_taxonomy with a custom factor
 4. Fixed bug in collapse_by_taxonomy.Dataset so now it can take no group
+5. collapse_matrix now uses plyr instead of apply functions. This allows for
+consistent return of matrix with dimension names when the grouping factor
+contains one level (Issue https://github.com/surh/AMOR/issues/3). This breaks
+backwards compatibility.
+6. Roxygen2 documentation for collapse_matrix
 
 # 0.0-15
 1. Adding samples & taxa functions
