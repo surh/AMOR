@@ -1,4 +1,4 @@
-# 0.0-16
+# 0.1-0
 1. Fixed error in summary.PCO. It required an object called Dat.pco
 2. Added fill option to plotgg. Included in documentation
 3. Added option to collapse_by_taxonomy with a custom factor
