@@ -1,3 +1,18 @@
+# 0.1-0
+1. Fixed error in summary.PCO. It required an object called Dat.pco
+2. Added fill option to plotgg. Included in documentation
+3. Added option to collapse_by_taxonomy with a custom factor
+4. Fixed bug in collapse_by_taxonomy.Dataset so now it can take no group
+5. collapse_matrix now uses plyr instead of apply functions. This allows for
+consistent return of matrix with dimension names when the grouping factor
+contains one level (Issue https://github.com/surh/AMOR/issues/10). This breaks
+backwards compatibility. Roxygen2 documentation for collapse_matrix
+7. Updated pool_samples. Changed naming conventions of parameters,
+and removed the option to return a Dataset object from default method. These
+changes break backwards compatibility. Pool samples can also now take a vector
+or grouping factor. Updated and moved documentation to
+roxygen2 and updated examples (Issue https://github.com/surh/AMOR/issues/11).
+
 # 0.0-15
 1. Adding samples & taxa functions
 2. Fixed glitch in clean when only one variable in map

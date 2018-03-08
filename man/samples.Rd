@@ -19,4 +19,3 @@ Get names of samples in Dataset
 \code{\link{create_dataset}}, \code{\link{taxa}},
 \code{\link{variables}}
 }
-

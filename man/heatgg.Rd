@@ -2,8 +2,8 @@
 % Please edit documentation in R/heatgg.r
 \name{heatgg}
 \alias{heatgg}
-\alias{heatgg.Dataset}
 \alias{heatgg.default}
+\alias{heatgg.Dataset}
 \title{Heatmap with ggplot2}
 \usage{
 heatgg(...)
@@ -104,9 +104,6 @@ p1 <- heatgg(Dat = Dat, gradientn.colours = c("white","black"),
              cluster = TRUE)
 
 }
-\author{
-Sur from Dangl Lab
-}
 \references{
 A lot of code and ideas was borrowed from these places:
 
@@ -114,4 +111,6 @@ A lot of code and ideas was borrowed from these places:
 \url{http://stackoverflow.com/questions/6673162/reproducing-lattice-dendrogram-graph-with-ggplot2}
 \url{http://stackoverflow.com/questions/12041042/how-to-plot-just-the-legends-in-ggplot2}
 }
-
+\author{
+Sur from Dangl Lab
+}

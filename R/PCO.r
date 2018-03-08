@@ -59,7 +59,7 @@ PCO.Dataset <- function(Dat,dim=3,distfun=dist){
 }
 
 summary.PCO <- function(object){
-  object <- Dat.pco
+  #object <- Dat.pco
   ncomponents <- ncol(object$points)
   components <- paste("PCo",1:ncomponents,sep = "")
   percvar <- 100*(object$eig[ object$eig >= 0 ]) / sum(object$eig[ object$eig >= 0 ])

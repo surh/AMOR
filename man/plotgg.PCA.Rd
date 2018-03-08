@@ -5,7 +5,8 @@
 \title{Plot a PCA}
 \usage{
 \method{plotgg}{PCA}(x, components = c("PC1", "PC2"), shape = NULL,
-  col = NULL, biplot = FALSE, biplot_color = "grey21", point_size = 2)
+  col = NULL, fill = NULL, biplot = FALSE, biplot_color = "grey21",
+  point_size = 2)
 }
 \arguments{
 \item{x}{A \code{PCA} object.}
@@ -19,6 +20,9 @@ of the PCA object.}
 \item{col}{String indicating which variable to use as aestetics mapping
 for color. Must correspond to a column header in the Map attribute of the
 PCA object.}
+
+\item{fill}{String indicating which variable to use as aestetics mapping for
+fill. Must correspond to a column header in the Map attribute of the PCA object.}
 
 \item{biplot}{Logical indicating whether the loadings should be plotted as well.}
 
@@ -46,10 +50,9 @@ plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 p1 <- plotgg(Dat.pca,col="accession",components=c("PC2","PC3"),shape="fraction",biplot=TRUE,biplot_color="pink",point_size=6)
 p1
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{PCA}}
 }
-
+\author{
+Sur from Dangl Lab.
+}

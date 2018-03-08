@@ -41,10 +41,9 @@ contains a version identification string, the second row sample
 IDs and the first column (after second row) taxon IDs. The first
 two lines start witht he '#' character.
 }
-\author{
-Sur from Dangl Lab.
-}
 \seealso{
 \code{\link{create_dataset}}
 }
-
+\author{
+Sur from Dangl Lab.
+}
