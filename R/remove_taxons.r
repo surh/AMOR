@@ -9,9 +9,9 @@ remove_taxons <- function(Dat,taxons){
   
   taxons_to_keep <- !(row.names(Dat$Tab) %in% taxons)
   
-  tab <- Dat$Tab[ taxons_to_keep, ]
+  tab <- Dat$Tab[ taxons_to_keep, , drop = FALSE]
   map <- Dat$Map
-  tax <- Dat$Tax[ taxons_to_keep, ]
+  tax <- Dat$Tax[ taxons_to_keep, , drop = FALSE]
   
   res <- create_dataset(Tab=tab,Map=map,Tax=tax)
   return(res)
