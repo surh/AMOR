@@ -1,3 +1,7 @@
+# 0.1-1
+1. Fixed bug in remove_taxons, it now works correctly when only one
+sample or taxon remains .
+
 # 0.1-0
 1. Fixed error in summary.PCO. It required an object called Dat.pco
 2. Added fill option to plotgg. Included in documentation
