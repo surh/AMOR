@@ -1,3 +1,6 @@
+# 0.1-2
+1. Fixed bug introduced on previous release regarding in remove_samples.
+
 # 0.1-1
 1. Fixed bug in remove_taxons, it now works correctly when only one
 sample or taxon remains.
