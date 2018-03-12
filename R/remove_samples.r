@@ -9,8 +9,8 @@ remove_samples <- function(Dat,samples,droplevels = TRUE){
   
   samples_to_keep <- !(colnames(Dat$Tab) %in% samples)
   
-  tab <- Dat$Tab[ , samples_to_keep]
-  map <- Dat$Map[ samples_to_keep, ]
+  tab <- Dat$Tab[ , samples_to_keep, drop = TRUE ]
+  map <- Dat$Map[ samples_to_keep, , drop = TRUE ]
   tax <- Dat$Tax
 
   if(droplevels && !is.null(map)){
