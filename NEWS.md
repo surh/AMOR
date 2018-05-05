@@ -1,5 +1,6 @@
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains
+2. Added travis CI build testing
 
 # 0.1-2
 1. Fixed bug introduced on previous release regarding in remove_samples.
