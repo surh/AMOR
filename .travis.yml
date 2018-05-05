@@ -1,0 +1,22 @@
+language: r
+cache: packages
+latex: false
+r:
+  - 3.1
+  - 3.2
+  - 3.3
+  - 3.4
+  - 3.5
+  #- devel
+warnings_are_errors: true
+sudo: required
+#apt_packages:
+  #- libfftw3-dev
+#bioc_packages:
+  #- EBImage
+r_packages:
+  - covr
+  #- cli
+  #- rlang
+after_success:
+  - Rscript -e 'covr::codecov()'
