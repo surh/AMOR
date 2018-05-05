@@ -4,17 +4,6 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
                               scales="free_x",space = "free_x", nrow.legend=20,
                               ntaxa = NULL, other_name = "other"){
-#   
-#   Tab <- Dat.phyl$Tab
-#   Map <- Dat.phyl$Map
-#   facet <- ~ fraction
-#   colname <- "Sample"
-#   variable.name <- "Taxon"
-#   value.name <- "Abundance"
-#   scales <- "free_x"
-#   nrow.legend <- 20
-#   ntaxa <- 5
-#   other_name <- "other"
   
   # Collapse extra taxa if needed
   if(is.numeric(ntaxa)){

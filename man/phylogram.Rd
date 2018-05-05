@@ -42,7 +42,7 @@ data(Rhizo.map)
 data(Rhizo.tax)
 Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
 
-Dat.phyl <- collapse_by_taxonomy(Dat,4)
+Dat.phyl <- collapse_by_taxonomy(Dat = Dat, level = 4)
 phylogram(Tab = Dat.phyl$Tab,Map = Dat.phyl$Map,facet = ~ fraction)
 phylogram(Dat.phyl,facet = ~ fraction)
 phylogram(Dat.phyl,facet = ~ fraction, ntaxa = 5)
