@@ -14,8 +14,14 @@ Suggests:
     labdsv (>= 1.5-0),
     vegan (>= 2.0-10)
 Date: 2018-03-12
-Author: Sur Herrera Paredes
-Maintainer: Sur Herrera Paredes <sur00mx@gmail.com>
+
+Authors@R: c(person("Sur", "Herrera Paredes",
+                    role = c("aut", "cre"),
+		    email = "surh@stanford.edu",
+		    comment = c(ORCID = "0000-0001-9246-8337")))
 Description: Abundance Matrix Operations in R
+URL: https://github.com/surh/AMOR,
+     https://surh.github.io/AMORR
+BugReports: https://github.com/surh/AMOR/issues
 License: GPL-3
 RoxygenNote: 6.0.1

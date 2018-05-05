@@ -16,7 +16,7 @@ sudo: required
   #- EBImage
 r_packages:
   - covr
-  #- cli
-  #- rlang
+  - vegan
+  - labdsv
 after_success:
   - Rscript -e 'covr::codecov()'

@@ -1,6 +1,6 @@
 # Abundance Matrix Operations in R
 
-[![DOI](https://zenodo.org/badge/10928/surh/AMOR.svg)](https://zenodo.org/badge/latestdoi/10928/surh/AMOR)
+[![DOI](https://zenodo.org/badge/10928/surh/AMOR.svg)](https://zenodo.org/badge/latestdoi/10928/surh/AMOR) [![Build Status](https://travis-ci.org/surh/AMOR.svg?branch=master)](https://travis-ci.org/surh/AMOR)
 
 This package is a collection of functions that are useful for performing common tasks with abundance tables.
 
@@ -24,3 +24,6 @@ If you want to get the development version, you can use
 devtools::install_github("surh/AMOR",ref = "dev")
 ```
 
+Status of the develpment version can be seen below:
+
+[![Build Status](https://travis-ci.org/surh/AMOR.svg?branch=dev)](https://travis-ci.org/surh/AMOR)
