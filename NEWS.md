@@ -1,6 +1,10 @@
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains
 2. Added travis CI build testing
+3. Fixed bug with plotgg_rankabun caused by update of pool_samples. Added
+option to force return of a dataset object from pool samples.
+4. Fixed bug with plotgg_rankabin2 caused because some columns of the
+aggregated dataset became tables instead of vectors
 
 # 0.1-2
 1. Fixed bug introduced on previous release regarding in remove_samples.

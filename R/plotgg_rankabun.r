@@ -14,7 +14,7 @@ plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL, sortby = NU
   Dat <- create_dataset(Tab,Map)
   
   if(!is.null(groupby) && !is.null(sortby)){
-    Dat <- pool_samples.Dataset(Dat = Dat,groups = groupby,FUN = FUN)
+    Dat <- pool_samples.Dataset(x = Dat,groups = groupby,FUN = FUN, return.dataset = TRUE)
     order_vector <- row.names(Dat$Tab)[ order(Dat$Tab[,sortby], decreasing = TRUE) ]
   }else{
     order_vector <- apply(Dat$Tab,1,FUN)

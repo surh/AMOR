@@ -23,12 +23,14 @@
 #' which is ideal for count data. For proportioanl data \code{mean} or \code{median}
 #' might be more appropriate. Any function that takes a vector of numbers and returns
 #' a single numeric value can be used.
+#' @param return.dataset Logical, if TRUE returns a dataset
 #' 
-#' @return The default method returns a \code{matrix} object.
+#' @return The default method returns a \code{matrix} object, unless return.dataset
+#' is TRUE, in which case it returns a Dataset.
 #' 
 #' The Dataset method returns a \code{Dataset} object when Dat includes a Tax element
 #' (see \code{create_dataset}); when the Tax element is missing it returns a
-#' \code{matrix} object.
+#' \code{matrix} object. If return.dataset is TRUE, return a dataset
 #' 
 #' @author Sur Herrera Paredes
 #' 
@@ -57,7 +59,7 @@ pool_samples <- function(x, ...) UseMethod("pool_samples")
 #' @rdname pool_samples
 #' @method pool_samples default
 #' @export
-pool_samples.default <- function(x, groups, FUN = sum){
+pool_samples.default <- function(x, groups, FUN = sum, return.dataset = FALSE){
   if(class(x) != "matrix")
     stop("ERROR: Tab must be a matrix object",call.=TRUE)
   if(ncol(x) != length(groups))
@@ -67,6 +69,8 @@ pool_samples.default <- function(x, groups, FUN = sum){
   res <- collapse_matrix(x = x, groups = groups,
                          dim = 2, FUN = FUN)
   # cat(class(res), "\n")
+  if (return.dataset)
+    res <- create_dataset(res)
   
   return(res)
 }
@@ -74,7 +78,7 @@ pool_samples.default <- function(x, groups, FUN = sum){
 #' @rdname pool_samples
 #' @method pool_samples Dataset
 #' @export
-pool_samples.Dataset <- function(x, groups, FUN = sum){
+pool_samples.Dataset <- function(x, groups, FUN = sum, return.dataset = FALSE){
   # Check object class
   if(class(x) != "Dataset")
     stop("ERROR: Dat must be a Dataset object",call.=TRUE)
@@ -101,7 +105,9 @@ pool_samples.Dataset <- function(x, groups, FUN = sum){
   res <- pool_samples.default(x = x$Tab, 
                               groups = groups,
                               FUN = FUN)
-  
+  if(return.dataset){
+    res <- create_dataset(Tab = res, Tax = x$Tax)
+  }
   if(!is.null(x$Tax)){
     res <- create_dataset(Tab = res, Tax = x$Tax)
   }

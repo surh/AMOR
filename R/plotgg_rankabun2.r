@@ -1,17 +1,11 @@
 plotgg_rankabun2 <- function(...) UseMethod("plotgg_rankabun2")
 
-plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby, alpha = 0.2, theme = theme_blackbox,
-                                    variable.name = "Taxon", value.name = "Abundance", sample.id.name = "SAMPLEID"){
+plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby,
+                                     alpha = 0.2, theme = theme_blackbox,
+                                     variable.name = "Taxon",
+                                     value.name = "Abundance",
+                                     sample.id.name = "SAMPLEID"){
   # This is an experimental function. SHOULD NOT BE USED AS A FORMAL TEST OF SIGNIFICANCE.
-#   Tab <- Dat$Tab
-#   Map <- Dat$Map
-#   variable.name <- "Taxon"
-#   value.name <- "Abundance"
-#   sample.id.name <- "SAMPLEID"
-#   alpha <- 0.2
-#   groupby <- "fraction"
-#   sortby <- "Soil"
-#   theme <- theme_blackbox
   
   if(any(colnames(Tab) != row.names(Map))){
     stop("ERROR: names in Tab and Map do not match",call. = TRUE)
@@ -25,7 +19,8 @@ plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby, alpha = 0.2, the
   Dat[,sample.id.name] <- row.names(Dat)
   
   # Convert data to ggplot format
-  Dat <- melt(Dat,id.vars = c(original_variables,sample.id.name),variable.name = variable.name,value.name = value.name)
+  Dat <- melt(Dat,id.vars = c(original_variables,sample.id.name),
+              variable.name = variable.name,value.name = value.name)
   
   # Group and calculate poisson CIs
   Dat2 <- aggregate(Dat[,value.name],by = list(Dat[,variable.name],Dat[,groupby]),sum)
@@ -43,12 +38,34 @@ plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby, alpha = 0.2, the
   order_vector <- order_vector[ order(order_vector[, value.name ],decreasing = TRUE), ]
   order_vector <- unique(as.character(order_vector[, variable.name]))
   Dat2[, variable.name] <- factor(Dat2[, variable.name], levels = order_vector)
+ 
+  # Format
+  Dat2[,value.name] <- as.numeric(Dat2[,value.name])
+  Dat2[,"lower"] <- as.numeric(Dat2[,"lower"])
+  Dat2[,"upper"] <- as.numeric(Dat2[,"upper"])
+  
+  p1 <- ggplot(Dat2,aes(x = Taxon,
+                        y = Abundance,
+                        group=fraction,
+                        col = fraction,
+                        fill=fraction)) +
+    geom_line() +
+    geom_ribbon(aes(x = as.numeric(Dat2$Taxon),
+                    ymin=lower,ymax=upper), alpha = 0.2)
+  p1
   
   # Plot
-  p1 <- ggplot(Dat2, aes_string(x = variable.name, y = value.name, col = groupby, group = groupby, fill = groupby))+
+  p1 <- ggplot(Dat2, aes_string(x = variable.name,
+                                y = value.name,
+                                col = groupby,
+                                group = groupby,
+                                fill = groupby))+
     geom_line() +
-    geom_ribbon(aes(ymin=lower,ymax=upper),alpha=alpha) +
+    geom_ribbon(aes(x=as.numeric(Dat2$Taxon),ymin=lower,ymax=upper), alpha=0.2) +
     theme
+  p1
+  
+
   
   return(p1)
 }
