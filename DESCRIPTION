@@ -14,7 +14,6 @@ Suggests:
     labdsv (>= 1.5-0),
     vegan (>= 2.0-10)
 Date: 2018-03-12
-
 Authors@R: c(person("Sur", "Herrera Paredes",
                     role = c("aut", "cre"),
 		    email = "surh@stanford.edu",
