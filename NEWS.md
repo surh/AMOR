@@ -9,6 +9,7 @@ since rarefaction is not recomended to deal with uneven sampling.
 7. Roxyfen documentation and examples for get_tax_level
 8. Removed read.pool function
 9. Documentation and examples for write.qiime
+10. Roxygen2 documentation for bootglm and associated methods
 
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains

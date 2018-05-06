@@ -1,20 +1,65 @@
+#' Bootstrap estimation of Generalized Linear Models on a matrix of observations
+#' 
+#' Uses bootstrap to estimate variance of \link{matrix_glm}
+#' estimates. Takes a matrix of observations, and fits the specified
+#' GLM on each species. It perfomrs N bootstrap pesudoreplicates and
+#' returns the matrix of coefficients, for the original dataset as well
+#' as bootstrap estimates. It uses glm_matrix() to fit each of the pseudoreplicates.
+#' 
+#' This works by calling matrix_glm() on the original data, and each pf the N
+#' bootstrap pseudoreplicates generated.
+#'
+#' @param x Either an abundance matrix with samples as columns
+#' or a Dataset object
+#' @param Map A mapping file with sample metadata if x is a matrix. A data.frame
+#' containing the variables to be modelled as columns and samples as rows.
+#' The rows should be named with sample IDs and must correspond to the column names
+#' from x if an abundance matrix was passed.
+#' @param formula The formula for the GLM model.Only the right hand side of the equation
+#' must be passed, and anything on the left side wild be silently ignored.
+#' @param family The model family. See help of \link{glm} and \link{family}
+#' for details
+#' @param response.name The name to give to the response variable
+#' @param N The number of bootstrap pseudoreplicates
+#' @param verbose Logical. If true each call to matrix_glm will print
+#' progress information.
+#' @param ... Extra parameters for \link{matrix_glm}, which will in turn
+#' pass them to \link{glm}. Typically it is seful to specify the 'control'
+#' option.
+#'
+#' @return A bootglm object which is a list containing the following elements:
+#' \describe{
+#' \item{orig}{A \code{matrix.glm} object containing the output of \code{matrix.glm()}
+#' on the original data.}
+#' \item{boot}{A list containing elements: 1) coefficients, a three-dimensioanl
+#' array containing the matrix of coefficients for each bootstrap pseudoreplicate;
+#' and 2) SE, a three-dimensional array containing the matrix of standard errors for
+#' each bootstrap pseudoreplicate.}
+#' \item{coefficients}{A matrix of coefficients calculated as the mean accross each
+#' bootstrap pseudoreplicates.}
+#' \item{call}{Function call via match.call().}
+#' \item{family}{GLM model family. An object of class \code{family}.}
+#' \item{pseudoreplicates}{Matrix of dimensions (number iof samples) x (number of
+#' pseudoreplicates), where the i-column gives the sample ID, of the samples used for
+#' the i-th pseudoreplicate.}
+#' \item{N}{Number of bootstrap pseudoreplicates performed.}
+#' }
+#' @author Sur Herrera Paredes
+#' @export
+#'
+#' @examples
 bootstrap_glm <- function(x,...) UseMethod("bootstrap_glm")
 
+#' @rdname bootstrap_glm
+#' @method bootstrap_glm default
 bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
                                   response.name="Count",N=100,verbose=FALSE,...){
-  # Test data
-#   formula <- formula(~ frac + gen + depthK)
-#   x <- Dat$Tab
-#   Map <- Dat$Map
-#   control <- list(maxit=100)
-#   family <- poisson(link="log")
-#   response.name <- "Count"
-#   N <- 10
-#   verbose <- FALSE
-#   set.seed(54128)
   
   cat("Fitting model with orignal data...\n")
-  m1 <- matrix_glm(x=x,Map=Map,formula=formula,family=family,response.name=response.name,verbose=verbose,...)
+  m1 <- matrix_glm(x=x, Map=Map, formula=formula,
+                   family=family,
+                   response.name=response.name,
+                   verbose=verbose, ...)
   
   res.template <- array(dim=c(dim(m1$coefficients),N))
   row.names(res.template) <- row.names(m1$coefficients)
@@ -48,7 +93,10 @@ bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
     formula <- paste("~",formula)
     formula <- formula(formula)
     
-    m1 <- matrix_glm(x=Tab.bs,Map=Dat.bs,formula=formula,family=family,response.name=response.name,verbose=verbose,...)
+    m1 <- matrix_glm(x=Tab.bs, Map=Dat.bs,
+                     formula=formula, family=family,
+                     response.name=response.name,
+                     verbose=verbose,c...)
     
     Res$boot$coefficients[,colnames(m1$coefficients),i] <- m1$coefficients
     Res$boot$SE[,colnames(m1$SE),i] <- m1$SE
@@ -58,35 +106,51 @@ bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
   Res$family <- family
   Res$pseudoreplicates <- SAMPLES
   Res$N <- N
-  Res$coefficients <- apply(Res$boot$coefficients,c(1,2),mean,na.rm=TRUE)
+  Res$coefficients <- apply(Res$boot$coefficients,c(1,2), mean, na.rm=TRUE)
   class(Res) <- "bootglm"
   
   return(Res)
 }
 
-bootstrap_glm.Dataset <- function(x,formula,family=poisson(link="log"),response.name="Count",
+#' @rdname bootstrap_glm
+#' @method bootstrap_glm Dataset
+bootstrap_glm.Dataset <- function(x,formula, family=poisson(link="log"),
+                                  response.name="Count",
                                   N=100, verbose = FALSE,...){
-  m1 <- bootstrap_glm.default(x=x$Tab,Map=x$Map,formula=formula,family=family,response.name=response.name,N=N,...)
+  m1 <- bootstrap_glm.default(x=x$Tab, Map=x$Map, 
+                              formula=formula,
+                              family=family,
+                              response.name=response.name,
+                              N=N, ...)
   m1$call <- match.call()
   return(m1)
 }
 
+
+#' Summarizing bootstrap_glm model fits
+#'
+#' @param object A bootglm object
+#' @param sortby How to sort the summarized results
+#'
+#' @return A summary.bootglm object
+#' @author Sur Herrera Paredes
+#' @export
+#'
+#' @examples
 summary.bootglm <- function(object,sortby="Variable",...){
-  # Test data
-#   object <- m1.bs
-#   sortby <- "Variable"
-  
   if(sortby != "Taxon" && sortby != "Variable"){
     stop("ERROR: You can only sort by Taxon or Variable",call.=TRUE)
   }
   
-  TAB <- melt(object$coefficients,value.name="Estimate",varnames=c("Taxon","Variable"))
-  quants <- apply(object$boot$coefficients,c(1,2),function(vector){x <- quantile(vector,probs=c(0.025,0.975),na.rm=TRUE)
-                                                                   n <- sum(!is.na(vector))
-                                                                   conf <- sum(vector > 0,na.rm=TRUE) / n
-                                                                   x <- c(x,N=n,conf=conf)
-                                                                   x
-                                                                   })
+  TAB <- melt(object$coefficients, value.name="Estimate", varnames=c("Taxon","Variable"))
+  quants <- apply(object$boot$coefficients,c(1,2),
+                  function(vector){
+                    x <- quantile(vector, probs=c(0.025,0.975), na.rm=TRUE) 
+                    n <- sum(!is.na(vector))
+                    conf <- sum(vector > 0,na.rm=TRUE) / n
+                    x <- c(x,N=n,conf=conf)
+                    x
+                  })
   
   TAB[,"2.5%"] <- melt(quants[1,,],value.name="2.5%",varnames=c("Taxon","Variable"))[,3]
   TAB[,"97.5%"] <- melt(quants[2,,],value.name="2.5%",varnames=c("Taxon","Variable"))[,3]
@@ -102,19 +166,27 @@ summary.bootglm <- function(object,sortby="Variable",...){
   return(Res)
 }
 
-print.summary.bootglm<-function(x,...){
+#' Print summary.bootglm object
+#'
+#' @param x A summary.bootglm object
+#' 
+#' @author Sur Herrera Paredes
+#' @export
+#'
+#' @examples
+print.summary.bootglm<-function(x){
   # Test
   #   x <- Res
   cat("Call:\n")
   print(x$call)
   
-  row.names(x$coefficients) <- paste(as.character(x$coefficients$Taxon),as.character(x$coefficients$Variable),sep="__")
+  row.names(x$coefficients) <- paste(as.character(x$coefficients$Taxon),
+                                     as.character(x$coefficients$Variable),sep="__")
   x$coefficients$Taxon <- NULL
   x$coefficients$Variable <- NULL
   x$N <- format(x$N,digits=2)
   
   print(x$coefficients)
-  
 }
 
 
