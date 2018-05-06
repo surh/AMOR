@@ -5,6 +5,8 @@
 4. Removed functions that identify samples for rarefaction. This has been deprecated
 since rarefaction is not recomended to deal with uneven sampling.
 5. Eliminated summaizeOTU distribution. Never implemented
+6. Removed normalizeSample function.
+7. Roxyfen documentation and examples for get_tax_level
 
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains
