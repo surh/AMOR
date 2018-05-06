@@ -25,8 +25,6 @@
   \item{theme}{A ggplot2 theme to be used woth the plot.}
 }
 
-\details{}
-
 \value{A ggplot2 plot.}
 
 \author{Sur from Dangl Lab}

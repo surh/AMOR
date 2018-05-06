@@ -2,11 +2,7 @@
 \alias{plotgg_rankabun}
 \alias{plotgg_rankabun.default}
 \alias{plotgg_rankabun.Dataset}
-
 \title{Make rank abundance plot}
-
-\description{Make a rank abundance plot from a Dataset object.}
-
 \usage{
   \method{plotgg_rankabun}{default}(Tab, Map = NULL, groupby = NULL, sortby = NULL,
                                     theme = theme_blackbox, variable.name = "Taxon",
@@ -28,14 +24,11 @@
   \item{value.name}{y-axis label in the plot.}
   \item{FUN}{Function to use to aggregate samples according to \code{groupby}}
 }
-\details{}
 
+\description{
+Make a rank abundance plot from a Dataset object.
+}
 \value{A ggplot2 plot.}
-
-\author{Sur from Dangl Lab}
-
-\seealso{\link{plotgg_rankabun2}}
-
 \examples{
 data(Rhizo)
 data(Rhizo.map)
@@ -48,3 +41,5 @@ plotgg_rankabun(Tab = Dat$Tab, Map = Dat$Map,groupby = "fraction",sortby = "Soil
 plotgg_rankabun(Dat)
 plotgg_rankabun(Dat, groupby = "fraction", sortby = "E")
 }
+\author{Sur from Dangl Lab}
+\seealso{\link{plotgg_rankabun2}}

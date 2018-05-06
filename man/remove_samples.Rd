@@ -15,8 +15,6 @@ remove_samples(Dat,samples,droplevels = TRUE)
   \item{droplevels}{Logical indicating whether levels that desappear from the mapping file should be removed.}
 }
 
-\details{}
-
 \value{A Dataset object.}
 
 \author{Sur from Dangl Lab}

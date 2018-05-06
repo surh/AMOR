@@ -6,14 +6,6 @@ plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
                                     variable.name = "Taxon",
                                     value.name = "Abundance",
                                     FUN = mean){
-#   Tab <- Dat$Tab
-#   Map <- Dat$Map
-#   groupby <- "fraction"
-#   sortby <- "E"
-#   FUN <- mean
-#   variable.name <- "Taxon"
-#   value.name <- "Abundance"
-#   theme <- theme_blackbox
   
   Dat <- create_dataset(Tab,Map)
   
@@ -49,7 +41,14 @@ plotgg_rankabun.Dataset <- function(Dat, groupby = NULL,
                                     variable.name = "Taxon",
                                     value.name = "Abundance",
                                     FUN = mean){
-  res <- plotgg_rankabun.default(Tab = Dat$Tab, Map = Dat$Map, groupby = groupby, sortby = sortby, theme = theme,
-                          variable.name = variable.name, value.name = value.name, FUN = FUN)
+  
+  res <- plotgg_rankabun.default(Tab = Dat$Tab,
+                                 Map = Dat$Map,
+                                 groupby = groupby,
+                                 sortby = sortby,
+                                 theme = theme,
+                                 variable.name = variable.name,
+                                 value.name = value.name,
+                                 FUN = FUN)
   return(res)
 }
