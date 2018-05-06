@@ -2,11 +2,6 @@
 # Most functions are for handling abundance tables.
 
 
-findGoodSamples <- function(OTUtab,min_reads_sample){
-    # Finds OTUs with reads above threshold
-    index <- colSums(OTUtab) > min_reads_sample
-    return(index)
-}
 
 makeMultipleRarefactionGroups <- function(id,depth,names,rarefaction_threshold=2000){
     # This is mainly a wrapper for when you want to pool multiple groups
