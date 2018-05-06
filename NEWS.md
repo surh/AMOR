@@ -1,3 +1,8 @@
+# documentation branch
+1. Moved functions out of AMOR.r into their own files and removed unecessary functions
+2. Roxygen2 documentation for beta_diversity
+3. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples
+
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains
 2. Added travis CI build testing
