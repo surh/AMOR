@@ -2,61 +2,6 @@
 # Most functions are for handling abundance tables.
 
 
-extendRow <- function(row,map,n){
-    #Function to extend an abundance table. Imported from MW_pipeline
-
-    # Takes a named vector from and OTU table with the OTU
-    # id in the end, together with a metadata table and converts
-    # the vector into a dataframe where each element of the row
-    # becomes a row itself with all the information about the
-    # sample where it comes from
-    
-    # Get OTU name and get the vector of counts
-    otu_name <- as.character(row[n])
-    row <- row[-n]
-    
-    # Create unique names for the rows of the new data frame
-    rowNames <- paste(otu_name,names(row),sep=".")
-    
-    # Create data frame
-    Dat <- data.frame(otu_freq=as.numeric(row),otu_name=rep(otu_name,n-1))
-    row.names(Dat) <- rowNames
-    
-    #Sanity check
-    if(length(names(row)) != dim(map)[1]){
-        stop("extendRow: The map file dimension does not coincide with the row dimension")
-    }
-    if(any(names(row) != row.names(map))){
-        stop("extendRow: The sample names do not coincide between the map and the row")
-    }
-    
-    #Add metadata columns
-    Dat <- cbind(Dat,map)
-    
-    return(Dat)
-}
-
-extendTable <- function(Dat,map){
-  # Function that takes two data frames (an OTU table and a metadata
-  # file), and generates and extended table.
-  if(any(names(Dat) == "otu")){
-    stop("extendTable: Invalid sample name (otu)")  
-  }
-  if(class(Dat) != "data.frame"){
-    stop("extendTable: OTU table must be a data frame")
-  }
-  
-  # Add otu id's to the data frame
-  Dat$otu <- row.names(Dat)
-  
-  # length of OTU vector
-  n <- dim(Dat)[2]
-  
-  # Extend row by row
-  Profile <- do.call(rbind,apply(Dat,1,extendRow,map=map,n=n))
-  return(Profile)
-}
-
 findGoodSamples <- function(OTUtab,min_reads_sample){
     # Finds OTUs with reads above threshold
     index <- colSums(OTUtab) > min_reads_sample
