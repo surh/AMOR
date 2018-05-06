@@ -2,6 +2,9 @@
 1. Moved functions out of AMOR.r into their own files and removed unecessary functions
 2. Roxygen2 documentation for beta_diversity
 3. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples
+4. Removed functions that identify samples for rarefaction. This has been deprecated
+since rarefaction is not recomended to deal with uneven sampling.
+5. Eliminated summaizeOTU distribution. Never implemented
 
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains

@@ -5,12 +5,6 @@ normalizeSample <- function(sample){
     100*sample/sum(sample)
 }
 
-summarizeOTUdistribution <- function(OTUtab){
-  # Eventually should show how OTUs distribute
-  # in samples.
-  print("Not implemented")
-}
-
 
 ##### EXTERNAL FUNCTIONS
 
