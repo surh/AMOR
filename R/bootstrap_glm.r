@@ -46,8 +46,6 @@
 #' }
 #' @author Sur Herrera Paredes
 #' @export
-#'
-#' @examples
 bootstrap_glm <- function(x,...) UseMethod("bootstrap_glm")
 
 #' @rdname bootstrap_glm
@@ -135,8 +133,6 @@ bootstrap_glm.Dataset <- function(x,formula, family=poisson(link="log"),
 #' @return A summary.bootglm object
 #' @author Sur Herrera Paredes
 #' @export
-#'
-#' @examples
 summary.bootglm <- function(object,sortby="Variable",...){
   if(sortby != "Taxon" && sortby != "Variable"){
     stop("ERROR: You can only sort by Taxon or Variable",call.=TRUE)
@@ -172,8 +168,6 @@ summary.bootglm <- function(object,sortby="Variable",...){
 #' 
 #' @author Sur Herrera Paredes
 #' @export
-#'
-#' @examples
 print.summary.bootglm<-function(x){
   # Test
   #   x <- Res
@@ -188,5 +182,3 @@ print.summary.bootglm<-function(x){
   
   print(x$coefficients)
 }
-
-
