@@ -18,6 +18,8 @@
 #' @seealso \code{\link{create_dataset}}, \code{\link{pca}}, \code{\link{PCA}},
 #' \code{\link{pco}}, \code{\link{dsvdis}}
 #' 
+#' @export
+#' 
 #' @examples
 #' data(Rhizo)
 #' data(Rhizo.map)
@@ -57,6 +59,7 @@ PCO.Dataset <- function(x, dim=3, distfun=dist){
   return(mat.pco)
 }
 
+#' @export
 summary.PCO <- function(object){
   #object <- Dat.pco
   ncomponents <- ncol(object$points)
@@ -75,6 +78,7 @@ summary.PCO <- function(object){
   return(sum.pco)
 }
 
+#' @export
 print.summary.PCO <- function(x,digits = 2, n = 5){
   cat("Principal Coordinate Analysis:\n")
   cat("\t",x$ncomponents, " Components\n\n")

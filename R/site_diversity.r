@@ -1,14 +1,4 @@
 site_diversity <- function(Dat,factor,group,divfun = total_richness,nperm=20){
-  #nperm <- 3
-  #factor <- "Genotype"
-  #group <- "Soil"
-  #Dat <- Dat.rar
-  #divfun <- total_richness
-  
-  #factor <- "accession"
-  #group <- "Soil"
-  #divfun <- total_richness
-  #divfun <- divfun
   
   divfun <- match.fun(divfun)
   Dat.temp <- remove_samples(Dat, row.names(Dat$Map)[ Dat$Map[,factor] != group ])

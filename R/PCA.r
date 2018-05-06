@@ -23,6 +23,8 @@
 #' @seealso  \link{create_dataset}, \link{pca}, \link{PCO}, \link{pco},
 #' \link{plotgg.pca}
 #' 
+#' @export
+#' 
 #' @examples 
 #' data(Rhizo)
 #' data(Rhizo.map)
@@ -62,7 +64,7 @@ PCA.Dataset <- function(x, cor = FALSE,
   return(res)
 }
 
-
+#' @export
 summary.PCA <- function(object){
   ncomponents <- length(object$sdev)
   components <- paste("PC",1:ncomponents,sep = "")
@@ -80,6 +82,7 @@ summary.PCA <- function(object){
   return(sum.pca)
 }
 
+#' @export
 print.summary.PCA <- function(x,digits = 2, n = 5){
   cat("Principal Component Analysis:\n")
   cat("\t",x$ncomponents, " Components\n\n")

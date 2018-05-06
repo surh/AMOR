@@ -1,7 +1,11 @@
 plotgg_rankabun <- function(...) UseMethod("plotgg_rankabun")
 
-plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL, sortby = NULL, theme = theme_blackbox,
-                                    variable.name = "Taxon", value.name = "Abundance", FUN = mean){
+plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
+                                    sortby = NULL,
+                                    theme = theme_blackbox,
+                                    variable.name = "Taxon",
+                                    value.name = "Abundance",
+                                    FUN = mean){
 #   Tab <- Dat$Tab
 #   Map <- Dat$Map
 #   groupby <- "fraction"
@@ -39,8 +43,12 @@ plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL, sortby = NU
   return(p1)
 }
 
-plotgg_rankabun.Dataset <- function(Dat, groupby = NULL, sortby = NULL, theme = theme_blackbox,
-                                    variable.name = "Taxon", value.name = "Abundance", FUN = mean){
+plotgg_rankabun.Dataset <- function(Dat, groupby = NULL,
+                                    sortby = NULL,
+                                    theme = theme_blackbox,
+                                    variable.name = "Taxon",
+                                    value.name = "Abundance",
+                                    FUN = mean){
   res <- plotgg_rankabun.default(Tab = Dat$Tab, Map = Dat$Map, groupby = groupby, sortby = sortby, theme = theme,
                           variable.name = variable.name, value.name = value.name, FUN = FUN)
   return(res)

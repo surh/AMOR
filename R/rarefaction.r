@@ -1,4 +1,4 @@
-rarefaction <- function(x,sample) UseMethod("rarefaction")
+rarefaction <- function(x, sample) UseMethod("rarefaction")
 
 rarefaction.default <- function (x, sample){
   if (!identical(all.equal(x, round(x)), TRUE)){
@@ -29,4 +29,3 @@ rarefaction.Dataset <- function (x, sample){
   x <- create_dataset(Tab=Tab,Map=x$Map,Tax=x$Tax)
   return(x)
 }
-

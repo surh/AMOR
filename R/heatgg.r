@@ -79,12 +79,15 @@ heatgg <- function(...) UseMethod("heatgg")
 
 #' @rdname heatgg
 #' @method heatgg default
-heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
-    col.name = "Taxon", value.name = "Abundance", trans = "log",
-    guide = "colourbar", gradientn.colours = c("white","#67001F"),
+heatgg.default <- function(Tab, Map, order.samples.by = NULL,
+                           facet = NULL, sample.id.var = "SAMPLEID",
+                           col.name = "Taxon", value.name = "Abundance",
+                           trans = "log",
+                           guide = "colourbar",
+                           gradientn.colours = c("white","#67001F"),
                            facet.scales = "free",cluster = FALSE,
                            distfun = dist){
-
+  
   # Check for errors
   if(!all(colnames(Tab) == row.names(Map))){
     stop("ERROR: Samples names in Tab do not math sample names in Map.", call. = TRUE)

@@ -6,7 +6,7 @@
 #' 
 #' @seealso \code{\link{plotgg.PCA}}, \code{\link{plotgg.PCO}},
 #' \code{\link{plotgg.site.diversity}}
-#' 
+#' @export
 plotgg <- function(...) UseMethod("plotgg")
 
 #' Plot a PCA
@@ -30,6 +30,8 @@ plotgg <- function(...) UseMethod("plotgg")
 #' @return A ggplot2 object of the PCA plot.
 #' 
 #' @author Sur from Dangl Lab.
+#' 
+#' @export
 #' 
 #' @seealso \code{\link{PCA}}
 #' 
@@ -118,6 +120,8 @@ plotgg.PCA <- function(x,components=c("PC1","PC2"),shape=NULL,col=NULL,fill = NU
 #' 
 #' @author Sur from Dangl Lab.
 #' 
+#' @export
+#' 
 #' @seealso \code{\link{PCO}}
 #' 
 #' @examples
@@ -176,6 +180,8 @@ plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,fill=NU
 #' 
 #' @author Sur from Dangl Lab.
 #' 
+#' @export
+#' 
 #' @seealso \code{\link{site_diversity}}, \code{\link{compare_site_diversity}}
 #' 
 #' @examples 
@@ -218,5 +224,3 @@ plotgg.site.diversity <- function(sitediv, p = c(0.025, 0.975),
   
   return(p1)
 }
-
-

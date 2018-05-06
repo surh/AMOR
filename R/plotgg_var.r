@@ -1,10 +1,6 @@
 plotgg_var <- function(...) UseMethod("plotgg_var")
 
 plotgg_var.default <- function(Map, var.name ,x, col = NULL, theme = theme_blackbox){
-  # Map <- Map
-  # x <- "Fraction"
-  # col <- "Genotype"
-  # var.name <- "Depth"
   
   p1 <- ggplot(Map,aes_string(x = x, y = var.name, col = col, fill = col)) +
     geom_boxplot(fill=NA,outlier.colour = NA, position = position_dodge(width = 0.9), size = 2)
