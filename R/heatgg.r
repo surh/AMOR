@@ -207,6 +207,7 @@ heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id
 }
   
 #### UTILITIES ###
+#' @export
 print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
   grid.newpage()
   top.layout <- grid.layout(nrow = 2, ncol = 2,
@@ -231,7 +232,7 @@ print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
         vp=viewport(layout.pos.col=1, layout.pos.row=2))
   
   ## add legend
-  legend <- g_legend(x$p1)
+  legend <- AMOR:::g_legend(x$p1)
   pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
   grid.draw(legend)
   upViewport(0)
@@ -241,6 +242,7 @@ print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
   return(res)
 }
 
+# Internal
 g_legend <- function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")

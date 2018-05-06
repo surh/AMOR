@@ -36,5 +36,5 @@ write.qiime.default <- function(x, file){
 #' @rdname write.qiime
 #' @method write.qiime Dataset
 write.qiime.Dataset <- function(x, file){
-  write.qiime.default(Tab = x$Tab, file = file)
+  write.qiime.default(x = x$Tab, file = file)
 }

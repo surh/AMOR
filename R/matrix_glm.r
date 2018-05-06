@@ -1,31 +1,8 @@
 matrix_glm <- function(x,...) UseMethod("matrix_glm")
 
-matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link="log"),
-                   response.name="Count",verbose=FALSE,...){
-  # Test data
-#   formula <- formula(~ frac + gen + depthK)
-#   x <- Dat$Tab
-#   Map <- Dat$Map
-#   control <- list(maxit=100)
-#   family <- poisson(link="log")
-#   response.name <- "Count"
-  
-#     formula <- formula(~ frac + gen + depthK)
-#     x <- Tab.bs
-#     Map <- Dat.bs
-#     Map$frac <- factor(Map$frac,levels=c("R","E"))
-#     control <- list(maxit=100)
-#     family <- poisson(link="log")
-#     response.name <- "Count"
-  
-  # Test rhizo
-  #x <- Dat$Tab
-  #Map <- Dat$Map
-  #formula <- formula(~ soil + fraction + accession + plate)
-  #family <- poisson(link = "log")
-  #response.name <- "Count"
-  #verbose <- FALSE
-    
+matrix_glm.default <- function(x=NULL,Map=NULL,
+                               formula=NULL,family=poisson(link="log"),
+                               response.name="Count",verbose=FALSE,...){
   # Check names
   if(any(colnames(x) != row.names(Map))){
     stop("ERROR: sample names in abundance table don't match sample names in mapping file",call.=TRUE)
@@ -77,7 +54,10 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
   return(Res)
 }
 
-matrix_glm.Dataset <- function(x,formula=NULL,family=poisson(link="log"),response.name="Count",verbose=FALSE,...){
+matrix_glm.Dataset <- function(x,formula=NULL,
+                               family=poisson(link="log"),
+                               response.name="Count",
+                               verbose=FALSE,...){
   m1 <- matrix_glm.default(x=x$Tab,Map=x$Map,formula=formula,family=family,
                            response.name=response.name,verbose=verbose,...)
   m1$call=match.call()
@@ -85,9 +65,6 @@ matrix_glm.Dataset <- function(x,formula=NULL,family=poisson(link="log"),respons
 }
 
 summary.matrix.glm <- function(object,sortby="Variable",...){
-  # Test data
-  #object <- m1
-  #sortby <- "Variable"
   
   if(sortby != "Taxon" && sortby != "Variable"){
     stop("ERROR: You can only sort by Taxon or Variable",call.=TRUE)
@@ -110,8 +87,6 @@ summary.matrix.glm <- function(object,sortby="Variable",...){
 }
 
 print.summary.matrix.glm<-function(x,...){
-  # Test
-#   x <- Res
   cat("Call:\n")
   print(x$call)
   
