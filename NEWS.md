@@ -1,18 +1,20 @@
 # documentation branch
-1. Moved functions out of AMOR.r into their own files and removed unecessary functions
-2. Roxygen2 documentation for beta_diversity
-3. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples
-4. Removed functions that identify samples for rarefaction. This has been deprecated
-since rarefaction is not recomended to deal with uneven sampling.
-5. Eliminated summaizeOTU distribution. Never implemented
-6. Removed normalizeSample function.
-7. Roxyfen documentation and examples for get_tax_level
-8. Removed read.pool function
-9. Documentation and examples for write.qiime
-10. Roxygen2 documentation for bootglm and asasociated methods
-11. Moving clean documentation to roxygen2
-12. Moving create_dataset documentation to roxgen2
-13. Homgenizing method variable names for PCA and PCO
+1. Moved functions out of AMOR.r into their own files and removed unecessary functions.
+Might break backwards compatibility.
+2. Roxygen2 documentation for beta_diversity.
+3. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples.
+4. Removed functions that identify samples for rarefaction. This has been deprecated.
+since rarefaction is not recomended to deal with uneven sampling. Might break backwards
+compatibility.
+5. Eliminated summarizeOTUDistribution. Never implemented.
+6. Removed normalizeSample function. Might break backwards compatibility.
+7. Roxyfen documentation and examples for get_tax_level.
+8. Removed read.pool function. Might break backwards compatibility
+9. Documentation and examples for write.qiime.
+10. Roxygen2 documentation for bootglm and associated methods.
+11. Moving clean documentation to roxygen2.
+12. Moving create_dataset documentation to roxgen2.
+13. Homgenizing method variable names for PCA and PCO. Might break backwards compatibility.
 
 # 0.1-3
 1. Added support in subset.Dataset for when only one sample remains
