@@ -30,13 +30,13 @@
 #' Dat.pca <- PCA(Dat)
 #' plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 #' summary(Dat.pca)
-PCA <- function(...) UseMethod("PCA")
+PCA <- function(x, cor, dim) UseMethod("PCA")
 
 #' @rdname PCA
 #' @method PCA default
-PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
+PCA.default <- function(x, cor=FALSE,
+                        dim=min(nrow(x), ncol(x))){
   # Taken from labdsv
-#   res <- labdsv::pca(...)
   x <- t(x)
   temp <- prcomp(x,retx=TRUE,center=TRUE,scale=cor)
   res <- list(scores = temp$x[,1:dim],
@@ -52,11 +52,12 @@ PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
 
 #' @rdname PCA
 #' @method PCA Dataset
-PCA.Dataset <- function(Dat,cor = FALSE, dim = min(nrow(Dat$Tab),ncol(Dat$Tab))){
-  mat <- Dat$Tab
+PCA.Dataset <- function(x, cor = FALSE,
+                        dim = min(nrow(x$Tab), ncol(x$Tab))){
+  mat <- x$Tab
   res <- PCA.default(mat, cor = cor, dim = dim)
-  res$Map <- Dat$Map
-  res$Tax <- Dat$Tax
+  res$Map <- x$Map
+  res$Tax <- x$Tax
   class(res) <- c("PCA")
   return(res)
 }

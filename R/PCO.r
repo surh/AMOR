@@ -32,11 +32,11 @@
 #' plotgg(Dat.pco)
 #' plotgg(Dat.pco,shape="fraction",point_size=3)
 #' plotgg(Dat.pco,shape="fraction",col="accession",point_size=4)
-PCO <- function(...) UseMethod("PCO")
+PCO <- function(x, dim, distfun) UseMethod("PCO")
 
 #' @rdname PCO
 #' @method PCO default
-PCO.default <- function(x,dim=3){
+PCO.default <- function(x, dim=3){
   # Taken from labdsv
   res <- cmdscale(x, k = dim, eig = TRUE)
   res$Map <- NULL
@@ -48,13 +48,13 @@ PCO.default <- function(x,dim=3){
 
 #' @rdname PCO
 #' @method PCO Dataset
-PCO.Dataset <- function(Dat,dim=3,distfun=dist){
-  mat <- Dat$Tab
+PCO.Dataset <- function(x, dim=3, distfun=dist){
+  mat <- x$Tab
   mat <- t(mat)
   mat.dist <- distfun(mat)
   mat.pco <- PCO.default(mat.dist,dim=dim)
-  mat.pco$Map <- Dat$Map
-  mat.pco$Tax <- Dat$Tax
+  mat.pco$Map <- x$Map
+  mat.pco$Tax <- x$Tax
   return(mat.pco)
 }
 
