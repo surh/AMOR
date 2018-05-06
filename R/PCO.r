@@ -2,10 +2,9 @@
 #' 
 #' Function that performs Principal Coordinates Analysis on abundance matrix.
 #' 
-#' @param x Distance matrix, must be a \code{dist} object.
+#' @param x Distance matrix, must be a \code{dist} object, or a \code{Dataset}
+#' object. See \code{\link{create_dataset}} for more information.
 #' @param dim Number of dimensions to return.
-#' @param Dat \code{Dataset} object. See \code{\link{create_dataset}}
-#' for more information.
 #' @param distfun Function that calculates distance matrix for abundance
 #' table in \code{Dataset} object.
 #' 

@@ -2,8 +2,8 @@
 #' 
 #' Function that performs principal component analysis on an abundance matrix.
 #' 
-#' @param x Numeric matrix where samples are columns and rows are species.
-#' @param Dat A Dataset object, see \code{\link{create_dataset}}.
+#' @param x Numeric matrix where samples are columns and rows are species, or a
+#' Dataset object, see \code{\link{create_dataset}}.
 #' @param cor logical value indicating whether the correlation matrix should
 #' be used instead of the covariance matrix.
 #' @param dim Number of dimensions to return.
