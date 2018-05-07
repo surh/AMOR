@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootstrap_glm.r
 \name{summary.bootglm}
 \alias{summary.bootglm}
-\title{Summarizing bootstrap_glm model fits}
+\title{Summarize bootstrap_glm model fits}
 \usage{
 \method{summary}{bootglm}(object, sortby = "Variable", ...)
 }
@@ -15,7 +15,7 @@
 A summary.bootglm object
 }
 \description{
-Summarizing bootstrap_glm model fits
+Summarize bootstrap_glm model fits
 }
 \author{
 Sur Herrera Paredes

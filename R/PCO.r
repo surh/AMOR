@@ -1,4 +1,4 @@
-#' Principal Coordinates Analysis.
+#' Principal Coordinates Analysis
 #' 
 #' Function that performs Principal Coordinates Analysis on abundance matrix.
 #' 

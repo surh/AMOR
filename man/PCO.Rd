@@ -4,7 +4,7 @@
 \alias{PCO}
 \alias{PCO.default}
 \alias{PCO.Dataset}
-\title{Principal Coordinates Analysis.}
+\title{Principal Coordinates Analysis}
 \usage{
 PCO(x, dim, distfun)
 
