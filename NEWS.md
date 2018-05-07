@@ -5,12 +5,15 @@
 option to force return of a dataset object from pool samples.
 4. Fixed bug with plotgg_rankabin2 caused because some columns of the
 aggregated dataset became tables instead of vectors
-5. Moved functions out of AMOR.r into their own files and removed unecessary functions.
-Might break backwards compatibility.
+5. Moved functions out of AMOR.r into their own files and removed
+unecessary functions. Might break backwards compatibility.
 6. Roxygen2 documentation for beta_diversity.
-7. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples.
-8. Removed functions that identify samples for rarefaction. This has been deprecated.
-since rarefaction is not recomended to deal with uneven sampling. Might break backwards
+7. Roxygen2 documentation for find_good_samples. Also alias
+findGoodSamples.
+8. Removed functions that identify samples for rarefaction.
+This has been deprecated.
+since rarefaction is not recomended to deal with uneven sampling.
+Might break backwards
 compatibility.
 9. Eliminated summarizeOTUDistribution. Never implemented.
 10. Removed normalizeSample function. Might break backwards compatibility.
@@ -20,10 +23,13 @@ compatibility.
 14. Roxygen2 documentation for bootglm and associated methods.
 15. Moving clean documentation to roxygen2.
 16. Moving create_dataset documentation to roxgen2.
-17. Homgenizing method variable names for PCA and PCO. Might break backwards compatibility.
-18. Movign documentation to roxygen2 for functions matrix_glm, matrix_glmNB, plotgg_rankabun2,
-plotgg_rankabun, phylogram, plotgg_taxon, plotgg_var, rarefaction, remove_samples,
-site_diversity, compare_site_diversity and total_richness.
+17. Homgenizing method variable names for PCA and PCO. Might break
+backwards compatibility.
+18. Movign documentation to roxygen2 for functions matrix_glm,
+matrix_glmNB, plotgg_rankabun2, plotgg_rankabun, phylogram,
+plotgg_taxon, plotgg_var, rarefaction, remove_samples,
+remove_taxons, site_diversity, compare_site_diversity and
+total_richness.
 19. Switched theme_blackbox to a function and added roxygen documentation.
 Might break backwards compatibility.
 
