@@ -1,33 +1,31 @@
-# AMOR 0.1-3roxygen
-1. Moved functions out of AMOR.r into their own files and removed unecessary functions.
-Might break backwards compatibility.
-2. Roxygen2 documentation for beta_diversity.
-3. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples.
-4. Removed functions that identify samples for rarefaction. This has been deprecated.
-since rarefaction is not recomended to deal with uneven sampling. Might break backwards
-compatibility.
-5. Eliminated summarizeOTUDistribution. Never implemented.
-6. Removed normalizeSample function. Might break backwards compatibility.
-7. Roxyfen documentation and examples for get_tax_level.
-8. Removed read.pool function. Might break backwards compatibility
-9. Documentation and examples for write.qiime.
-10. Roxygen2 documentation for bootglm and associated methods.
-11. Moving clean documentation to roxygen2.
-12. Moving create_dataset documentation to roxgen2.
-13. Homgenizing method variable names for PCA and PCO. Might break backwards compatibility.
-14. Movign documentation to roxygen2 for functions matrix_glm, matrix_glmNB, plotgg_rankabun2,
-plotgg_rankabun, phylogram, plotgg_taxon, plotgg_var, rarefaction, remove_samples,
-site_diversity, compare_site_diversity and total_richness.
-15. Switched theme_blackbox to a function and added roxygen documentation.
-Might break backwards compatibility.
-
-# AMOR 0.1-3dev
+# AMOR 0.2-0dev
 1. Added support in subset.Dataset for when only one sample remains
 2. Added travis CI build testing
 3. Fixed bug with plotgg_rankabun caused by update of pool_samples. Added
 option to force return of a dataset object from pool samples.
 4. Fixed bug with plotgg_rankabin2 caused because some columns of the
 aggregated dataset became tables instead of vectors
+5. Moved functions out of AMOR.r into their own files and removed unecessary functions.
+Might break backwards compatibility.
+6. Roxygen2 documentation for beta_diversity.
+7. Roxygen2 documentation for find_good_samples. Also alias findGoodSamples.
+8. Removed functions that identify samples for rarefaction. This has been deprecated.
+since rarefaction is not recomended to deal with uneven sampling. Might break backwards
+compatibility.
+9. Eliminated summarizeOTUDistribution. Never implemented.
+10. Removed normalizeSample function. Might break backwards compatibility.
+11. Roxyfen documentation and examples for get_tax_level.
+12. Removed read.pool function. Might break backwards compatibility
+13. Documentation and examples for write.qiime.
+14. Roxygen2 documentation for bootglm and associated methods.
+15. Moving clean documentation to roxygen2.
+16. Moving create_dataset documentation to roxgen2.
+17. Homgenizing method variable names for PCA and PCO. Might break backwards compatibility.
+18. Movign documentation to roxygen2 for functions matrix_glm, matrix_glmNB, plotgg_rankabun2,
+plotgg_rankabun, phylogram, plotgg_taxon, plotgg_var, rarefaction, remove_samples,
+site_diversity, compare_site_diversity and total_richness.
+19. Switched theme_blackbox to a function and added roxygen documentation.
+Might break backwards compatibility.
 
 # AMOR 0.1-2
 1. Fixed bug introduced on previous release regarding in remove_samples.
