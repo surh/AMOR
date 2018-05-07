@@ -1,31 +1,39 @@
-matrix_glm <- function(x,...) UseMethod("matrix_glm")
+#' Fit Generalized Linear Models on a matrix of observations
+#' 
+#' Takes a matrix of observations, and fits the specified GLM
+#' on each species, returning the matrix of coefficients.
+#' 
+#' This function will take each species (row) in the abundance
+#' matrix and fit the specified (cia the formula option) GLM
+#' independently on each one.
+#'
+#' @param x Either a matrix of abundances with samples as columns and species as rows or a Dataset object
+#' @param Map A data.frame containing the variables to be modelled as columns and samples as rows. The rows should be named with sample IDs and must correspond to the column names from x if an abundance matrix was passed
+#' @param formula A formula specifying the model to be fit. Only the right hand side of the equation must be passed, and anything on the left side wild be silently ignored
+#' @param family The GLM fmaily to be used. It must be an object of class family. use ?family for more help
+#' @param response.name String indicating the name to be used for the response (dependent) variable in the GLM
+#' @param verbose Logical value. If true the taza name is printed while the fit is in progress.
+#' @param ... Other parameters for the glm() function like control.
+#'
+#' @return Returns a matrix.glm object which is a list containing the following elements:
+#' \describe{
+#'   \item{coefficients}{A matrix of coefficients for the glm fit. The matix has dimensions S x p, where S is the number of species in the abundance matrix, and p the number of parameters in the specified GLM. Each row corresponds to an independent fit of the model with glm() function and the specified formula}
+#'   \item{SE}{Similar to Coef, but this matrix contains the estimated Standard Errors (ie. the Standard deviation of the coefficients).}
+#'   \item{AIC}{A named vector containing the Akaike Information Criteria (AIC) of each independent fit. The names of the vector correspond to the species IDs in the input abundance matrix}
+#'   \item{call}{Function call via match.call}
+#'   \item{family}{GLM model family. An object of class \code{family}}
+#'   \item{X}{Design matrix of the model fit.}
+#' }
+#' @author Sur Herrera Paredes
+#' @export
+matrix_glm <- function(x, Map, formula, family, response.name,
+                       verbose, ...) UseMethod("matrix_glm")
 
-matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link="log"),
-                   response.name="Count",verbose=FALSE,...){
-  # Test data
-#   formula <- formula(~ frac + gen + depthK)
-#   x <- Dat$Tab
-#   Map <- Dat$Map
-#   control <- list(maxit=100)
-#   family <- poisson(link="log")
-#   response.name <- "Count"
-  
-#     formula <- formula(~ frac + gen + depthK)
-#     x <- Tab.bs
-#     Map <- Dat.bs
-#     Map$frac <- factor(Map$frac,levels=c("R","E"))
-#     control <- list(maxit=100)
-#     family <- poisson(link="log")
-#     response.name <- "Count"
-  
-  # Test rhizo
-  #x <- Dat$Tab
-  #Map <- Dat$Map
-  #formula <- formula(~ soil + fraction + accession + plate)
-  #family <- poisson(link = "log")
-  #response.name <- "Count"
-  #verbose <- FALSE
-    
+#' @rdname matrix_glm
+#' @method matrix_glm default
+matrix_glm.default <- function(x=NULL,Map=NULL,
+                               formula=NULL,family=poisson(link="log"),
+                               response.name="Count",verbose=FALSE, ...){
   # Check names
   if(any(colnames(x) != row.names(Map))){
     stop("ERROR: sample names in abundance table don't match sample names in mapping file",call.=TRUE)
@@ -77,17 +85,41 @@ matrix_glm.default <- function(x=NULL,Map=NULL,formula=NULL,family=poisson(link=
   return(Res)
 }
 
-matrix_glm.Dataset <- function(x,formula=NULL,family=poisson(link="log"),response.name="Count",verbose=FALSE,...){
-  m1 <- matrix_glm.default(x=x$Tab,Map=x$Map,formula=formula,family=family,
-                           response.name=response.name,verbose=verbose,...)
+#' @rdname matrix_glm
+#' @method matrix_glm Dataset
+matrix_glm.Dataset <- function(x,formula=NULL,
+                               family=poisson(link="log"),
+                               response.name="Count",
+                               verbose=FALSE,...){
+  m1 <- matrix_glm.default(x=x$Tab, Map=x$Map, formula=formula,
+                           family=family,
+                           response.name=response.name,
+                           verbose=verbose, ...)
   m1$call=match.call()
   return(m1)
 }
 
-summary.matrix.glm <- function(object,sortby="Variable",...){
-  # Test data
-  #object <- m1
-  #sortby <- "Variable"
+#' Summarize matrix GLM results
+#'
+#'Takes a matrix.glm or bootglm object and reformats the results
+#'
+#' @param object A matrix.glm or bootglm object.
+#' @param sortby A string indicating how to sort the coefficients.
+#' Either by "Vatiable" or "Taxon"
+#' 
+#' @return Returns a summary.matrix.glm or summary.bootglm
+#' object which is a list containing the following elements:
+#' \describe{
+#' \item{coefficients}{Coefficient table. For matrix.glm objects it
+#' includes standard errors, z-values and p-values. NOTE: Since only
+#' p-values from z-tests are provided at this point, they are only
+#' appropriate for binomial, poisson and negative.binomial models.
+#' For boot.glm objects in includes the 2.5% and 97.5% percentiles
+#' and the bootstrap confidence for each parameter (Pr(param > 0)).}
+#' \item{call}{Original matrix_glm() or bootstrap_glm() call}}
+#' @author Sur Herrera Paredes
+#' @export
+summary.matrix.glm <- function(object,sortby="Variable"){
   
   if(sortby != "Taxon" && sortby != "Variable"){
     stop("ERROR: You can only sort by Taxon or Variable",call.=TRUE)
@@ -109,17 +141,18 @@ summary.matrix.glm <- function(object,sortby="Variable",...){
   return(Res)
 }
 
+#' @export
 print.summary.matrix.glm<-function(x,...){
-  # Test
-#   x <- Res
   cat("Call:\n")
   print(x$call)
   
-  row.names(x$coefficients) <- paste(as.character(x$coefficients$Taxon),as.character(x$coefficients$Variable),sep="__")
+  row.names(x$coefficients) <- paste(as.character(x$coefficients$Taxon),
+                                     as.character(x$coefficients$Variable),
+                                     sep="__")
   x$coefficients$Taxon <- NULL
   x$coefficients$Variable <- NULL
   
-  printCoefmat(x$coefficients,P.values=TRUE,has.Pvalue=TRUE,digits=3)
+  printCoefmat(x$coefficients, P.values=TRUE, has.Pvalue=TRUE, digits=3)
   
 }
 

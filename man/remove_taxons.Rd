@@ -14,8 +14,6 @@ remove_taxons(Dat,taxons)
   \item{taxons}{String vector indicating which taxa to remove. Taxon IDs must be equal to the row names of the abundance table on \code{Dat}.}
 }
 
-\details{}
-
 \value{A Dataset object.}
 
 \author{Sur from Dangl Lab}

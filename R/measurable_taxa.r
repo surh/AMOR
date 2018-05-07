@@ -104,6 +104,7 @@ measurable_taxa.Dataset <- function(Dat, min_reads_otu = 25, min_samples_otu = 5
   return(res)
 }
 
+#' @export
 findGoodOTUs <- function(...){
   warning("This function will be deprecated soon. Use measurable_taxa instead\n",call. = TRUE)
   measurable_taxa(...)

@@ -13,6 +13,7 @@
 #' dataset prior to returning it.
 #' 
 #' @author Sur from Dangl Lab
+#' @export
 #' 
 #' @return A Dataset object
 subset.Dataset <- function(x,subset,drop = FALSE,clean = FALSE){
