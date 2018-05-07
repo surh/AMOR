@@ -1,4 +1,4 @@
-# AMOR 0.2-0dev
+# AMOR 0.2-0
 1. Added support in subset.Dataset for when only one sample remains
 2. Added travis CI build testing
 3. Fixed bug with plotgg_rankabun caused by update of pool_samples. Added
