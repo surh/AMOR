@@ -44,6 +44,7 @@ plotgg_taxon <- function(...) UseMethod("plotgg_taxon")
 
 #' @rdname plotgg_taxon
 #' @method plotgg_taxon default
+#' @export
 plotgg_taxon.default <- function(Tab, Map,
                                  taxon ,x,
                                  col = NULL,
@@ -88,6 +89,7 @@ plotgg_taxon.default <- function(Tab, Map,
 
 #' @rdname plotgg_taxon
 #' @method plotgg_taxon Dataset
+#' @export
 plotgg_taxon.Dataset <- function(Dat, taxon , x,
                                  col = NULL,
                                  var.name = "Abundance",
