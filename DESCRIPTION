@@ -20,7 +20,7 @@ Authors@R: c(person("Sur", "Herrera Paredes",
 		    comment = c(ORCID = "0000-0001-9246-8337")))
 Description: Abundance Matrix Operations in R
 URL: https://github.com/surh/AMOR,
-     https://surh.github.io/AMORR
+     https://surh.github.io/AMOR
 BugReports: https://github.com/surh/AMOR/issues
 License: GPL-3
 RoxygenNote: 6.0.1
