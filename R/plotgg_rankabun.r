@@ -33,6 +33,7 @@ plotgg_rankabun <- function(...) UseMethod("plotgg_rankabun")
 
 #' @rdname plotgg_rankabun
 #' @method plotgg_rankabun default
+#' @export
 plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
                                     sortby = NULL,
                                     theme = theme_blackbox(),
@@ -70,6 +71,7 @@ plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
 
 #' @rdname plotgg_rankabun
 #' @method plotgg_rankabun Dataset
+#' @export
 plotgg_rankabun.Dataset <- function(Dat, groupby = NULL,
                                     sortby = NULL,
                                     theme = theme_blackbox(),

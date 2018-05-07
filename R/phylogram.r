@@ -38,6 +38,7 @@ phylogram <- function(...) UseMethod("phylogram")
 
 #' @rdname phylogram
 #' @method phylogram default
+#' @export
 phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
                               scales="free_x",space = "free_x", nrow.legend=20,
@@ -90,6 +91,7 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
 
 #' @rdname phylogram
 #' @method phylogram Dataset
+#' @export
 phylogram.Dataset <- function(Dat, facet = NULL,colname="Sample",
                               variable.name="Taxon",value.name="Abundance",
                               scales="free_x",space = "free_x", nrow.legend=20,

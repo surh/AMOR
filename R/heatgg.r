@@ -79,6 +79,7 @@ heatgg <- function(...) UseMethod("heatgg")
 
 #' @rdname heatgg
 #' @method heatgg default
+#' @export
 heatgg.default <- function(Tab, Map, order.samples.by = NULL,
                            facet = NULL, sample.id.var = "SAMPLEID",
                            col.name = "Taxon", value.name = "Abundance",
@@ -197,6 +198,7 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL,
 
 #' @rdname heatgg
 #' @method heatgg Dataset
+#' @export
 heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
                            col.name = "Taxon", value.name = "Abundance", trans = "log",
                            guide = "colourbar", gradientn.colours = c("white","#67001F"),

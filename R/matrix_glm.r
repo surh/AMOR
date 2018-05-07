@@ -31,6 +31,7 @@ matrix_glm <- function(x, Map, formula, family, response.name,
 
 #' @rdname matrix_glm
 #' @method matrix_glm default
+#' @export
 matrix_glm.default <- function(x=NULL,Map=NULL,
                                formula=NULL,family=poisson(link="log"),
                                response.name="Count",verbose=FALSE, ...){
@@ -87,6 +88,7 @@ matrix_glm.default <- function(x=NULL,Map=NULL,
 
 #' @rdname matrix_glm
 #' @method matrix_glm Dataset
+#' @export
 matrix_glm.Dataset <- function(x,formula=NULL,
                                family=poisson(link="log"),
                                response.name="Count",
