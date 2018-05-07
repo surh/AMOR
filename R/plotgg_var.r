@@ -42,6 +42,7 @@ plotgg_var <- function(...) UseMethod("plotgg_var")
 
 #' @rdname plotgg_var
 #' @method plotgg_var default
+#' @export
 plotgg_var.default <- function(Map, var.name ,x,
                                col = NULL,
                                theme = theme_blackbox()){
@@ -71,6 +72,7 @@ plotgg_var.default <- function(Map, var.name ,x,
 
 #' @rdname plotgg_var
 #' @method plotgg_var Dataset
+#' @export
 plotgg_var.Dataset <- function(Dat, var.name ,
                                x, col = NULL,
                                theme = theme_blackbox()){
