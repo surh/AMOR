@@ -16,7 +16,8 @@ compatibility.
 11. Moving clean documentation to roxygen2.
 12. Moving create_dataset documentation to roxgen2.
 13. Homgenizing method variable names for PCA and PCO. Might break backwards compatibility.
-14. Moving matrix_glm documentation to roxgen2.
+14. Movign documentation to roxygen2 for functions matrix_glm, matrix_glmNB, plotgg_rankabun2,
+plotgg_rankabun, phylogram, plotgg_taxon
 
 # AMOR 0.1-3dev
 1. Added support in subset.Dataset for when only one sample remains

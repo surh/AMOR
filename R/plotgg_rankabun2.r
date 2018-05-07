@@ -1,5 +1,45 @@
+#' Make rank abundance plot with Poisson confidence intervals.
+#' 
+#' Make a rank abundance plot with Poisson confidence intervals
+#' from a Dataset object.
+#' IMPORTANT: There is no guarantee that Poisson confidence
+#' intervals are representative of the data. This should be viewed
+#' only as descriptive statistic and not for inference.
+#' 
+#' 
+#' 
+#' 
+#' @param Tab A matrix object with samples as columns and taxa as rows.
+#' @param Map A data frame with metadata forTab. Each row must be a
+#' sample with row names matching column names in Tab and in the
+#' same order as in Tab.
+#' @param Dat A Dataset object.
+#' @param groupby Variable name to be used for grouping samples before plotting th rank abundance.
+#' @param sortby Variable value to be used as reference for sorting the taxa in the rank abundance plot.
+#' @param alpha Transparency parameter for ggplot2
+#' @param theme ggplot2 theme to be used for plotting.
+#' @param variable.name x-axis label in the plot.
+#' @param value.name y-axis label in the plot.
+#' @param sample.id.name name to store sample IDs in Map. Used for internal handling only.
+#'
+#' @return A ggplot2 plot.
+#' @export
+#' @author Sur Herrera Paredes
+#' @seealso \link{plotgg_rankabun}
+#'
+#' @examples
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' Dat <- create_dataset(Rhizo, Rhizo.map, Rhizo.tax)
+#' 
+#' plotgg_rankabun2(Tab = Dat$Tab,Map = Dat$Map,
+#'                  groupby = "fraction",sortby = "E")
+#' plotgg_rankabun2(Dat, groupby = "fraction", sortby = "E")
 plotgg_rankabun2 <- function(...) UseMethod("plotgg_rankabun2")
 
+#' @rdname plotgg_rankabun2
+#' @method plotgg_rankabun2 default
 plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby,
                                      alpha = 0.2, theme = theme_blackbox,
                                      variable.name = "Taxon",
@@ -70,9 +110,22 @@ plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby,
   return(p1)
 }
 
-plotgg_rankabun2.Dataset <- function(Dat, groupby, sortby, alpha = 0.2, theme = theme_blackbox,
-                                     variable.name = "Taxon", value.name = "Abundance", sample.id.name = "SAMPLEID"){
-  p1 <- plotgg_rankabun2.default(Tab = Dat$Tab,Map = Dat$Map, groupby = groupby, sortby = sortby, alpha = alpha , theme = theme,
-                                 variable.name = variable.name, value.name = value.name, sample.id.name = sample.id.name)
+#' @rdname plotgg_rankabun2
+#' @method plotgg_rankabun2 Dataset
+plotgg_rankabun2.Dataset <- function(Dat, groupby, sortby,
+                                     alpha = 0.2, theme = theme_blackbox,
+                                     variable.name = "Taxon",
+                                     value.name = "Abundance",
+                                     sample.id.name = "SAMPLEID"){
+  
+  p1 <- plotgg_rankabun2.default(Tab = Dat$Tab,
+                                 Map = Dat$Map,
+                                 groupby = groupby,
+                                 sortby = sortby,
+                                 alpha = alpha ,
+                                 theme = theme,
+                                 variable.name = variable.name,
+                                 value.name = value.name,
+                                 sample.id.name = sample.id.name)
   return(p1)
 }

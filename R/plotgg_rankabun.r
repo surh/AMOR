@@ -1,5 +1,38 @@
+#' Make rank abundance plot
+#' 
+#' Make a rank abundance plot from a Dataset object.
+#'
+#' @param Tab A matrix object with samples as columns and taxa as rows.
+#' @param Map A data frame with metadata for Tab. Each row must be a
+#' sample with row names matching column names in Tab and in the same order as in Tab.
+#' @param Dat A Dataset object.
+#' @param groupby Variable name to be used for grouping samples before plotting th rank abundance.
+#' @param sortby Variable value to be used as reference for sorting the taxa in the rank abundance plot.
+#' @param theme ggplot2 theme to be used for plotting.
+#' @param variable.name x-axis label in the plot.
+#' @param value.name y-axis label in the plot.
+#' @param FUN Function to use to aggregate samples according to groupby
+#'
+#' @return A ggplot2 plot.
+#' @export
+#' @author Sur Herrera Paredes
+#' @seealso \link{plotgg_rankabun2}
+#'
+#' @examples
+#' data(Rhizo)
+#' data(Rhizo.map)
+#' data(Rhizo.tax)
+#' Dat <- create_dataset(Rhizo,Rhizo.map,Rhizo.tax)
+#' 
+#' plotgg_rankabun(Tab = Dat$Tab)
+#' plotgg_rankabun(Tab = Dat$Tab, Map = Dat$Map,groupby = "fraction",sortby = "Soil")
+#' 
+#' plotgg_rankabun(Dat)
+#' plotgg_rankabun(Dat, groupby = "fraction", sortby = "E")
 plotgg_rankabun <- function(...) UseMethod("plotgg_rankabun")
 
+#' @rdname plotgg_rankabun
+#' @method plotgg_rankabun default
 plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
                                     sortby = NULL,
                                     theme = theme_blackbox,
@@ -35,6 +68,8 @@ plotgg_rankabun.default <- function(Tab, Map = NULL, groupby = NULL,
   return(p1)
 }
 
+#' @rdname plotgg_rankabun
+#' @method plotgg_rankabun Dataset
 plotgg_rankabun.Dataset <- function(Dat, groupby = NULL,
                                     sortby = NULL,
                                     theme = theme_blackbox,
