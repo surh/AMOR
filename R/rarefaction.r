@@ -30,6 +30,7 @@ rarefaction <- function(x, sample) UseMethod("rarefaction")
 
 #' @rdname rarefaction
 #' @method rarefaction default
+#' @export
 rarefaction.default <- function (x, sample){
   if (!identical(all.equal(x, round(x)), TRUE)){
     stop("function is meaningful only for integers (counts)")
@@ -56,6 +57,7 @@ rarefaction.default <- function (x, sample){
 
 #' @rdname rarefaction
 #' @method rarefaction Dataset
+#' @export
 rarefaction.Dataset <- function (x, sample){
   Tab <- rarefaction.default(x=x$Tab,sample=sample)
   x <- create_dataset(Tab=Tab,Map=x$Map,Tax=x$Tax)

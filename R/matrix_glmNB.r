@@ -54,6 +54,7 @@ matrix_glmNB <- function(x,...) UseMethod("matrix_glmNB")
 
 #' @rdname matrix_glmNB
 #' @method matrix_glmNB default
+#' @export
 matrix_glmNB.default <- function(x=NULL, Map=NULL, formula=NULL,
                                response.name="Count",
                                verbose=FALSE, ...){
@@ -115,6 +116,7 @@ matrix_glmNB.default <- function(x=NULL, Map=NULL, formula=NULL,
 
 #' @rdname matrix_glmNB
 #' @method matrix_glmNB Dataset
+#' @export
 matrix_glmNB.Dataset <- function(x,formula=NULL,response.name="Count",verbose=FALSE,...){
   m1 <- matrix_glmNB.default(x=x$Tab,Map=x$Map,formula=formula,
                            response.name=response.name,verbose=verbose,...)

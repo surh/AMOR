@@ -18,6 +18,7 @@ write.qiime <- function(x, file) UseMethod("write.qiime")
 
 #' @rdname write.qiime
 #' @method write.qiime default
+#' @export
 write.qiime.default <- function(x, file){
     # Function that takes an OTU table, and writes a file in
     # QIIME format with it.
@@ -35,6 +36,7 @@ write.qiime.default <- function(x, file){
 
 #' @rdname write.qiime
 #' @method write.qiime Dataset
+#' @export
 write.qiime.Dataset <- function(x, file){
   write.qiime.default(x = x$Tab, file = file)
 }

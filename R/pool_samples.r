@@ -77,6 +77,7 @@ pool_samples.default <- function(x, groups, FUN = sum, return.dataset = FALSE){
 
 #' @rdname pool_samples
 #' @method pool_samples Dataset
+#' @export
 pool_samples.Dataset <- function(x, groups, FUN = sum, return.dataset = FALSE){
   # Check object class
   if(class(x) != "Dataset")

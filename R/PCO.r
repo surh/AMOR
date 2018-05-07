@@ -37,6 +37,7 @@ PCO <- function(x, dim, distfun) UseMethod("PCO")
 
 #' @rdname PCO
 #' @method PCO default
+#' @export
 PCO.default <- function(x, dim=3){
   # Taken from labdsv
   res <- cmdscale(x, k = dim, eig = TRUE)
@@ -49,6 +50,7 @@ PCO.default <- function(x, dim=3){
 
 #' @rdname PCO
 #' @method PCO Dataset
+#' @export
 PCO.Dataset <- function(x, dim=3, distfun=dist){
   mat <- x$Tab
   mat <- t(mat)

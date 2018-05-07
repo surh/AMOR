@@ -41,6 +41,7 @@ measurable_taxa <- function(...) UseMethod("measurable_taxa")
 
 #' @rdname measurable_taxa
 #' @method measurable_taxa default
+#' @export
 measurable_taxa.default <- function(Tab, min_reads_otu = 25, min_samples_otu = 5,
                                     method = "absolute", table = TRUE){
   if(method == "absolute"){
@@ -81,6 +82,7 @@ measurable_taxa.default <- function(Tab, min_reads_otu = 25, min_samples_otu = 5
 
 #' @rdname measurable_taxa
 #' @method measurable_taxa Dataset
+#' @export
 measurable_taxa.Dataset <- function(Dat, min_reads_otu = 25, min_samples_otu = 5, 
                                     method="absolute", table = TRUE,clean = TRUE){
   

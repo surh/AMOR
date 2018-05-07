@@ -132,6 +132,7 @@ compare_site_diversity <- function(...) UseMethod("compare_site_diversity")
 
 #' @rdname compare_site_diversity
 #' @method compare_site_diversity default
+#' @export
 compare_site_diversity.default <- function(Tab, Map, factor,
                                            divfun = total_richness,
                                            nperm = 20){
@@ -152,6 +153,7 @@ compare_site_diversity.default <- function(Tab, Map, factor,
 
 #' @rdname compare_site_diversity
 #' @method compare_site_diversity Dataset
+#' @export
 compare_site_diversity.Dataset <- function(Dat, factor,
                                            divfun = total_richness,
                                            nperm = 20){

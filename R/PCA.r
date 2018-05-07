@@ -36,6 +36,7 @@ PCA <- function(x, cor, dim) UseMethod("PCA")
 
 #' @rdname PCA
 #' @method PCA default
+#' @export
 PCA.default <- function(x, cor=FALSE,
                         dim=min(nrow(x), ncol(x))){
   # Taken from labdsv
@@ -54,6 +55,7 @@ PCA.default <- function(x, cor=FALSE,
 
 #' @rdname PCA
 #' @method PCA Dataset
+#' @export
 PCA.Dataset <- function(x, cor = FALSE,
                         dim = min(nrow(x$Tab), ncol(x$Tab))){
   mat <- x$Tab

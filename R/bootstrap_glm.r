@@ -50,6 +50,7 @@ bootstrap_glm <- function(x,...) UseMethod("bootstrap_glm")
 
 #' @rdname bootstrap_glm
 #' @method bootstrap_glm default
+#' @export
 bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
                                   response.name="Count",N=100,verbose=FALSE,...){
   
@@ -112,6 +113,7 @@ bootstrap_glm.default <- function(x,Map,formula,family=poisson(link="log"),
 
 #' @rdname bootstrap_glm
 #' @method bootstrap_glm Dataset
+#' @export
 bootstrap_glm.Dataset <- function(x,formula, family=poisson(link="log"),
                                   response.name="Count",
                                   N=100, verbose = FALSE,...){
