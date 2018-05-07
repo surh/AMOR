@@ -48,7 +48,7 @@ plotgg_taxon.default <- function(Tab, Map,
                                  taxon ,x,
                                  col = NULL,
                                  var.name = "Abundance",
-                                 theme = theme_blackbox){
+                                 theme = theme_blackbox()){
   
   if(var.name %in% names(Map)){
     stop("ERROR: var.name exists already in Map",call. = TRUE)
@@ -91,7 +91,7 @@ plotgg_taxon.default <- function(Tab, Map,
 plotgg_taxon.Dataset <- function(Dat, taxon , x,
                                  col = NULL,
                                  var.name = "Abundance",
-                                 theme = theme_blackbox){
+                                 theme = theme_blackbox()){
   
   p1 <- plotgg_taxon.default(Tab = Dat$Tab, Map = Dat$Map,
                              taxon = taxon , x = x, col = col,

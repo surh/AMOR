@@ -9,11 +9,11 @@
 plotgg_rankabun2(...)
 
 \method{plotgg_rankabun2}{default}(Tab, Map, groupby, sortby, alpha = 0.2,
-  theme = theme_blackbox, variable.name = "Taxon",
+  theme = theme_blackbox(), variable.name = "Taxon",
   value.name = "Abundance", sample.id.name = "SAMPLEID")
 
 \method{plotgg_rankabun2}{Dataset}(Dat, groupby, sortby, alpha = 0.2,
-  theme = theme_blackbox, variable.name = "Taxon",
+  theme = theme_blackbox(), variable.name = "Taxon",
   value.name = "Abundance", sample.id.name = "SAMPLEID")
 }
 \arguments{

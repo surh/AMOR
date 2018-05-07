@@ -203,17 +203,16 @@ plotgg.PCO <- function(x,components=c("PCo1","PCo2"),shape=NULL,col=NULL,fill=NU
 #'   scale_color_brewer(palette = "Set3") +
 #'   scale_fill_brewer(palette = "Set3")
 plotgg.site.diversity <- function(sitediv, p = c(0.025, 0.975),
-                                  alpha = 0.2, theme = theme_blackbox, confints = TRUE){
-  #sitediv <- sitediv.gen
-  #p <- c(0.025,0.975)
-  #alpha <- 0.2
-  #theme <- theme_blackbox
+                                  alpha = 0.2, theme = theme_blackbox(), confints = TRUE){
   
-  confint <- sitediv$mean + matrix(qnorm(p = c(0.025,0.975)),ncol = 2, nrow = nrow(sitediv),byrow = TRUE) * sitediv$sd
+  confint <- sitediv$mean + matrix(qnorm(p = c(0.025,0.975)),
+                                   ncol = 2, nrow = nrow(sitediv),
+                                   byrow = TRUE) * sitediv$sd
   colnames(confint) <- c("lower","upper")
   sitediv <- cbind(sitediv, confint)
   
-  p1 <- ggplot(sitediv,aes(x = nsites, y = mean, col = group, group = group, fill = group)) +
+  p1 <- ggplot(sitediv,aes(x = nsites, y = mean,
+                           col = group, group = group, fill = group)) +
     geom_line()
   
   if(confints){

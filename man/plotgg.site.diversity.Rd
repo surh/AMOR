@@ -5,7 +5,7 @@
 \title{Plot diversity across sites.}
 \usage{
 \method{plotgg}{site.diversity}(sitediv, p = c(0.025, 0.975), alpha = 0.2,
-  theme = theme_blackbox, confints = TRUE)
+  theme = theme_blackbox(), confints = TRUE)
 }
 \arguments{
 \item{sitediv}{A \code{site.diversity} object}

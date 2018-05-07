@@ -41,7 +41,8 @@ plotgg_rankabun2 <- function(...) UseMethod("plotgg_rankabun2")
 #' @rdname plotgg_rankabun2
 #' @method plotgg_rankabun2 default
 plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby,
-                                     alpha = 0.2, theme = theme_blackbox,
+                                     alpha = 0.2,
+                                     theme = theme_blackbox(),
                                      variable.name = "Taxon",
                                      value.name = "Abundance",
                                      sample.id.name = "SAMPLEID"){
@@ -113,7 +114,7 @@ plotgg_rankabun2.default <- function(Tab, Map, groupby, sortby,
 #' @rdname plotgg_rankabun2
 #' @method plotgg_rankabun2 Dataset
 plotgg_rankabun2.Dataset <- function(Dat, groupby, sortby,
-                                     alpha = 0.2, theme = theme_blackbox,
+                                     alpha = 0.2, theme = theme_blackbox(),
                                      variable.name = "Taxon",
                                      value.name = "Abundance",
                                      sample.id.name = "SAMPLEID"){
