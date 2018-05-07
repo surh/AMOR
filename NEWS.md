@@ -1,5 +1,4 @@
 # AMOR 0.1-3roxygen
-
 1. Moved functions out of AMOR.r into their own files and removed unecessary functions.
 Might break backwards compatibility.
 2. Roxygen2 documentation for beta_diversity.
