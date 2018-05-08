@@ -8,9 +8,9 @@
 \usage{
 pool_samples(x, ...)
 
-\method{pool_samples}{default}(x, groups, FUN = sum)
+\method{pool_samples}{default}(x, groups, FUN = sum, return.dataset = FALSE)
 
-\method{pool_samples}{Dataset}(x, groups, FUN = sum)
+\method{pool_samples}{Dataset}(x, groups, FUN = sum, return.dataset = FALSE)
 }
 \arguments{
 \item{x}{Either a numerical matrix or a Dataset object. For a numerical
@@ -26,13 +26,16 @@ numeric value indicating the column from x$Map to be used as a grouping factor.}
 which is ideal for count data. For proportioanl data \code{mean} or \code{median}
 might be more appropriate. Any function that takes a vector of numbers and returns
 a single numeric value can be used.}
+
+\item{return.dataset}{Logical, if TRUE returns a dataset}
 }
 \value{
-The default method returns a \code{matrix} object.
+The default method returns a \code{matrix} object, unless return.dataset
+is TRUE, in which case it returns a Dataset.
 
 The Dataset method returns a \code{Dataset} object when Dat includes a Tax element
 (see \code{create_dataset}); when the Tax element is missing it returns a
-\code{matrix} object.
+\code{matrix} object. If return.dataset is TRUE, return a dataset
 }
 \description{
 Pools abundances from samples according to a grouping factor.

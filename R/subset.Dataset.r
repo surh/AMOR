@@ -13,6 +13,7 @@
 #' dataset prior to returning it.
 #' 
 #' @author Sur from Dangl Lab
+#' @export
 #' 
 #' @return A Dataset object
 subset.Dataset <- function(x,subset,drop = FALSE,clean = FALSE){
@@ -23,12 +24,12 @@ subset.Dataset <- function(x,subset,drop = FALSE,clean = FALSE){
     stop("'subset' must be logical")
   r <- r & !is.na(r) # removes NAs
   
-  Map <- x$Map[r,]
+  Map <- x$Map[ r, , drop = FALSE ]
   if(drop){
     Map <- droplevels(Map)
   }
   
-  Tab <- x$Tab[ , row.names(Map) ]
+  Tab <- x$Tab[ , row.names(Map), drop = FALSE ]
   
   Dat <- create_dataset(Tab = Tab, Map = Map, Tax = x$Tax)
   

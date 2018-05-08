@@ -8,7 +8,7 @@
 #' Map to use for normalization, or a numeric vector with normalization
 #' values
 #' 
-#' @export normalize
+#' @export
 normalize <- function(Dat, norm = NULL){
   if(class(Dat) != "Dataset")
     stop("ERROR: Dat must be of class Dataset")

@@ -2,8 +2,8 @@
 #' 
 #' Function that performs principal component analysis on an abundance matrix.
 #' 
-#' @param x Numeric matrix where samples are columns and rows are species.
-#' @param Dat A Dataset object, see \code{\link{create_dataset}}.
+#' @param x Numeric matrix where samples are columns and rows are species, or a
+#' Dataset object, see \code{\link{create_dataset}}.
 #' @param cor logical value indicating whether the correlation matrix should
 #' be used instead of the covariance matrix.
 #' @param dim Number of dimensions to return.
@@ -23,6 +23,8 @@
 #' @seealso  \link{create_dataset}, \link{pca}, \link{PCO}, \link{pco},
 #' \link{plotgg.pca}
 #' 
+#' @export
+#' 
 #' @examples 
 #' data(Rhizo)
 #' data(Rhizo.map)
@@ -30,13 +32,14 @@
 #' Dat.pca <- PCA(Dat)
 #' plotgg(Dat.pca,col="accession",shape="fraction",point_size=4,biplot=TRUE)
 #' summary(Dat.pca)
-PCA <- function(...) UseMethod("PCA")
+PCA <- function(x, cor, dim) UseMethod("PCA")
 
 #' @rdname PCA
 #' @method PCA default
-PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
+#' @export
+PCA.default <- function(x, cor=FALSE,
+                        dim=min(nrow(x), ncol(x))){
   # Taken from labdsv
-#   res <- labdsv::pca(...)
   x <- t(x)
   temp <- prcomp(x,retx=TRUE,center=TRUE,scale=cor)
   res <- list(scores = temp$x[,1:dim],
@@ -52,16 +55,18 @@ PCA.default <- function(x,cor=FALSE,dim=min(nrow(x),ncol(x))){
 
 #' @rdname PCA
 #' @method PCA Dataset
-PCA.Dataset <- function(Dat,cor = FALSE, dim = min(nrow(Dat$Tab),ncol(Dat$Tab))){
-  mat <- Dat$Tab
+#' @export
+PCA.Dataset <- function(x, cor = FALSE,
+                        dim = min(nrow(x$Tab), ncol(x$Tab))){
+  mat <- x$Tab
   res <- PCA.default(mat, cor = cor, dim = dim)
-  res$Map <- Dat$Map
-  res$Tax <- Dat$Tax
+  res$Map <- x$Map
+  res$Tax <- x$Tax
   class(res) <- c("PCA")
   return(res)
 }
 
-
+#' @export
 summary.PCA <- function(object){
   ncomponents <- length(object$sdev)
   components <- paste("PC",1:ncomponents,sep = "")
@@ -79,6 +84,7 @@ summary.PCA <- function(object){
   return(sum.pca)
 }
 
+#' @export
 print.summary.PCA <- function(x,digits = 2, n = 5){
   cat("Principal Component Analysis:\n")
   cat("\t",x$ncomponents, " Components\n\n")

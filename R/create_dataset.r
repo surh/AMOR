@@ -1,9 +1,24 @@
+#' Create Dataset object
+#' 
+#' Takes an abundance matrix,
+#' a metadata data.frame and (optionally)
+#' a taxonomy definition, and creates a Dataset object.
+#'
+#' @param Tab A numeric matrix (or a numerci object coercible into a matrix) of S x N dimensions. Whenre S is the number of different taxa (OTUs, taxonomic levels etc), and N the number of samples. The rows and columns must be named with the ID of taxons and samples respectively
+#' @param Map Optional data.frame of dimensions N x p, where N is the number of samples and p the number of variables for which there is information. The rows must be named with the sample IDs, and these IDs must correspond to the same order as in the Tab argument 
+#' @param Tax Optional data.frame of dimensions S x 2, where S is the number of taxons. The rows. must be named according to the taxon IDs, which should correspond to the txons in the Tab argument. The dataframe must contain columns ID and Taxonomy, which contain the Taxa ID and the taxonomy string, in the RDP classifier format
+#'
+#' @return Returns a list of class Dataset with the following elements:
+#' \describe{
+#' \item{Tab}{ A numeric matrix containing counts of species (rows) per sample (columns) }
+#' \item{Map}{ A data.frame containing the Metadata for samples in Tab }
+#' \item{Tax}{ Optional data.frame containing taxonomic annotation for species in Tab }
+#' }
+#' 
+#' @author Sur Herrera Paredes
+#' @export
 create_dataset <- function(Tab=NULL,Map=NULL,Tax=NULL){
-  # Test data
-#   Tab <- Rhizo
-#   Map <- Rhizo.map
-#   Tax <- Rhizo.tax
-  
+
   Dataset <- list(Tab = NULL,Map = NULL,Tax = NULL)
   
   # Make sure Tab is a numeric matris
@@ -37,6 +52,7 @@ create_dataset <- function(Tab=NULL,Map=NULL,Tax=NULL){
 }
 
 #### UTILS ####
+#' @export
 print.Dataset <- function(x){
   if(!any("Dataset" %in% class(x))){
     stop("ERROR: Must pass a Dataset object.",call. = TRUE)
@@ -78,6 +94,7 @@ print.Dataset <- function(x){
 #' @return A vector of sample names
 #' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
 #' \code{\link{variables}}
+#' @export
 samples <- function(Dat){
   if(class(Dat) != "Dataset"){
     stop("ERROR: You must pass a Dataset object",call. = TRUE)
@@ -96,6 +113,7 @@ samples <- function(Dat){
 #' 
 #' @seealso \code{\link{create_dataset}}, \code{\link{taxa}},
 #' \code{\link{samples}}
+#' @export
 variables <- function(Dat){
   if(class(Dat) != "Dataset"){
     stop("ERROR: You must pass a Dataset object",call. = TRUE)
@@ -103,7 +121,6 @@ variables <- function(Dat){
   vars <- colnames(Dat$Map)
   return(vars)
 }
-
 
 #' Get taxa names
 #' 
@@ -114,6 +131,7 @@ variables <- function(Dat){
 #' @return A vector of taxa names
 #' @seealso \code{\link{create_dataset}}, \code{\link{variables}},
 #' \code{\link{samples}}
+#' @export
 taxa <- function(Dat){
   if(class(Dat) != "Dataset"){
     stop("ERROR: You must pass a Dataset object",call. = TRUE)
@@ -121,4 +139,3 @@ taxa <- function(Dat){
   taxa <- row.names(Dat$Tab)
   return(taxa)
 }
-

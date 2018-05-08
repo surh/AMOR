@@ -79,12 +79,16 @@ heatgg <- function(...) UseMethod("heatgg")
 
 #' @rdname heatgg
 #' @method heatgg default
-heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
-    col.name = "Taxon", value.name = "Abundance", trans = "log",
-    guide = "colourbar", gradientn.colours = c("white","#67001F"),
+#' @export
+heatgg.default <- function(Tab, Map, order.samples.by = NULL,
+                           facet = NULL, sample.id.var = "SAMPLEID",
+                           col.name = "Taxon", value.name = "Abundance",
+                           trans = "log",
+                           guide = "colourbar",
+                           gradientn.colours = c("white","#67001F"),
                            facet.scales = "free",cluster = FALSE,
                            distfun = dist){
-
+  
   # Check for errors
   if(!all(colnames(Tab) == row.names(Map))){
     stop("ERROR: Samples names in Tab do not math sample names in Map.", call. = TRUE)
@@ -194,6 +198,7 @@ heatgg.default <- function(Tab, Map, order.samples.by = NULL, facet = NULL, samp
 
 #' @rdname heatgg
 #' @method heatgg Dataset
+#' @export
 heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id.var = "SAMPLEID",
                            col.name = "Taxon", value.name = "Abundance", trans = "log",
                            guide = "colourbar", gradientn.colours = c("white","#67001F"),
@@ -207,6 +212,7 @@ heatgg.Dataset <- function(Dat, order.samples.by = NULL, facet = NULL, sample.id
 }
   
 #### UTILITIES ###
+#' @export
 print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
   grid.newpage()
   top.layout <- grid.layout(nrow = 2, ncol = 2,
@@ -231,7 +237,7 @@ print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
         vp=viewport(layout.pos.col=1, layout.pos.row=2))
   
   ## add legend
-  legend <- g_legend(x$p1)
+  legend <- AMOR:::g_legend(x$p1)
   pushViewport(viewport(layout.pos.col=2, layout.pos.row=1))
   grid.draw(legend)
   upViewport(0)
@@ -241,6 +247,7 @@ print.heatggclus <- function(x,row.width = 0.2, col.width = 0.2){
   return(res)
 }
 
+# Internal
 g_legend <- function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")

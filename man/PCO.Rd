@@ -4,21 +4,19 @@
 \alias{PCO}
 \alias{PCO.default}
 \alias{PCO.Dataset}
-\title{Principal Coordinates Analysis.}
+\title{Principal Coordinates Analysis}
 \usage{
-PCO(...)
+PCO(x, dim, distfun)
 
 \method{PCO}{default}(x, dim = 3)
 
-\method{PCO}{Dataset}(Dat, dim = 3, distfun = dist)
+\method{PCO}{Dataset}(x, dim = 3, distfun = dist)
 }
 \arguments{
-\item{x}{Distance matrix, must be a \code{dist} object.}
+\item{x}{Distance matrix, must be a \code{dist} object, or a \code{Dataset}
+object. See \code{\link{create_dataset}} for more information.}
 
 \item{dim}{Number of dimensions to return.}
-
-\item{Dat}{\code{Dataset} object. See \code{\link{create_dataset}}
-for more information.}
 
 \item{distfun}{Function that calculates distance matrix for abundance
 table in \code{Dataset} object.}

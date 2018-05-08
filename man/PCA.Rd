@@ -6,22 +6,20 @@
 \alias{PCA.Dataset}
 \title{Principal Component Analysis}
 \usage{
-PCA(...)
+PCA(x, cor, dim)
 
 \method{PCA}{default}(x, cor = FALSE, dim = min(nrow(x), ncol(x)))
 
-\method{PCA}{Dataset}(Dat, cor = FALSE, dim = min(nrow(Dat$Tab),
-  ncol(Dat$Tab)))
+\method{PCA}{Dataset}(x, cor = FALSE, dim = min(nrow(x$Tab), ncol(x$Tab)))
 }
 \arguments{
-\item{x}{Numeric matrix where samples are columns and rows are species.}
+\item{x}{Numeric matrix where samples are columns and rows are species, or a
+Dataset object, see \code{\link{create_dataset}}.}
 
 \item{cor}{logical value indicating whether the correlation matrix should
 be used instead of the covariance matrix.}
 
 \item{dim}{Number of dimensions to return.}
-
-\item{Dat}{A Dataset object, see \code{\link{create_dataset}}.}
 }
 \value{
 A \code{PCA} object. Includes the same attributes as a
