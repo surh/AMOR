@@ -127,7 +127,7 @@ bootstrap_glm.Dataset <- function(x,formula, family=poisson(link="log"),
 }
 
 
-#' Summarizing bootstrap_glm model fits
+#' Summarize bootstrap_glm model fits
 #'
 #' @param object A bootglm object
 #' @param sortby How to sort the summarized results

@@ -1,0 +1,61 @@
+reference:
+  - title: "Handling Datasets"
+    desc: "Functions for manipulating Dataset objects."
+    contents: 
+      - clean
+      - collapse_by_taxonomy
+      - create_dataset
+      - find_good_samples
+      - measurable_taxa
+      - normalize
+      - remove_samples
+      - remove_taxons
+      - samples
+      - pool_samples
+      - rarefaction
+      - taxa
+      - variables
+  - title: "Visualization"
+    desc: "Plotting functions."
+    contents:
+      - heatgg
+      - phylogram
+      - plotgg.PCA
+      - plotgg.PCO
+      - plotgg
+      - plotgg.site.diversity
+      - plotgg_rankabun
+      - plotgg_rankabun2
+      - plotgg_taxon
+      - plotgg_var
+      - theme_blackbox
+  - title: "Analysis"
+    desc: "Functions for statistical analysis."
+    contents:
+      - beta_diversity
+      - bootstrap_glm
+      - compare_site_diversity
+      - matrix_glm
+      - matrix_glmNB
+      - PCA
+      - PCO
+      - site_diversity
+      - subset.Dataset
+      - summary.bootglm
+      - summary.matrix.glm
+  - title: "I/O"
+    desc: "Functions for reading and writing data."
+    contents:
+      - read.am
+      - write.qiime
+  - title: "Miscellaneous"
+    desc: "Miscellaneous functions."
+    contents:
+      - AMOR-package
+      - collapse_matrix
+      - get_tax_level
+      - print.summary.bootglm
+      - total_richness
+  - title: "Data"
+    desc: "Data objects"
+    contents:

@@ -2,6 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/10928/surh/AMOR.svg)](https://zenodo.org/badge/latestdoi/10928/surh/AMOR) [![Build Status](https://travis-ci.org/surh/AMOR.svg?branch=master)](https://travis-ci.org/surh/AMOR)
 
+Visit the [package's website](https://surh.github.io/AMOR/).
+
 This package is a collection of functions that are useful for performing common tasks with abundance tables.
 
 The original code was written mostly to deal with abundance of bacterial marker genes in metagenomic data, but
