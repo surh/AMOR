@@ -1,4 +1,4 @@
-# ANOR 0.2-1
+# AMOR 0.2-1
 1. Fixed phylogram when Map has multiple columns (Issue https://github.com/surh/AMOR/issues/28).
 
 # AMOR 0.2-0
