@@ -75,7 +75,7 @@ phylogram.default <- function(Tab,Map=NULL,facet = NULL,colname="Sample",
               value.name=value.name)
   
   # Plot
-  p1 <- ggplot(Dat,aes_string(x=colname,y=value.name,fill=variable.name)) +
+  p1 <- ggplot(Dat,aes_string(x=colname[1],y=value.name,fill=variable.name)) +
     geom_bar(stat = "identity",position = "fill", width = 1) +
     theme(axis.text = element_text(angle=90))
   

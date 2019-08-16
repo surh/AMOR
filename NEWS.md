@@ -1,3 +1,6 @@
+# AMOR 0.2-1
+1. Fixed phylogram when Map has multiple columns (Issue https://github.com/surh/AMOR/issues/28).
+
 # AMOR 0.2-0
 1. Added support in subset.Dataset for when only one sample remains.
 2. Added travis CI build testing (Issue https://github.com/surh/AMOR/issues/6)
