@@ -8,11 +8,9 @@
 \usage{
 compare_site_diversity(...)
 
-\method{compare_site_diversity}{default}(Tab, Map, factor,
-  divfun = total_richness, nperm = 20)
+\method{compare_site_diversity}{default}(Tab, Map, factor, divfun = total_richness, nperm = 20)
 
-\method{compare_site_diversity}{Dataset}(Dat, factor, divfun = total_richness,
-  nperm = 20)
+\method{compare_site_diversity}{Dataset}(Dat, factor, divfun = total_richness, nperm = 20)
 }
 \arguments{
 \item{Tab}{A numeric matrix of samples as columns and taxa as rows.}

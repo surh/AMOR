@@ -8,13 +8,26 @@
 \usage{
 plotgg_rankabun(...)
 
-\method{plotgg_rankabun}{default}(Tab, Map = NULL, groupby = NULL,
-  sortby = NULL, theme = theme_blackbox(), variable.name = "Taxon",
-  value.name = "Abundance", FUN = mean)
+\method{plotgg_rankabun}{default}(
+  Tab,
+  Map = NULL,
+  groupby = NULL,
+  sortby = NULL,
+  theme = theme_blackbox(),
+  variable.name = "Taxon",
+  value.name = "Abundance",
+  FUN = mean
+)
 
-\method{plotgg_rankabun}{Dataset}(Dat, groupby = NULL, sortby = NULL,
-  theme = theme_blackbox(), variable.name = "Taxon",
-  value.name = "Abundance", FUN = mean)
+\method{plotgg_rankabun}{Dataset}(
+  Dat,
+  groupby = NULL,
+  sortby = NULL,
+  theme = theme_blackbox(),
+  variable.name = "Taxon",
+  value.name = "Abundance",
+  FUN = mean
+)
 }
 \arguments{
 \item{Tab}{A matrix object with samples as columns and taxa as rows.}

@@ -1,7 +1,7 @@
 Package: AMOR
 Type: Package
 Title: Abundance Matrix Operations in R
-Version: 0.2-1
+Version: 0.2-2
 Depends:
     ggplot2(>= 0.9.3.1),
     ggdendro(>= 0.1-15),
@@ -13,14 +13,15 @@ Imports:
 Suggests:
     vegan (>= 2.0-10),
     labdsv (>= 1.5-0),
-Date: 2019-08-16
+Date: 2023-02-16
 Authors@R: c(person("Sur", "Herrera Paredes",
                     role = c("aut", "cre"),
-		    email = "surh@stanford.edu",
+		    email = "sur@liigh.unam.mx",
 		    comment = c(ORCID = "0000-0001-9246-8337")))
 Description: Abundance Matrix Operations in R
 URL: https://github.com/surh/AMOR,
      https://surh.github.io/AMOR
 BugReports: https://github.com/surh/AMOR/issues
 License: GPL-3
-RoxygenNote: 6.0.1
+RoxygenNote: 7.2.3
+Encoding: UTF-8

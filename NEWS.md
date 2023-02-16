@@ -1,3 +1,7 @@
+# AMOR 0.2-2
+1. Updated `collapse_matrix`to work with R version 4+ which now always defines
+matrices as type of array (Issue https://github.com/surh/AMOR/issues/32).
+
 # AMOR 0.2-1
 1. Fixed phylogram when Map has multiple columns (Issue https://github.com/surh/AMOR/issues/28).
 

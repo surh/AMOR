@@ -8,11 +8,16 @@
 \usage{
 collapse_by_taxonomy(...)
 
-\method{collapse_by_taxonomy}{default}(Tab, Tax, Group = NULL, level = 4,
-  FUN = sum, sepchar = ";")
+\method{collapse_by_taxonomy}{default}(
+  Tab,
+  Tax,
+  Group = NULL,
+  level = 4,
+  FUN = sum,
+  sepchar = ";"
+)
 
-\method{collapse_by_taxonomy}{Dataset}(Dat, Group = NULL, level = 4,
-  FUN = sum, sepchar = ";")
+\method{collapse_by_taxonomy}{Dataset}(Dat, Group = NULL, level = 4, FUN = sum, sepchar = ";")
 }
 \arguments{
 \item{Tab}{An abundance matrix with samples as columns and taxa as rows}

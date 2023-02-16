@@ -8,11 +8,26 @@
 \usage{
 bootstrap_glm(x, ...)
 
-\method{bootstrap_glm}{default}(x, Map, formula, family = poisson(link =
-  "log"), response.name = "Count", N = 100, verbose = FALSE, ...)
+\method{bootstrap_glm}{default}(
+  x,
+  Map,
+  formula,
+  family = poisson(link = "log"),
+  response.name = "Count",
+  N = 100,
+  verbose = FALSE,
+  ...
+)
 
-\method{bootstrap_glm}{Dataset}(x, formula, family = poisson(link = "log"),
-  response.name = "Count", N = 100, verbose = FALSE, ...)
+\method{bootstrap_glm}{Dataset}(
+  x,
+  formula,
+  family = poisson(link = "log"),
+  response.name = "Count",
+  N = 100,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Either an abundance matrix with samples as columns

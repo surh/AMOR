@@ -9,11 +9,16 @@ of observations}
 \usage{
 matrix_glmNB(x, ...)
 
-\method{matrix_glmNB}{default}(x = NULL, Map = NULL, formula = NULL,
-  response.name = "Count", verbose = FALSE, ...)
+\method{matrix_glmNB}{default}(
+  x = NULL,
+  Map = NULL,
+  formula = NULL,
+  response.name = "Count",
+  verbose = FALSE,
+  ...
+)
 
-\method{matrix_glmNB}{Dataset}(x, formula = NULL, response.name = "Count",
-  verbose = FALSE, ...)
+\method{matrix_glmNB}{Dataset}(x, formula = NULL, response.name = "Count", verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Either a matrix of abundances with samples as columns and
