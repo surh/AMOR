@@ -37,9 +37,11 @@
 #' 2012 Aug 1;488(7409):86–90. Available from: \url{http://www.nature.com/doifinder/10.1038/nature11237}
 #' 
 #' @export
+#' @name measurable_taxa
 measurable_taxa <- function(...) UseMethod("measurable_taxa")
 
 #' @rdname measurable_taxa
+#' @name measurable_taxa
 #' @method measurable_taxa default
 #' @export
 measurable_taxa.default <- function(Tab, min_reads_otu = 25, min_samples_otu = 5,
@@ -81,6 +83,7 @@ measurable_taxa.default <- function(Tab, min_reads_otu = 25, min_samples_otu = 5
 }
 
 #' @rdname measurable_taxa
+#' @name measurable_taxa
 #' @method measurable_taxa Dataset
 #' @export
 measurable_taxa.Dataset <- function(Dat, min_reads_otu = 25, min_samples_otu = 5, 

@@ -8,11 +8,9 @@
 \usage{
 plotgg_var(...)
 
-\method{plotgg_var}{default}(Map, var.name, x, col = NULL,
-  theme = theme_blackbox())
+\method{plotgg_var}{default}(Map, var.name, x, col = NULL, theme = theme_blackbox())
 
-\method{plotgg_var}{Dataset}(Dat, var.name, x, col = NULL,
-  theme = theme_blackbox())
+\method{plotgg_var}{Dataset}(Dat, var.name, x, col = NULL, theme = theme_blackbox())
 }
 \arguments{
 \item{Map}{A data.frame where each row must correspond

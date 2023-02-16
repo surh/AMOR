@@ -4,8 +4,14 @@
 \alias{plotgg.PCO}
 \title{Plotting a PCoA}
 \usage{
-\method{plotgg}{PCO}(x, components = c("PCo1", "PCo2"), shape = NULL,
-  col = NULL, fill = NULL, point_size = 2)
+\method{plotgg}{PCO}(
+  x,
+  components = c("PCo1", "PCo2"),
+  shape = NULL,
+  col = NULL,
+  fill = NULL,
+  point_size = 2
+)
 }
 \arguments{
 \item{x}{A \code{PCO} object.}

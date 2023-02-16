@@ -32,10 +32,11 @@
 #' collapse_matrix(x=x,groups = rep(c(1,2),each=2),dim=2,FUN=mean)
 collapse_matrix <- function(x,groups,dim=1,FUN=sum){
 
-  if(class(x) != "matrix")
-    stop("ERROR: Tab must be a matrix ",call.=TRUE)
-  if(dim != 1 & dim != 2 )# NOTE: Migth eventually allow for arbitrary dimensiton arrays.
-    stop("ERROR: dim must be 1 or 2")
+  if(!is.matrix(x)){
+    # From documentation, this checks that object is 2d matrix.
+    # If ever there is extension to more dims, need to change, maybe with inherits or isa.
+    stop("ERROR: x must be a matrix ",call.=TRUE)
+  }
   if(length(groups) != length(dimnames(x)[[dim]])){
     stop("ERROR: length of groups does not correspond to number of vectors",call.=TRUE)
   }

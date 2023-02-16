@@ -8,15 +8,32 @@
 \usage{
 phylogram(...)
 
-\method{phylogram}{default}(Tab, Map = NULL, facet = NULL,
-  colname = "Sample", variable.name = "Taxon", value.name = "Abundance",
-  scales = "free_x", space = "free_x", nrow.legend = 20, ntaxa = NULL,
-  other_name = "other")
+\method{phylogram}{default}(
+  Tab,
+  Map = NULL,
+  facet = NULL,
+  colname = "Sample",
+  variable.name = "Taxon",
+  value.name = "Abundance",
+  scales = "free_x",
+  space = "free_x",
+  nrow.legend = 20,
+  ntaxa = NULL,
+  other_name = "other"
+)
 
-\method{phylogram}{Dataset}(Dat, facet = NULL, colname = "Sample",
-  variable.name = "Taxon", value.name = "Abundance", scales = "free_x",
-  space = "free_x", nrow.legend = 20, ntaxa = NULL,
-  other_name = "other")
+\method{phylogram}{Dataset}(
+  Dat,
+  facet = NULL,
+  colname = "Sample",
+  variable.name = "Taxon",
+  value.name = "Abundance",
+  scales = "free_x",
+  space = "free_x",
+  nrow.legend = 20,
+  ntaxa = NULL,
+  other_name = "other"
+)
 }
 \arguments{
 \item{Tab}{A matrix object representing samples as columns and taxa as rows.}

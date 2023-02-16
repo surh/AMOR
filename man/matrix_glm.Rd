@@ -8,12 +8,24 @@
 \usage{
 matrix_glm(x, Map, formula, family, response.name, verbose, ...)
 
-\method{matrix_glm}{default}(x = NULL, Map = NULL, formula = NULL,
-  family = poisson(link = "log"), response.name = "Count",
-  verbose = FALSE, ...)
+\method{matrix_glm}{default}(
+  x = NULL,
+  Map = NULL,
+  formula = NULL,
+  family = poisson(link = "log"),
+  response.name = "Count",
+  verbose = FALSE,
+  ...
+)
 
-\method{matrix_glm}{Dataset}(x, formula = NULL, family = poisson(link =
-  "log"), response.name = "Count", verbose = FALSE, ...)
+\method{matrix_glm}{Dataset}(
+  x,
+  formula = NULL,
+  family = poisson(link = "log"),
+  response.name = "Count",
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Either a matrix of abundances with samples as columns and species as rows or a Dataset object}

@@ -8,17 +8,36 @@
 \usage{
 heatgg(...)
 
-\method{heatgg}{default}(Tab, Map, order.samples.by = NULL, facet = NULL,
-  sample.id.var = "SAMPLEID", col.name = "Taxon",
-  value.name = "Abundance", trans = "log", guide = "colourbar",
-  gradientn.colours = c("white", "#67001F"), facet.scales = "free",
-  cluster = FALSE, distfun = dist)
+\method{heatgg}{default}(
+  Tab,
+  Map,
+  order.samples.by = NULL,
+  facet = NULL,
+  sample.id.var = "SAMPLEID",
+  col.name = "Taxon",
+  value.name = "Abundance",
+  trans = "log",
+  guide = "colourbar",
+  gradientn.colours = c("white", "#67001F"),
+  facet.scales = "free",
+  cluster = FALSE,
+  distfun = dist
+)
 
-\method{heatgg}{Dataset}(Dat, order.samples.by = NULL, facet = NULL,
-  sample.id.var = "SAMPLEID", col.name = "Taxon",
-  value.name = "Abundance", trans = "log", guide = "colourbar",
-  gradientn.colours = c("white", "#67001F"), facet.scales = "free",
-  cluster = FALSE, distfun = dist)
+\method{heatgg}{Dataset}(
+  Dat,
+  order.samples.by = NULL,
+  facet = NULL,
+  sample.id.var = "SAMPLEID",
+  col.name = "Taxon",
+  value.name = "Abundance",
+  trans = "log",
+  guide = "colourbar",
+  gradientn.colours = c("white", "#67001F"),
+  facet.scales = "free",
+  cluster = FALSE,
+  distfun = dist
+)
 }
 \arguments{
 \item{Tab}{A numeric matrix with samples as columns and taxons as rows.}

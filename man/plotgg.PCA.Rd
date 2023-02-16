@@ -4,9 +4,16 @@
 \alias{plotgg.PCA}
 \title{Plot a PCA}
 \usage{
-\method{plotgg}{PCA}(x, components = c("PC1", "PC2"), shape = NULL,
-  col = NULL, fill = NULL, biplot = FALSE, biplot_color = "grey21",
-  point_size = 2)
+\method{plotgg}{PCA}(
+  x,
+  components = c("PC1", "PC2"),
+  shape = NULL,
+  col = NULL,
+  fill = NULL,
+  biplot = FALSE,
+  biplot_color = "grey21",
+  point_size = 2
+)
 }
 \arguments{
 \item{x}{A \code{PCA} object.}

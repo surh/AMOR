@@ -8,11 +8,24 @@
 \usage{
 plotgg_taxon(...)
 
-\method{plotgg_taxon}{default}(Tab, Map, taxon, x, col = NULL,
-  var.name = "Abundance", theme = theme_blackbox())
+\method{plotgg_taxon}{default}(
+  Tab,
+  Map,
+  taxon,
+  x,
+  col = NULL,
+  var.name = "Abundance",
+  theme = theme_blackbox()
+)
 
-\method{plotgg_taxon}{Dataset}(Dat, taxon, x, col = NULL,
-  var.name = "Abundance", theme = theme_blackbox())
+\method{plotgg_taxon}{Dataset}(
+  Dat,
+  taxon,
+  x,
+  col = NULL,
+  var.name = "Abundance",
+  theme = theme_blackbox()
+)
 }
 \arguments{
 \item{Tab}{Matrix with samples as columns and taxa as rows.}
