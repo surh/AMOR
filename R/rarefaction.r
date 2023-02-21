@@ -35,7 +35,7 @@ rarefaction.default <- function (x, sample){
   if (!identical(all.equal(x, round(x)), TRUE)){
     stop("function is meaningful only for integers (counts)")
   }
-  if(class(x) != "matrix"){
+  if(!is.matrix(x)){
     stop("ERROR: function only works on matrix objects",call.=TRUE)
   }
   if (length(sample) > 1 && length(sample) != ncol(x)){

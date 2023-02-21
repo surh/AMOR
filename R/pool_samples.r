@@ -60,7 +60,7 @@ pool_samples <- function(x, ...) UseMethod("pool_samples")
 #' @method pool_samples default
 #' @export
 pool_samples.default <- function(x, groups, FUN = sum, return.dataset = FALSE){
-  if(class(x) != "matrix")
+  if(!is.matrix(x))
     stop("ERROR: Tab must be a matrix object",call.=TRUE)
   if(ncol(x) != length(groups))
     stop("ERROR: Number of columns in Tab and length of groups do not match",call.=TRUE)

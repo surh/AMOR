@@ -48,7 +48,7 @@ collapse_by_taxonomy.default <- function(Tab,Tax,Group = NULL, level=4,FUN=sum,s
   # Match taxonomy and table rows
   #row.names(Tax) <- as.character(Tax$ID)
   
-  if(class(Tab) != "matrix")
+  if(!is.matrix(Tab))
     stop("ERROR: Tab must be a matrix object",call.=TRUE)
   if(nrow(Tab) != nrow(Tax))
     stop("ERROR: Number of rows in Tab and Tax do not match",call.=TRUE)
@@ -78,6 +78,7 @@ collapse_by_taxonomy.default <- function(Tab,Tax,Group = NULL, level=4,FUN=sum,s
 #' @export
 collapse_by_taxonomy.Dataset <- function(Dat, Group = NULL, level = 4,
                                          FUN = sum, sepchar = ";"){
+  
   res <- collapse_by_taxonomy.default(Tab = Dat$Tab,
                                       Tax = Dat$Tax,
                                       Group = Group,
