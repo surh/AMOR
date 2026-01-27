@@ -1,3 +1,7 @@
+# AMOR 0.2-3 (dev)
+1. Fixed matrix checking in `collapse_by_taxonomy`, `pool_samples`,
+and `rarefaction` (Issue https://github.com/surh/AMOR/issues/32).
+
 # AMOR 0.2-2
 1. Updated `collapse_matrix`to work with R version 4+ which now always defines
 matrices as type of array (Issue https://github.com/surh/AMOR/issues/32).
